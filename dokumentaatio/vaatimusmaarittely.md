@@ -24,7 +24,7 @@ targetoituna.
 
 Tässä luonnoksessa on ensimmäinen idea graafisesta ilmeestä, sekä 
 ensimmäisestä toiminnallisuudesta.
-![ekaluonnos]()
+![ekaluonnos](../kuvat/IMG_20200311_114901.jpg)
 
 ## Ensimmäinen toiminnallisuus
 
