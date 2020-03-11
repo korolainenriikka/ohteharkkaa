@@ -1,7 +1,9 @@
-# moi!
+# Ohjelmistotekniikka, harjoitustyö
 
-## markdown-harjoittelua
+## Tehtävät
 
-eli nyt reenaillaan **markdownia**, joka on hullun *siisti systeemi*!
-aika siisti jepp!!
+### Viikko 1
+
+[gitlog.txt](https://github.com/korolainenriikka/ohteharkkaa/blob/master/laskarit/viikko1/gitlog.txt)
+[komentorivi.txt](https://github.com/korolainenriikka/ohteharkkaa/blob/master/laskarit/viikko1/gitlog.txt)
 
