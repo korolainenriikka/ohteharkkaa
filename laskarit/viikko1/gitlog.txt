@@ -1,0 +1,141 @@
+commit f8d59fa9417137ddc0de60052fb5843895cb2c59 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 16:22:46 2020 +0200 
+
+  
+    poistettiin yksi tiedosto ja uudelleennimettiin toinen 
+  
+
+tiedostoja/file1.txt | 0 
+tiedostoja/file2.txt | 0 
+2 files changed, 0 insertions(+), 0 deletions(-) 
+
+
+commit 439e539e45befc56a815c8dbdb1585985d63f355 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 16:17:01 2020 +0200 
+
+  
+    lisättiin kolme tiedostoa 
+
+
+tiedostoja/file1.txt | 0 
+tiedostoja/file2.txt | 0 
+tiedostoja/file3.txt | 0 
+3 files changed, 0 insertions(+), 0 deletions(-) 
+  
+
+commit 1d137a167795ca22d2f73d7752452e93020aaab6 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 16:09:56 2020 +0200 
+  
+
+    muutettiin ekaa ja kolmatta 
+ 
+
+eka.txt    | 7 ++----- 
+kolmas.txt | 3 ++- 
+2 files changed, 4 insertions(+), 6 deletions(-) 
+
+  
+commit 1e4804708689fc4fa1078f0efa2408e7143b11dd 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 16:08:34 2020 +0200 
+ 
+
+    nimettiin tiedosto.txt uudelleen 
+    
+
+tiedosto.txt => eka.txt | 0 
+toinen.txt              | 1 - 
+2 files changed, 1 deletion(-) 
+
+  
+
+commit e2057ea5702ed1b0a2306e391ff109686376ebe2 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 16:02:35 2020 +0200 
+
+  
+    muutettiin tekstiä hieman 
+
+
+tiedosto.txt | 7 ++----- 
+1 file changed, 2 insertions(+), 5 deletions(-) 
+ 
+
+commit 3b8141de94fe2dd624ead42b2cf4c184cbdb35b9 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 16:01:08 2020 +0200 
+  
+
+    lisättiin tiedostoon tiedosto.txt paljon tekstiä 
+ 
+
+tiedosto.txt | 29 +++++++++++++++++++++++++++++ 
+1 file changed, 29 insertions(+) 
+
+  
+commit 14b7a11759ca51ea878a4fca656b41178c747e65 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 15:53:48 2020 +0200 
+  
+
+    luotiin hakemisto ja sen sisään neljäs tiedosto 
+ 
+
+"stuff/nelj\303\244s" | 0 
+1 file changed, 0 insertions(+), 0 deletions(-) 
+
+  
+commit 1ebeafaff11c261192e8ac1b049fa5dcab320954 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 15:49:36 2020 +0200 
+  
+
+    muutettiin toista ja kolmatta 
+  
+
+kolmas.txt | 1 + 
+toinen.txt | 1 + 
+2 files changed, 2 insertions(+) 
+  
+
+commit a74757ded5ff351b9a170c57507b0b42befe4a49 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 15:48:31 2020 +0200 
+  
+
+    lisätään kolmas tiedosto 
+  
+
+kolmas.txt | 0 
+1 file changed, 0 insertions(+), 0 deletions(-) 
+  
+
+commit a9c98a4a6935e3278130c55fd4db4c7baf7083d7 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 15:43:28 2020 +0200 
+
+  
+    muutos ja lisäys 
+
+  
+tiedosto.txt | 1 + 
+toinen.txt   | 0 
+2 files changed, 1 insertion(+) 
+
+  
+
+commit 3a851389aba51b4f877ae9fb933b57a778d920e2 
+Author: Riikka Korolainen <riikka.korolainen@outlook.com> 
+Date:   Tue Mar 10 15:38:54 2020 +0200 
+
+  
+    tiedosto.txt luotu 
+
+
+tiedosto.txt | 0 
+1 file changed, 0 insertions(+), 0 deletions(-) 
+
+mergetestilaini tänne!
