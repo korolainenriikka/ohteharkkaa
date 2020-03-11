@@ -1,6 +1,6 @@
-#Vaatimusmäärittely
+# Vaatimusmäärittely
 
-##Sovelluksen tarkoitus
+## Sovelluksen tarkoitus
 
 Bob the personal assistant on elämänhallinnan järjestelmä, jonka tarkoituksena
 on koota yhteen paikkaan kaikki asiat, joiden muistaminen on koneellistettavissa,
@@ -13,33 +13,34 @@ Sovellushan on lähes loputtomiin laajennettavissa, tarkoitus on tehdä siitä
 niin laaja kuin resurssit sallivat. Parhaassa tapauksessa ja jos vain luvan
 saan jatkan tätä muissakin harjoitustöissä lisäämällä uusia toiminnallisuuksia.
 
-##Käyttäjät
+## Käyttäjät
 
 Sovellus on täysin henkilökohtainen, missä onkin sen kauneus: se menee
 arkielämäkäyttöön, ja muihin lukemattomiin hallinnointisovelluksiin verrattuna
 hienoa siinä on se, että se on tehty itse juuri nimenomaan omiin tarpeisiin 
 targetoituna.
 
-##Käyttöliittymäluonnos
+## Käyttöliittymäluonnos
 
 Tässä luonnoksessa on ensimmäinen idea graafisesta ilmeestä, sekä 
 ensimmäisestä toiminnallisuudesta.
-<lisää tähän kuva luonnoksesta!>
 
-##Ensimmäinen toiminnallisuus
+![ekaluonnos](/dokumentaatio/kuvat/IMG_20200311_114901.jpg)
+
+## Ensimmäinen toiminnallisuus
 
 Ensimmäisenä tuotetaan muistutukset-toiminnallisuus. Tähän sisätyy seuraavat 
 toiminnot:
 
-###Muistutuksen lisääminen
+### Muistutuksen lisääminen
 
 * käyttäjä voi lisätä uuden muistutuksen, jolla on päivämäärä, sekä kuvaus
 
-###Muistutus
+### Muistutus
 
 * ko. päivänä etusivulle ilmestyy lista muistutuksista
 
-##Jatkokehitysideoita
+## Jatkokehitysideoita
 
 * muistutuksiin voisi lisätä useamman muistutuspäivän, esim tiettyä aikaa 
 ennen. Usein asioista on hyvä saada "etukäteismuistutuksia"
