@@ -25,7 +25,7 @@ targetoituna.
 Tässä luonnoksessa on ensimmäinen idea graafisesta ilmeestä, sekä 
 ensimmäisestä toiminnallisuudesta.
 
-!(https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/IMG_20200311_114901.jpg)
+![ekaluonnos](dokumentaatio/kuvat/IMG_20200311_114901.jpg)
 
 ## Ensimmäinen toiminnallisuus
 
