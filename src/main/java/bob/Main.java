@@ -7,6 +7,9 @@
 package bob;
         
 import bob.ui.BobUi;
+import bob.dao.BobDao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,7 +17,12 @@ import bob.ui.BobUi;
  */
 public class Main {
     public static void main(String[] args) {
-        BobUi.main(args);
+        try {
+            //BobUi.main(args);
+            BobDao.testmethod();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
    

@@ -1,0 +1,8 @@
+package bob.domain;
+
+/**
+ *
+ * Sovelluslogiikka
+ * 
+ */
+
