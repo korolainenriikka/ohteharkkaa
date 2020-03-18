@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class NewReminderSceneController implements Initializable{
     private BobUi application;
@@ -15,9 +16,15 @@ public class NewReminderSceneController implements Initializable{
     
     @FXML
     private Button palaa;
+    private Button lisää;
     
     @FXML
     private void handleSetPrimaryScene(){
+        application.setPrimaryScene();
+    }
+    
+    @FXML
+    private void handleNewReminder(){
         application.setPrimaryScene();
     }
 
