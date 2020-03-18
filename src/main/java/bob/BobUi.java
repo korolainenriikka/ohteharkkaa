@@ -18,7 +18,7 @@ public class BobUi extends Application {
         Parent primaryRoot = primarySceneLoader.load();
         primaryScene = new Scene(primaryRoot);
         
-        FXMLLoader newReminderSceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
+        FXMLLoader newReminderSceneLoader = new FXMLLoader(getClass().getResource("/fxml/newReminderScene.fxml"));
         Parent newReminderSceneRoot = newReminderSceneLoader.load();
         newReminderScene = new Scene(newReminderSceneRoot);
     }
