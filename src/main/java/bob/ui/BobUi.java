@@ -44,7 +44,7 @@ public class BobUi extends Application {
 //        primaryStage.setMinWidth(680);
 //        primaryStage.setScene(scene);
 //        primaryStage.show();
-        Parent root = FXMLLoader.load(getClass().getResource("/testfxml.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/kakkaa.fxml"));
 
         Scene scene = new Scene(root);
 
