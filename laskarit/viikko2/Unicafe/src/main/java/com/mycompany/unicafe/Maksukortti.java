@@ -21,7 +21,6 @@ public class Maksukortti {
         if (this.saldo < maara) {
             return false;
         }
- 
         this.saldo = this.saldo - maara;
         return true;
     }
