@@ -14,14 +14,11 @@ public class BobService {
     
     //uuden muistutuksen lisääminen
     public boolean createReminder(String content) {
-        /*Date date = new Date();
-        SimpleDateFormat formatterSQL = new SimpleDateFormat("yyyy-MM-dd");
-        String dateSQL = formatterSQL.format(date);
-                
-        Reminder reminder = new Reminder(dateSQL, content);*/
         try {   
-            bobDao.createReminder();
+            //pääsee atm tänne muttei eteenpäi
+            bobDao.createReminder(content);
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
         return true;
