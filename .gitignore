@@ -1,3 +1,6 @@
-Bob/target
-/target/nbactions.xml
 target
+laskarit/viikko2/Unicafe/target
+laskarit/viikko2/Maksukortti/target
+nbactions.xml
+nb-configuration.xml
+bobData.db
