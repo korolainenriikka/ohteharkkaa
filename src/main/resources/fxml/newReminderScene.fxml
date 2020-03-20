@@ -14,7 +14,7 @@
       <Button layoutX="568.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSetPrimaryScene" prefHeight="22.0" prefWidth="68.0" text="Palaa" />
       <Button layoutX="120.0" layoutY="408.0" mnemonicParsing="false" onAction="#handleNewReminder" text="Lisää" />
       <Label layoutX="119.0" layoutY="226.0" text="päivämäärä" />
-      <ChoiceBox layoutX="123.0" layoutY="254.0" prefHeight="26.0" prefWidth="45.0">
+      <ChoiceBox fx:id="day" layoutX="123.0" layoutY="254.0" prefHeight="26.0" prefWidth="45.0">
         <items>
           <FXCollections fx:factory="observableArrayList">
             <Integer fx:value="1" />
@@ -51,7 +51,7 @@
           </FXCollections>
         </items>
       </ChoiceBox>
-      <ChoiceBox layoutX="184.0" layoutY="254.0" prefHeight="26.0" prefWidth="112.0"> 
+      <ChoiceBox fx:id="month" layoutX="184.0" layoutY="254.0" prefHeight="26.0" prefWidth="112.0"> 
         <items>
           <FXCollections fx:factory="observableArrayList">
             <String fx:value="tammi" />
@@ -69,7 +69,7 @@
           </FXCollections>
         </items>
       </ChoiceBox>
-      <ChoiceBox layoutX="310.0" layoutY="254.0" prefHeight="26.0" prefWidth="89.0">
+      <ChoiceBox fx:id="year" layoutX="310.0" layoutY="254.0" prefHeight="26.0" prefWidth="89.0">
         <items>
           <FXCollections fx:factory="observableArrayList">
             <Integer fx:value="2020" />
@@ -81,7 +81,7 @@
         </items>
       </ChoiceBox>
       <Label layoutX="119.0" layoutY="318.0" text="kuvaus" />
-      <TextField layoutX="123.0" layoutY="355.0" prefHeight="16.0" prefWidth="404.0" />
+      <TextField fx:id="description" layoutX="123.0" layoutY="355.0" prefHeight="16.0" prefWidth="404.0" />
       <Label layoutX="119.0" layoutY="464.0" />
    </children>
 </AnchorPane>

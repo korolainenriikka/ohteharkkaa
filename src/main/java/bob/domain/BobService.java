@@ -13,10 +13,10 @@ public class BobService {
     }
     
     //uuden muistutuksen lisääminen
-    public boolean createReminder(String content) {
+    public boolean createReminder(String date, String description) {
         try {   
             //pääsee atm tänne muttei eteenpäi
-            bobDao.createReminder(content);
+            bobDao.createReminder(date, description);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return false;

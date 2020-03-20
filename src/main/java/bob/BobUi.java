@@ -1,6 +1,8 @@
 package bob;
 
+import bob.dao.BobDao;
 import bob.domain.BobService;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +18,7 @@ public class BobUi extends Application {
     
     @Override
     public void init() throws Exception{
-        bobService = new BobService();
+        bobService = new BobService(new BobDao());
         
         FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
         Parent primaryRoot = primarySceneLoader.load();
@@ -27,6 +29,7 @@ public class BobUi extends Application {
         FXMLLoader newReminderSceneLoader = new FXMLLoader(getClass().getResource("/fxml/newReminderScene.fxml"));
         Parent newReminderSceneRoot = newReminderSceneLoader.load();
         NewReminderSceneController newReminderSceneController = newReminderSceneLoader.getController();
+        newReminderSceneController.setBobService(bobService);
         newReminderSceneController.setApplication(this);
         newReminderScene = new Scene(newReminderSceneRoot);
     }
