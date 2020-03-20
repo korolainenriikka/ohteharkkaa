@@ -1,5 +1,6 @@
 package bob;
 
+import bob.domain.BobService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,12 +9,15 @@ import javafx.stage.Stage;
 
 public class BobUi extends Application {
     
+    private BobService bobService;
     private Stage stage;
     private Scene primaryScene;
     private Scene newReminderScene;
     
     @Override
     public void init() throws Exception{
+        bobService = new BobService();
+        
         FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
         Parent primaryRoot = primarySceneLoader.load();
         PrimarySceneController primarySceneController = primarySceneLoader.getController();
