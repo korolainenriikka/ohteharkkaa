@@ -2,39 +2,19 @@
 
 ## Sovelluksen tarkoitus
 
-Bob the personal assistant on elämänhallinnan järjestelmä, jonka tarkoituksena
-on koota yhteen paikkaan kaikki asiat, joiden muistaminen on koneellistettavissa,
-siis esim. muistutukset ja koulutöiden deadlinet. Tarkoitus on vähentää 
-unohtumisia, jotka ovat ikävän usein kurssipisteiden menetysteni syy, ja muutenkin
-tehdä minusta asioita hallitsevalta vaikuttavan kunnollisen ihmisen, vaikka 
-oikeasti kaiken takana on botti nimeltä bob. 
-
-Sovellushan on lähes loputtomiin laajennettavissa, tarkoitus on tehdä siitä 
-niin laaja kuin resurssit sallivat. Parhaassa tapauksessa ja jos vain luvan
-saan jatkan tätä muissakin harjoitustöissä lisäämällä uusia toiminnallisuuksia.
+Bob the personal assistant on henkilökohtainen sihteeri, jonka tarkoituksena on ulkoistaa mahdollisimman paljon arkisten asioiden muistamista ihan arkielämän helpotukseksi. Unohtamatta sitäkään, että itsetehdyn bottisihteerin omistaminen on jokseenkin tyylikästä.
 
 ## Käyttäjät
 
-Sovellus on täysin henkilökohtainen, missä onkin sen kauneus: se menee
-arkielämäkäyttöön, ja muihin lukemattomiin hallinnointisovelluksiin verrattuna
-hienoa siinä on se, että se on tehty itse juuri nimenomaan omiin tarpeisiin 
-targetoituna.
-
-## Käyttöliittymäluonnos
-
-Tässä luonnoksessa on ensimmäinen idea graafisesta ilmeestä, sekä 
-ensimmäisestä toiminnallisuudesta.
-
-![ekaluonnos](/dokumentaatio/kuvat/IMG_20200311_114901.jpg)
+Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lailla omien tarpeiden mukaan elävä ja kehittyvä.
 
 ## Ensimmäinen toiminnallisuus
 
-Ensimmäisenä tuotetaan muistutukset-toiminnallisuus. Tähän sisätyy seuraavat 
-toiminnot:
+Ensimmäinen toiminnallisuus on muistutusten lisääminen. Tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu seuraavat komennot:
 
 ### Muistutuksen lisääminen
 
-* käyttäjä voi lisätä uuden muistutuksen, jolla on päivämäärä, sekä kuvaus
+* käyttäjä voi lisätä uuden muistutuksen, jolla on päivämäärä sekä kuvaus.
 
 ### Muistutus
 
@@ -42,26 +22,28 @@ toiminnot:
 
 ## Jatkokehitysideoita
 
-* muistutuksiin voisi lisätä useamman muistutuspäivän, esim tiettyä aikaa 
-ennen. Usein asioista on hyvä saada "etukäteismuistutuksia"
+### Muistutustoiminnallisuus
+ 
+ * käytettävyyttä lisäisi, kun lisää muistutus -sivun kentissä olisi automaattisesti lisäyspäivä.
 
-* päivän työt -lista, eli millaisia koulutehtäviä tai muita ko. viikolla
-on tehtävänä
+ * tyylikkäämpää olisi vahvistusviestin näyttäminen jonkinlaisena ponnahdusikkunana.
 
-* tkt-labrakursseja varten automatisoitu työaikakirjanpitäjä, katselee kelloa
-ja tietää milloin olen koneella
+ * tietokanta ei pysy tällä järjestelmällä kovin siistinä; vanhat muistutukset tulisi poistaa. Ensin olisi kuitenkin tarkistettava, että ko. asia on hoidossa (päivän vaihtaminen?)
 
-* treenipäiväkirjaaja, joka osaa luoda statistiikkaa tuloksista (tietokantasovellus?)
+ * muistutusten lisääminen viikottain, päivittäin ym.
 
-* päivän sää
+ ### Muita toiminnallisuuksia (perusversion laajennukset)
 
-* jonkinlainen päivän loppuun tuleva näkymä, jossa voi suorittaa tarvittavat 
-asiat, jotka helpottavat työntekoa seuraavana päivänä.
+ * kalenteritapahtumat; tähän palaamme kun niitä taas kalenterissa on
 
-* adv: ruokakirjanpitäjä, joka tietää milloin on mentävä kauppaan ja mitä 
-ostettava. Crossfit-pöhinöissä mikäli kovalle tasolle joskus mennään 
-voi jopa jonkinlaisen nutritionistbotin puuhailla avuksi (adv++++)
+ * treenipäiväkirja (linkki tietokantasovelluksen sivulle)
 
-* kalenteri! milloin tapahtuu mitä (suora siirto opintoni-sivulta?)
+ * iltanäkymä, jossa bobi kyselisi mitä on tullut tehtyä ja mitkä tehtävät on syytä siirtä myöhempään
 
-...
+ * työaikakirjanpito, joka tekee automaattisesti kurssien vaatimat dokumentit
+
+### Suuruudenhulluja toiminnallisuuksia
+
+eli toiminnallisuuksia, joita sisältävän bottisihteerin omistamisessa olisi jo *suurmiehen meininkiä*
+
+* Automaattinen kauppalistantekijä

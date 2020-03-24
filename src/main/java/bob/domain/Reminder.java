@@ -9,6 +9,14 @@ public class Reminder{
         this.description = description;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     
       
 }

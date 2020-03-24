@@ -24,6 +24,7 @@ public class BobUi extends Application {
         FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
         Parent primaryRoot = primarySceneLoader.load();
         primarySceneController = primarySceneLoader.getController();
+        primarySceneController.setBobService(bobService);
         primarySceneController.setApplication(this);
         primaryScene = new Scene(primaryRoot);
         

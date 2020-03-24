@@ -1,27 +1,24 @@
 package bob.domain;
 
 import bob.dao.BobDao;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 
 public class BobService {
     
     private BobDao bobDao;
 
-    public BobService(BobDao bobdao) {
+    public BobService(BobDao bobDao) {
         this.bobDao = bobDao;
     }
     
     //uuden muistutuksen lisääminen
-    public boolean createReminder(String date, String description) {
-        try {   
-            //pääsee atm tänne muttei eteenpäi
-            bobDao.createReminder(date, description);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            return false;
-        }
-        return true;
+    public String createReminder(String date, String description) {
+        Reminder newReminder = new Reminder(date, description);
+        return bobDao.createReminder(newReminder);
+    }  
+
+    public List<String> getTodaysReminders() {
+        return bobDao.getTodaysReminders();
     }
     
 }
