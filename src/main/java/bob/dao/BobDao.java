@@ -7,23 +7,30 @@ import java.util.List;
 import java.util.Date;
 
 public class BobDao {
-
-    // connectionin ja preparedstatementin luomiseen oma metodi tänne? yksinkeraistais
-    public static void createReminder(String date, String description) {
-        Connection connection = null;
-
-        try {
+    
+    private Connection connection;
+    
+    public BobDao() {
+        try{
             connection = DriverManager.getConnection("jdbc:sqlite:bobData.db");
+        }catch (SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    public void createReminder(String date, String description) {
+        
+        try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Muistutukset(date, description) VALUES (?,?)");
             stmt.setString(1, date);
             stmt.setString(2, description);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            System.out.println("virhe: " + e.getMessage());;
         }
     }
 
-    public static List<String> getTodaysReminders() {
+    public List<String> getTodaysReminders() {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = formatter.format(date);
@@ -31,15 +38,10 @@ public class BobDao {
 
         ArrayList<String> today = new ArrayList<>();
 
-        Connection connection = null;
-
         try {
-            //daten muunnos??
-            connection = DriverManager.getConnection("jdbc:sqlite:bobData.db");
             PreparedStatement stmt = connection.prepareStatement("SELECT description FROM Muistutukset WHERE date=(?);");
             stmt.setString(1, formattedDate);
             ResultSet r = stmt.executeQuery();
-
             while (r.next()) {
                 today.add(r.getString("description"));
             }
