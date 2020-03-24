@@ -10,7 +10,7 @@ Lisäksi, on tuskin kiellettävissä, että elämänhallinnan ulkoistaminen itse
 
 Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn mukavuuden vuoksi työstä tulee todennäköisesti huomattavasti vaatimuksia laajempi. Mikäli ohjaaja tai katselmoija huomaa koodissa jotain korjattavaa, joka ei varsinaisiin tavoitteisiin sisälly, korjausehdotukset otetaan ilolla vastaan.
 
-<img src="drawing.jpg" alt="drawing" width="300" height="300"/>
+<img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/resources/images/primarySceneBottom.jpg" width="300" height="300"/>
 
 ## viikko 2
 
