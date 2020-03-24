@@ -1,0 +1,12 @@
+# Työaikakirjanpito
+
+
+Pvm | Tunnit | tehty
+------------ | ------------- | -----------------------------------------------
+10.3 | 1 | javafx kertailua, esimerkkisovellukseen tutustumista 
+11.3 | 6 | ensimmäinen vaatimusmäärittely, javafx:n testaus, gitin initialisointi 
+12.3 | 6 | fxml opettelua, tietokantayhteyden luominen 
+14.3 | 3 | käyttöliittymää 
+16.3 | 1 | käyttöliittymän toiminnallisuuksien aloittelua 
+20.3 | 6 | datan siirto kayttöliittymästä tietokantaan 
+24.3 | 5 | ensimmäinen toiminnallisuus 
