@@ -16,4 +16,6 @@ Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn m
 
 [määrittelydokumentti](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
+[työaikakirjanpito](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/työaikakirjanpito.md)
+
 
