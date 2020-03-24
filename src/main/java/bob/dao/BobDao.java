@@ -1,5 +1,6 @@
 package bob.dao;
 
+import bob.domain.Reminder;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,15 +19,16 @@ public class BobDao {
         }
     }
     
-    public void createReminder(String date, String description) {
+    public String createReminder(Reminder newReminder) {
         
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Muistutukset(date, description) VALUES (?,?)");
-            stmt.setString(1, date);
-            stmt.setString(2, description);
+            stmt.setString(1, newReminder.getDate());
+            stmt.setString(2, newReminder.getDescription());
             stmt.executeUpdate();
+            return("uusi muistutus lisätty:\n"+ newReminder.getDate() +"\n" + newReminder.getDescription());
         } catch (SQLException e) {
-            System.out.println("virhe: " + e.getMessage());;
+            return e.getMessage();
         }
     }
 
