@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 
-Bob the personal assistant on henkilökohtainen sihteeri, jonka tarkoituksena on ulkoistaa mahdollisimman paljon arkisten asioiden muistamista ihan arkielämän helpotukseksi. Unohtamatta sitäkään, että itsetehdyn bottisihteerin omistaminen on jokseenkin tyylikästä.
+Bob the personal assistant on henkilökohtainen sihteeri, jonka tarkoituksena on ulkoistaa mahdollisimman paljon arkisten asioiden muistamista ihan arkielämän helpotukseksi.
 
 ## Käyttäjät
 

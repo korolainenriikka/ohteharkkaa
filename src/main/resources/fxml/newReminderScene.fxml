@@ -82,6 +82,6 @@
       </ChoiceBox>
       <Label layoutX="119.0" layoutY="318.0" text="kuvaus" />
       <TextField fx:id="description" layoutX="123.0" layoutY="355.0" prefHeight="16.0" prefWidth="404.0" />
-      <Label layoutX="119.0" layoutY="464.0" />
+      <Label fx:id="okmessage" layoutX="119.0" layoutY="464.0" />
    </children>
 </AnchorPane>

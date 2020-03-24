@@ -29,8 +29,8 @@
          <center>
             <VBox maxWidth="320.0" minHeight="460.0" prefHeight="400.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="MUISTA!" />
-                  <Label fx:id="muistutukset" />
+                  <Label text="MUISTA!"/>
+                  <Label fx:id="todaysReminders" text="ei muistettavaa tänään :)"/>
                </children>
             </VBox>
          </center>

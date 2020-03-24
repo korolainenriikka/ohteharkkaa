@@ -1,13 +1,19 @@
-# Ohjelmistotekniikka, harjoitustyö
+# Ohjelmistotekniikka, harjoitustyö: Bob the personal assistant
 
-## Tehtävät
+""*Rutiinit roboteille ja analyysit ammattilaisille*"" -*E.K 20.3.2020*.
 
-### Viikko 1
+Bob the personal assistant on henkilökohtainen sihteeri, jonka ydin yllä: mitä enemmän on ulkoistettu, sitä enemmän on ulkoistettu, ja sitä enemmän on aikaa mukavammille asioille. Kyseessä on käyttöön tehtävä, muutenkin varsin yleistarpeellinen ohjelmisto.
 
-[gitlog.txt](https://github.com/korolainenriikka/ohteharkkaa/blob/master/laskarit/viikko1/gitlog.txt)
+Lisäksi, on tuskin kiellettävissä, että elämänhallinnan ulkoistaminen itsetehdylle botille on melko tyylikästä.
 
-[komentorivi.txt](https://github.com/korolainenriikka/ohteharkkaa/blob/master/laskarit/viikko1/komentorivi.txt)
+*Due to the current situation with Covid-19*:
 
-## Harjoitustyö
+Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn mukavuuden vuoksi työstä tulee todennäköisesti huomattavasti vaatimuksia laajempi. Mikäli ohjaaja tai katselmoija huomaa koodissa jotain korjattavaa, joka ei varsinaisiin tavoitteisiin sisälly, korjausehdotukset otetaan ilolla vastaan.
+
+(!https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/resources/images/primarySceneBottom.jpg)
+
+## viikko 2
+
+[määrittelydokumentti](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 
