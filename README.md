@@ -1,6 +1,6 @@
 # Ohjelmistotekniikka, harjoitustyö: Bob the personal assistant
 
-"*Rutiinit roboteille ja analyysit ammattilaisille*" -*E.K 20.3.2020*.
+"*Rutiinit roboteille ja analyysit ammattilaisille*" -*E.K. 20.3.2020*.
 
 Bob the personal assistant on henkilökohtainen sihteeri, jonka ydin yllä: mitä enemmän on ulkoistettu, sitä enemmän on ulkoistettu, ja sitä enemmän on aikaa mukavammille asioille. Kyseessä on käyttöön tehtävä, muutenkin varsin yleistarpeellinen ohjelmisto.
 
@@ -15,5 +15,7 @@ Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn m
 ## viikko 2
 
 [määrittelydokumentti](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
+[työaikakirjanpito](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/työaikakirjanpito.md)
 
 
