@@ -14,9 +14,12 @@ public class BobDao {
     public BobDao() {
         try{
             connection = DriverManager.getConnection("jdbc:sqlite:bobData.db");
+            Statement s = connection.createStatement();
+            s.execute("CREATE TABLE IF NOT EXISTS Muistutukset(id INTEGER PRIMARY KEY, date DATE, description TEXT);");
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
+        
     }
     
     public String addReminderToDatabase(Reminder newReminder) {    
