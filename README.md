@@ -12,7 +12,15 @@ Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn m
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/resources/images/primarySceneBottom.jpg" width="300" height="300"/>
 
-## testaus
+## komentorivitoiminnot
+
+### ohjelman suoritus
+
+ohjelma suoritetaan hakemiston juuressa komennolla 
+
+mvn compile exec:java -Dexec.mainClass=bob.Main
+
+### testaus
 
 Testeistä on toteutettuna yksikkötestit muutamia (ks. alla) lukuun ottamatta kaikille muille paitsi käyttöliittymästä vastaaville luokille.
 
