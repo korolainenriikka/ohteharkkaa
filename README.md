@@ -12,7 +12,17 @@ Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn m
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/resources/images/primarySceneBottom.jpg" width="300" height="300"/>
 
-## viikko 2
+## testaus
+
+Testeistä on toteutettuna yksikkötestit muutamia (ks. alla) lukuun ottamatta kaikille muille paitsi käyttöliittymästä vastaaville luokille.
+
+ohjaajalle kysymyksiä testeistä:
+
+* miten dao-luokan catch-lauseita kannattaa testata?
+
+* onko sovelluslogiikkaluokan dao-luokkaa kutsuvia, kahden rivin metodeja tarpeen testata?
+
+## dokumentaatio
 
 [määrittelydokumentti](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
