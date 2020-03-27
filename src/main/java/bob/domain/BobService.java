@@ -14,7 +14,7 @@ public class BobService {
     //uuden muistutuksen lisääminen
     public String createReminder(String date, String description) {
         Reminder newReminder = new Reminder(date, description);
-        return bobDao.createReminder(newReminder);
+        return bobDao.addReminderToDatabase(newReminder);
     }  
 
     public List<String> getTodaysReminders() {

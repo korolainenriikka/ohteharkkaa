@@ -16,7 +16,5 @@ public class Reminder{
     public String getDescription() {
         return description;
     }
-
-    
-      
+     
 }

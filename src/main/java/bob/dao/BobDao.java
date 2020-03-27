@@ -19,8 +19,7 @@ public class BobDao {
         }
     }
     
-    public String createReminder(Reminder newReminder) {
-        
+    public String addReminderToDatabase(Reminder newReminder) {    
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Muistutukset(date, description) VALUES (?,?)");
             stmt.setString(1, newReminder.getDate());
@@ -36,7 +35,6 @@ public class BobDao {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = formatter.format(date);
-        System.out.println(formattedDate);
 
         ArrayList<String> today = new ArrayList<>();
 
