@@ -4,13 +4,14 @@ import bob.domain.Reminder;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SQLBobDao implements BobDao{
     
     private Connection connection;
     
     public SQLBobDao(String database) {
-        
         
         try{
             connection = DriverManager.getConnection(database);
@@ -25,7 +26,7 @@ public class SQLBobDao implements BobDao{
     public String addReminderToDatabase(Reminder newReminder) {    
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Muistutukset(date, description) VALUES (?,?)");
-            stmt.setString(1, newReminder.getDate());
+            stmt.setString(1, newReminder.getDate()+"");
             stmt.setString(2, newReminder.getDescription());
             stmt.executeUpdate();
             return("uusi muistutus lisätty:\n"+ newReminder.getDate() +"\n" + newReminder.getDescription());
@@ -49,6 +50,17 @@ public class SQLBobDao implements BobDao{
         }
 
         return todaysReminders;
+    }
+
+    @Override
+    public void removeOldReminders(String today) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Muistutukset WHERE date <= (?)");
+            stmt.setString(1, today);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }
