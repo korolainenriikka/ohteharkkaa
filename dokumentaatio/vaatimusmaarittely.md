@@ -10,7 +10,7 @@ Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lail
 
 ## Toiminnallisuudet
 
-Ohjelman ensimmäinen toiminnallisuus on muistutusten lisääminen. Tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muisututuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä
+Ohjelman ensimmäinen toiminnallisuus on muistutusten lisääminen. Tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muisututuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä.
 
 ### Seuraavat muutokset
 
