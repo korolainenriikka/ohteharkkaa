@@ -24,11 +24,7 @@ mvn compile exec:java -Dexec.mainClass=bob.Main
 
 Testeistä on toteutettuna yksikkötestit muutamia (ks. alla) lukuun ottamatta kaikille muille paitsi käyttöliittymästä vastaaville luokille.
 
-ohjaajalle kysymyksiä testeistä:
-
-* miten dao-luokan catch-lauseita kannattaa testata?
-
-* onko sovelluslogiikkaluokan dao-luokkaa kutsuvia, kahden rivin metodeja tarpeen testata?
+Testit lisäävät vielä tällä hetkellä tietoa tietokantaan, eikä poistotoiminnallisuuksia niin testien kuin itse ohjelman tarpeeseen ole vielä toteutettu.
 
 ## dokumentaatio
 
