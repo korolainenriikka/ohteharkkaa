@@ -1,4 +1,5 @@
 import bob.domain.Reminder;
+import java.time.LocalDate;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
@@ -6,11 +7,13 @@ import org.junit.Test;
 
 public class ReminderTest {
     
+    private LocalDate today;
     private Reminder reminder;
     
     @Before
     public void setUp() {
-        this.reminder = new Reminder("2020-03-27", "tämä on testimuistutus");
+        this.today = LocalDate.now();
+        this.reminder = new Reminder(today, "tämä on testimuistutus");
     }
     
     @Test
@@ -20,7 +23,7 @@ public class ReminderTest {
     
     @Test
     public void getDateWorks(){
-        assertThat(reminder.getDate(), equalTo("2020-03-27"));
+        assertThat(reminder.getDate(), equalTo(today));
     }
     
     @Test
