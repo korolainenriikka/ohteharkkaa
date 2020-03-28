@@ -8,17 +8,17 @@ Bob the personal assistant on henkilökohtainen sihteeri, jonka tarkoituksena on
 
 Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lailla omien tarpeiden mukaan elävä ja kehittyvä.
 
-## Ensimmäinen toiminnallisuus
+## Toiminnallisuudet
 
-Ensimmäinen toiminnallisuus on muistutusten lisääminen. Tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu seuraavat komennot:
+Ohjelman ensimmäinen toiminnallisuus on muistutusten lisääminen. Tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muisututuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä
 
-### Muistutuksen lisääminen
+### Seuraavat muutokset
 
-* käyttäjä voi lisätä uuden muistutuksen, jolla on päivämäärä sekä kuvaus.
+Seuraavaksi ohjelmaan on tarkoitus lisätä uusi toiminnallisuus, sekä parantaa olemassaolevaa:
 
-### Muistutus
+Muistutuksiin lisätään toiminnallisuus, joka poistaa automaattiseseti vanhentuneet muistutukset. Koska käytössä on huomattu, että usein muistutus vaatii jonkinlaisia toimenpiteitä, muistutus muutetaan todo-tyyppiseksi, siis sille lisätään boolean-muutuuja. Tekemättä jääneiden muistutusten on tarkoitus siirtyä automaattisesti seuraavalle päivälle. Muistutuksen lisäämisen näkymää parannetaan muuttamalla päivämäärävalikko kalenterityyppiseksi, jolloin esim. viikonpäivän näkee selkeämmin, ja muutetaan tietokantaan lisäyksen vahvistusviesti sellaiseksi, ettei se näy enää kun sivulle palataan myöhemmin.
 
-* ko. päivänä etusivulle ilmestyy lista muistutuksista
+Uutena toiminnallisuutena lisätään kalenteritapahtumat, jotka ovat muuten hyvin muistutusten tyyppisiä, mutta niillä ei ole boolean-muuttujaa, ja päivän lisäksi voidaan lisätä aika. Nämä näytetään etusivulla  muistutusten tyylisesti.
 
 ## Jatkokehitysideoita
 
