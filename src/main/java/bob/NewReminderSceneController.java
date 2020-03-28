@@ -1,7 +1,6 @@
 package bob;
 
 import bob.domain.BobService;
-import bob.domain.Reminder;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,6 +43,7 @@ public class NewReminderSceneController implements Initializable {
 
     @FXML
     private void handleSetPrimaryScene(ActionEvent event) {
+        okmessage.setText("");
         application.setPrimaryScene();
     }
 
