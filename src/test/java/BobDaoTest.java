@@ -1,24 +1,28 @@
 
 
-import bob.dao.BobDao;
+import bob.dao.SQLBobDao;
 import bob.domain.Reminder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BobDaoTest {
 
-    private BobDao bobDao;
+    private SQLBobDao bobDao;
     private String testDescription;
+    private String today;
 
     @Before
     public void setUp() {
-        this.bobDao = new BobDao();
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        today = formatter.format(date);
+        
+        this.bobDao = new SQLBobDao("jdbc:sqlite:testData.db");
         this.testDescription = "tämä testikuvaus lisätään tietokantaan";
     }
 
@@ -40,13 +44,15 @@ public class BobDaoTest {
     //public void reminderWithFalseDateWontAddToDatabase(){
         //Reminder reminder = new Reminder("2020-02-31", "tämä testikuvaus ei saisi löytyä tietokannasta");
         //assertThat();
-        //miten tietetään että tietokantaan menee vain ns. valideja päivämääriä, ei esim. edellämainittuja? käyttöliittymässä atm mahdollista että näin käy!
+        //miten tiedetään että tietokantaan menee vain ns. valideja päivämääriä, ei esim. edellämainittua
     //}
     
     @Test
     public void reminderIsFoundInDatabase(){
-        List<String> reminders = bobDao.getTodaysReminders();
+        List<String> reminders = bobDao.getTodaysReminders(today);
         assertThat(reminders, hasItem(testDescription));
     }
+    
+    
     
 }

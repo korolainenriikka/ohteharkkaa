@@ -1,6 +1,6 @@
 package bob;
 
-import bob.dao.BobDao;
+import bob.dao.SQLBobDao;
 import bob.domain.BobService;
 
 import javafx.application.Application;
@@ -19,7 +19,7 @@ public class BobUi extends Application {
     
     @Override
     public void init() throws Exception{
-        bobService = new BobService(new BobDao());
+        bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"));
         
         FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
         Parent primaryRoot = primarySceneLoader.load();
