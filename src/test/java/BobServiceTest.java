@@ -1,4 +1,4 @@
-import bob.dao.BobDao;
+import bob.dao.FakeBobDao;
 import bob.domain.BobService;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -7,26 +7,25 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BobServiceTest {
-    
+    //täytyy toteuttaa rajapinnat ennen ko tää toimii
     private BobService bobService;
-    private BobDao bobDao;
+    private FakeBobDao bobDao;
     
     @Before
     public void setUp() {
-        this.bobDao = new BobDao();
-        this.bobService = new BobService(bobDao);
+        this.bobDao = new FakeBobDao();
+        //this.bobService = new BobService(bobDao);
     }
     
     @Test
     public void bobServiceExists(){
-        assertThat(bobService, is(notNullValue()));
+        //assertThat(bobService, is(notNullValue()));
+    }
+    
+    @Test
+    public void addToDatabaseWorks(){
+        //fake-luokka tarvii rajapintarakenteen!
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
-    
-    //atm: ei testitarvetta; ainoot viitteet daoon
+
 }
