@@ -1,25 +1,21 @@
 package bob.domain;
 
 import bob.dao.BobDao;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class BobService {
     
     private BobDao bobDao;
-    private String today;
+    private LocalDate today;
 
-    public BobService(BobDao bobDao) {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        today = formatter.format(date);
-        
+    public BobService(BobDao bobDao, LocalDate today) {
         this.bobDao = bobDao;
+        this.today = today;
     }
     
     //uuden muistutuksen lisääminen
-    public String createReminder(String date, String description) {
+    public String createReminder(LocalDate date, String description) {
         Reminder newReminder = new Reminder(date, description);
         return bobDao.addReminderToDatabase(newReminder);
     }  
@@ -28,8 +24,12 @@ public class BobService {
         return bobDao.getTodaysReminders(today);
     }
 
-    public String getToday() {
+    public LocalDate getToday() {
         return today;
+    }
+
+    public void removeOldReminders(LocalDate today) {
+        bobDao.removeOldReminders(today);
     }
     
 }

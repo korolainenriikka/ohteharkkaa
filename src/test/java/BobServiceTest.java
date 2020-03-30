@@ -1,6 +1,7 @@
 import bob.dao.BobDao;
 import bob.dao.FakeBobDao;
 import bob.domain.BobService;
+import java.time.LocalDate;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
@@ -12,11 +13,13 @@ import org.junit.Test;
 public class BobServiceTest {
     private BobService bobService;
     private BobDao bobDao;
+    private LocalDate today;
     
     @Before
     public void setUp() {
+        this.today = LocalDate.now();
         this.bobDao = new FakeBobDao();
-        this.bobService = new BobService(bobDao);
+        this.bobService = new BobService(bobDao, today);
     }
     
     @Test
@@ -26,7 +29,7 @@ public class BobServiceTest {
     
     @Test
     public void addToDatabaseWorks(){
-        assertThat(bobService.createReminder("11-02-2022", "heimoi"), equalTo("uusi muistutus lisätty:\n11-02-2022\nheimoi"));
+        assertThat(bobService.createReminder(today, "heimoi"), equalTo("uusi muistutus lisätty:\n"+ today +"\nheimoi"));
     }
     
     @Test

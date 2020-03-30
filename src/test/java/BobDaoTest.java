@@ -3,6 +3,7 @@
 import bob.dao.SQLBobDao;
 import bob.domain.Reminder;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import org.junit.Before;
@@ -14,14 +15,11 @@ public class BobDaoTest {
 
     private SQLBobDao bobDao;
     private String testDescription;
-    private String today;
+    private LocalDate today;
 
     @Before
     public void setUp() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        today = formatter.format(date);
-        
+        today = LocalDate.now();
         this.bobDao = new SQLBobDao("jdbc:sqlite:testData.db");
         this.testDescription = "tämä testikuvaus lisätään tietokantaan";
     }
@@ -33,9 +31,6 @@ public class BobDaoTest {
 
     @Test
     public void addReminderToDatabase() {
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String today = formatter.format(date);
         Reminder reminder = new Reminder(today, testDescription);
         assertThat(bobDao.addReminderToDatabase(reminder), equalTo("uusi muistutus lisätty:\n"+ today +"\n" + testDescription));
     }

@@ -1,15 +1,17 @@
 package bob.domain;
 
+import java.time.LocalDate;
+
 public class Reminder{
-    private String date;
+    private LocalDate date;
     private String description;
 
-    public Reminder(String date, String description) {
+    public Reminder(LocalDate date, String description) {
         this.date = date;
         this.description = description;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

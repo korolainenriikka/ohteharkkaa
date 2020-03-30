@@ -2,6 +2,9 @@ package bob;
 
 import bob.dao.SQLBobDao;
 import bob.domain.BobService;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +15,7 @@ import javafx.stage.Stage;
 public class BobUi extends Application {
     
     private BobService bobService;
+    private LocalDate today;
     private Stage stage;
     private Scene primaryScene;
     private PrimarySceneController primarySceneController;
@@ -19,7 +23,12 @@ public class BobUi extends Application {
     
     @Override
     public void init() throws Exception{
-        bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"));
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        today = LocalDate.now();
+        
+        bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"), today);
+        bobService.removeOldReminders(today);
         
         FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
         Parent primaryRoot = primarySceneLoader.load();

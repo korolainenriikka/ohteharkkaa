@@ -9,9 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class NewReminderSceneController implements Initializable {
 
@@ -30,13 +28,7 @@ public class NewReminderSceneController implements Initializable {
     private TextField description;
 
     @FXML
-    private ChoiceBox day;
-
-    @FXML
-    private ChoiceBox month;
-
-    @FXML
-    private ChoiceBox year;
+    private DatePicker date;
     
     @FXML
     private Label okmessage;
@@ -48,26 +40,9 @@ public class NewReminderSceneController implements Initializable {
     }
 
     @FXML
-    private void handleNewReminder(ActionEvent event) {
-        //formatting
-        String dayString = this.day.getValue()+"";
-        if(Integer.valueOf(dayString) < 10){
-            dayString = 0+dayString;
-        }
-        
-        List<String> months = new ArrayList<>(Arrays.asList("tammi", "helmi", "maalis", "huhti", "touko", "kesä", "heinä", "elo", "syys", "loka", "marras", "joulu"));
-        int monthInt = months.indexOf(this.month.getValue())+1;
-        String monthString = monthInt+"";
-        if(monthInt < 10){
-            monthString = "0"+monthInt;
-        }
-        
-        String date = year.getValue() + "-" + monthString + "-" + dayString;
-        String message = bobService.createReminder(date, description.getText());
+    private void handleNewReminder(ActionEvent event) {  
+        String message = bobService.createReminder(date.getValue(), description.getText());
         description.setText("");
-        day.setValue(null);
-        month.setValue(null);
-        year.setValue(null);
         okmessage.setText(message);
     }
 

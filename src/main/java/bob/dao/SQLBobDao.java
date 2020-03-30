@@ -2,10 +2,9 @@ package bob.dao;
 
 import bob.domain.Reminder;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class SQLBobDao implements BobDao{
     
@@ -35,12 +34,12 @@ public class SQLBobDao implements BobDao{
         }
     }
 
-    public List<String> getTodaysReminders(String today) {
+    public List<String> getTodaysReminders(LocalDate today) {
         ArrayList<String> todaysReminders = new ArrayList<>();
 
         try {
             PreparedStatement stmt = connection.prepareStatement("SELECT description FROM Muistutukset WHERE date=(?);");
-            stmt.setString(1, today);
+            stmt.setString(1, today+"");
             ResultSet r = stmt.executeQuery();
             while (r.next()) {
                 todaysReminders.add(r.getString("description"));
@@ -53,10 +52,10 @@ public class SQLBobDao implements BobDao{
     }
 
     @Override
-    public void removeOldReminders(String today) {
+    public void removeOldReminders(LocalDate today) {
         try {
             PreparedStatement stmt = connection.prepareStatement("DELETE FROM Muistutukset WHERE date <= (?)");
-            stmt.setString(1, today);
+            stmt.setString(1, today+"");
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
