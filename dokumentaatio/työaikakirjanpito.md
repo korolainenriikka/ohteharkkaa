@@ -10,3 +10,5 @@ Pvm | Tunnit | tehty
 16.3 | 1 | käyttöliittymän toiminnallisuuksien aloittelua 
 20.3 | 6 | datan siirto kayttöliittymästä tietokantaan 
 24.3 | 5 | ensimmäinen toiminnallisuus 
+28.3 | 2 | yksikkötestit
+29.3 | 4 | ensimmäisen toiminnallisuuden parannuksia
