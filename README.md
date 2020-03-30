@@ -12,15 +12,19 @@ Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn m
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/resources/images/primarySceneBottom.jpg" width="300" height="300"/>
 
-## testaus
+## komentorivitoiminnot
+
+### ohjelman suoritus
+
+ohjelma suoritetaan hakemiston juuressa komennolla 
+
+mvn compile exec:java -Dexec.mainClass=bob.Main
+
+### testaus
 
 Testeistä on toteutettuna yksikkötestit muutamia (ks. alla) lukuun ottamatta kaikille muille paitsi käyttöliittymästä vastaaville luokille.
 
-ohjaajalle kysymyksiä testeistä:
-
-* miten dao-luokan catch-lauseita kannattaa testata?
-
-* onko sovelluslogiikkaluokan dao-luokkaa kutsuvia, kahden rivin metodeja tarpeen testata?
+Testit lisäävät vielä tällä hetkellä tietoa tietokantaan, eikä poistotoiminnallisuuksia niin testien kuin itse ohjelman tarpeeseen ole vielä toteutettu.
 
 ## dokumentaatio
 
