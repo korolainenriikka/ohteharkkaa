@@ -69,9 +69,9 @@ public class SQLBobDao implements BobDao{
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Tapahtumat(date, time, description) VALUES (?,?,?)");
             stmt.setString(1, newEvent.getDate()+"");
             stmt.setString(2, newEvent.getTime()+"");
-            stmt.setString(2, newEvent.getDescription());
+            stmt.setString(3, newEvent.getDescription());
             stmt.executeUpdate();
-            return("uusi tapahtuma lisätty:\n"+ newEvent.getDate() +"\n" + newEvent.getDescription());
+            return("uusi tapahtuma lisätty:\n"+ newEvent.getDate() +"\n" + newEvent.getTime()+"\n" + newEvent.getDescription());
         } catch (SQLException e) {
             return e.getMessage();
         }
@@ -85,7 +85,7 @@ public class SQLBobDao implements BobDao{
             stmt.setString(1, today+"");
             ResultSet r = stmt.executeQuery();
             while (r.next()) {
-                todaysEvents.add("klo" + r.getString("time") + ": " + r.getString("description"));
+                todaysEvents.add("klo " + r.getString("time") + ": " + r.getString("description"));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
