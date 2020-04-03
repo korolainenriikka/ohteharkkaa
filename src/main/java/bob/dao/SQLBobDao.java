@@ -56,7 +56,7 @@ public class SQLBobDao implements BobDao{
     @Override
     public void removeOldReminders(LocalDate today) {
         try {
-            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Muistutukset WHERE date <= (?)");
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Muistutukset WHERE date < (?)");
             stmt.setString(1, today+"");
             stmt.executeUpdate();
         } catch (SQLException e) {
