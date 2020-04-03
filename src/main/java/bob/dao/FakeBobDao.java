@@ -1,5 +1,6 @@
 package bob.dao;
 
+import bob.domain.Event;
 import bob.domain.Reminder;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,6 +30,16 @@ public class FakeBobDao implements BobDao{
 
     @Override
     public void removeOldReminders(LocalDate today) {
+    }
+
+    @Override
+    public String addEventToDatabase(Event newEvent) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Event> getTodaysEvents(LocalDate today) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

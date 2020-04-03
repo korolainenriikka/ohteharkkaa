@@ -2,9 +2,7 @@
 
 import bob.dao.SQLBobDao;
 import bob.domain.Reminder;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,20 +32,11 @@ public class BobDaoTest {
         Reminder reminder = new Reminder(today, testDescription);
         assertThat(bobDao.addReminderToDatabase(reminder), equalTo("uusi muistutus lisätty:\n"+ today +"\n" + testDescription));
     }
-
-    //@Test
-    //public void reminderWithFalseDateWontAddToDatabase(){
-        //Reminder reminder = new Reminder("2020-02-31", "tämä testikuvaus ei saisi löytyä tietokannasta");
-        //assertThat();
-        //miten tiedetään että tietokantaan menee vain ns. valideja päivämääriä, ei esim. edellämainittua
-    //}
     
     @Test
     public void reminderIsFoundInDatabase(){
         List<String> reminders = bobDao.getTodaysReminders(today);
         assertThat(reminders, hasItem(testDescription));
-    }
-    
-    
+    }  
     
 }

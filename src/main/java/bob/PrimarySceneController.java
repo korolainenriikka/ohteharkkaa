@@ -1,13 +1,13 @@
 package bob;
 
 import bob.domain.BobService;
+import bob.domain.Event;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 
 public class PrimarySceneController implements Initializable {
 
@@ -23,14 +23,19 @@ public class PrimarySceneController implements Initializable {
     }
 
     @FXML
-    private MenuItem lisääMuistutus;
-
-    @FXML
     private Label todaysReminders;
+    
+    @FXML
+    private Label todaysEvents;
 
     @FXML
     private void handleSetNewReminderScene() {
         application.setNewReminderScene();
+    }
+
+    @FXML
+    private void handleSetNewEventScene() {
+        application.setNewEventScene();
     }
 
     @Override
@@ -38,13 +43,21 @@ public class PrimarySceneController implements Initializable {
         // skip
     }
 
-    void initialize() {
+    public void initialize() {
         List<String> reminders = bobService.getTodaysReminders();
+        List<Event> events = bobService.getTodaysEvents();
         for (String reminder : reminders) {
             if (reminders.indexOf(reminder) == 0) {
                 todaysReminders.setText(reminder);
             } else {
                 todaysReminders.setText(todaysReminders.getText() + "\n" + reminder);
+            }
+        }
+        for (Event event : events) {
+            if (events.indexOf(event) == 0) {
+                todaysEvents.setText(event.toString());
+            } else {
+                todaysEvents.setText(todaysEvents.getText() + "\n" + event.toString());
             }
         }
     }

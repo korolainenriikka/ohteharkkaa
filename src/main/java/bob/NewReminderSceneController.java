@@ -1,10 +1,8 @@
 package bob;
 
+import bob.BobUi;
 import bob.domain.BobService;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

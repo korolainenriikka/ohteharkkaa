@@ -21,6 +21,7 @@
             <MenuButton mnemonicParsing="false" text="≡">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#handleSetNewReminderScene" text="lisää muistutus" />
+                <MenuItem mnemonicParsing="false" onAction="#handleSetNewEventScene" text="lisää kalenteritapahtuma" />
               </items>
             </MenuButton>
          </children>
@@ -29,8 +30,11 @@
          <center>
             <VBox maxWidth="320.0" minHeight="460.0" prefHeight="400.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="MUISTA!"/>
-                  <Label fx:id="todaysReminders" text="ei muistettavaa tänään :)"/>
+                  <Label text="TÄNÄÄN" />
+                  <Label fx:id="todaysEvents" text="ei tapahtumia" />
+                  <Label />
+                  <Label text="MUISTA!" />
+                  <Label fx:id="todaysReminders" text="ei muistettavaa :)" />
                </children>
             </VBox>
          </center>

@@ -2,9 +2,7 @@ package bob;
 
 import bob.dao.SQLBobDao;
 import bob.domain.BobService;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,11 +18,10 @@ public class BobUi extends Application {
     private Scene primaryScene;
     private PrimarySceneController primarySceneController;
     private Scene newReminderScene;
+    private Scene newEventScene;
     
     @Override
     public void init() throws Exception{
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         today = LocalDate.now();
         
         bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"), today);
@@ -43,6 +40,13 @@ public class BobUi extends Application {
         newReminderSceneController.setBobService(bobService);
         newReminderSceneController.setApplication(this);
         newReminderScene = new Scene(newReminderSceneRoot);
+        
+        FXMLLoader newEventSceneLoader = new FXMLLoader(getClass().getResource("/fxml/newEventScene.fxml"));
+        Parent newEventSceneRoot = newEventSceneLoader.load();
+        NewEventSceneController newEventSceneController = newEventSceneLoader.getController();
+        newEventSceneController.setBobService(bobService);
+        newEventSceneController.setApplication(this);
+        newEventScene = new Scene(newEventSceneRoot);
     }
 
     @Override
@@ -60,6 +64,10 @@ public class BobUi extends Application {
     
     public void setNewReminderScene(){
         stage.setScene(newReminderScene);
+    }
+    
+    public void setNewEventScene(){
+        stage.setScene(newEventScene);
     }
     
     public static void main(String[] args) {

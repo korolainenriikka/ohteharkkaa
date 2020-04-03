@@ -31,5 +31,4 @@ public class ReminderTest {
         assertThat(reminder.getDescription(), equalTo("tämä on testimuistutus"));
     }
 
-
 }
