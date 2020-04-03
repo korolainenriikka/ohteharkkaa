@@ -1,5 +1,6 @@
 package bob.dao;
 
+import bob.domain.Event;
 import bob.domain.Reminder;
 import java.sql.*;
 import java.time.LocalDate;
@@ -60,6 +61,19 @@ public class SQLBobDao implements BobDao{
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    public String addEventToDatabase(Event newEvent) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO Tapahtumat(date, time, description) VALUES (?,?,?)");
+            stmt.setString(1, newEvent.getDate()+"");
+            stmt.setString(2, newEvent.getTime()+"");
+            stmt.setString(3, newEvent.getDescription());
+            stmt.executeUpdate();
+            return("uusi tapahtuma lisätty:\n"+ newEvent.getDate() +"\n" + newEvent.getDescription());
+        } catch (SQLException e) {
+            return e.getMessage();
         }
     }
 
