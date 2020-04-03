@@ -10,15 +10,20 @@ Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lail
 
 ## Toiminnallisuudet
 
-Ohjelman ensimmäinen toiminnallisuus on muistutusten lisääminen. Tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muisututuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä.
+Ohjelman ensimmäinen toiminnallisuus on muistutusten lisääminen. Tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muisututuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä. Vanhentuneet muistutukset poistuvat tietokannasta automaattisesti.
 
 ### Seuraavat muutokset
 
 Seuraavaksi ohjelmaan on tarkoitus lisätä uusi toiminnallisuus, sekä parantaa olemassaolevaa:
 
-Muistutuksiin lisätään toiminnallisuus, joka poistaa automaattiseseti vanhentuneet muistutukset. Koska käytössä on huomattu, että usein muistutus vaatii jonkinlaisia toimenpiteitä, muistutus muutetaan todo-tyyppiseksi, siis sille lisätään boolean-muutuuja. Tekemättä jääneiden muistutusten on tarkoitus siirtyä automaattisesti seuraavalle päivälle. Muistutuksen lisäämisen näkymää parannetaan muuttamalla päivämäärävalikko kalenterityyppiseksi, jolloin esim. viikonpäivän näkee selkeämmin, ja muutetaan tietokantaan lisäyksen vahvistusviesti sellaiseksi, ettei se näy enää kun sivulle palataan myöhemmin. Muistutukset kirjataan tehdyksi jonkinlaisilla checkboxeilla.
+* kalenteritapahtumat, joilla on päivämäärä sekä aika
 
-Uutena toiminnallisuutena lisätään kalenteritapahtumat, jotka ovat muuten hyvin muistutusten tyyppisiä, mutta niillä ei ole boolean-muuttujaa, ja päivän lisäksi voidaan lisätä aika. Nämä näytetään etusivulla  muistutusten tyylisesti.
+* muistutukselle tehty-boolean
+
+* tehty-booleanin tehdyksi kirjaaminen
+
+* tekemättä jääneiden muistutusten siirto seuraavalle päivälle
+
 
 ## Jatkokehitysideoita
 
@@ -33,6 +38,10 @@ Uutena toiminnallisuutena lisätään kalenteritapahtumat, jotka ovat muuten hyv
  * iltanäkymä, jossa bobi kyselisi mitä on tullut tehtyä ja mitkä tehtävät on syytä siirtä myöhempään
 
  * työaikakirjanpito, joka tekee automaattisesti kurssien vaatimat dokumentit
+ 
+ * jonkinlaisten muistilistojen ylläpito, esim. hyviä kirjoja, pakkauslistaa, ym.
+ 
+ * käyttöliittymän yläpalkin vaihtaminen vuorokaudenajan mukaan.
 
 ### Suuruudenhulluja toiminnallisuuksia
 
