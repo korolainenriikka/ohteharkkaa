@@ -4,6 +4,7 @@ import bob.domain.Event;
 import bob.domain.Reminder;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,15 +78,15 @@ public class SQLBobDao implements BobDao{
         }
     }
     
-    public List<String> getTodaysEvents(LocalDate today) {
-        ArrayList<String> todaysEvents = new ArrayList<>();
+    public List<Event> getTodaysEvents(LocalDate today) {
+        ArrayList<Event> todaysEvents = new ArrayList<>();
 
         try {
-            PreparedStatement stmt = connection.prepareStatement("SELECT time, description FROM Tapahtumat WHERE date=(?);");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Tapahtumat WHERE date=(?);");
             stmt.setString(1, today+"");
             ResultSet r = stmt.executeQuery();
             while (r.next()) {
-                todaysEvents.add("klo " + r.getString("time") + ": " + r.getString("description"));
+                todaysEvents.add(new Event(LocalDate.parse(r.getString("date")), LocalTime.parse(r.getString("time")), r.getString("description")));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
