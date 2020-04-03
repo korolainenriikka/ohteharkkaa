@@ -16,6 +16,7 @@ public class SQLBobDao implements BobDao{
             connection = DriverManager.getConnection(database);
             Statement s = connection.createStatement();
             s.execute("CREATE TABLE IF NOT EXISTS Muistutukset(id INTEGER PRIMARY KEY, date DATE, description TEXT);");
+            s.execute("CREATE TABLE IF NOT EXISTS Tapahtumat(id INTEGER PRIMARY KEY, date DATE, time TIME, description TEXT);");
         }catch (SQLException e){
             System.err.println(e.getMessage());
         }
