@@ -24,8 +24,6 @@ mvn compile exec:java -Dexec.mainClass=bob.Main
 
 Testeistä on toteutettuna yksikkötestit muutamia (ks. alla) lukuun ottamatta kaikille muille paitsi käyttöliittymästä vastaaville luokille.
 
-Testit lisäävät vielä tällä hetkellä tietoa tietokantaan, eikä poistotoiminnallisuuksia niin testien kuin itse ohjelman tarpeeseen ole vielä toteutettu.
-
 ## dokumentaatio
 
 [määrittelydokumentti](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/vaatimusmaarittely.md)
