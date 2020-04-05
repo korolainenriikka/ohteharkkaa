@@ -25,7 +25,7 @@ public class BobUi extends Application {
         today = LocalDate.now();
         
         bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"), today);
-        bobService.removeOldReminders(today);
+        bobService.removeOld(today);
         
         FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
         Parent primaryRoot = primarySceneLoader.load();

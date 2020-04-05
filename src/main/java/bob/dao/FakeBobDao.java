@@ -8,9 +8,11 @@ import java.util.List;
 
 public class FakeBobDao implements BobDao{
     private ArrayList<Reminder> reminders;
+    private ArrayList<Event> events;
 
     public FakeBobDao() {
         this.reminders = new ArrayList<>();
+        this.events = new ArrayList<>();
     }
     
     public String addReminderToDatabase(Reminder newReminder) {
@@ -18,28 +20,24 @@ public class FakeBobDao implements BobDao{
         return("uusi muistutus lisätty:\n"+ newReminder.getDate() +"\n" + newReminder.getDescription());
     }
     
-     public List<String> getTodaysReminders(LocalDate today) {
-        ArrayList<String> todaysReminders = new ArrayList<>();
-        
-        for(Reminder r : reminders){
-            if(r.getDate().equals(today)) todaysReminders.add(r.getDescription());
-        }
-        
-        return todaysReminders;
+     public List<Reminder> getTodaysReminders(LocalDate today) {
+        return reminders;
     }
 
     @Override
-    public void removeOldReminders(LocalDate today) {
+    public boolean removeOld(LocalDate today) {
+        return true;
     }
 
     @Override
     public String addEventToDatabase(Event newEvent) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        events.add(newEvent);
+        return("uusi tapahtuma lisätty:\n"+ newEvent.getDate() +"\n" + newEvent.getTime()+"\n" + newEvent.getDescription());
     }
 
     @Override
     public List<Event> getTodaysEvents(LocalDate today) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return events;      
     }
     
 }

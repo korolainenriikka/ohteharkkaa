@@ -2,6 +2,7 @@ package bob;
 
 import bob.domain.BobService;
 import bob.domain.Event;
+import bob.domain.Reminder;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -44,13 +45,13 @@ public class PrimarySceneController implements Initializable {
     }
 
     public void initialize() {
-        List<String> reminders = bobService.getTodaysReminders();
+        List<Reminder> reminders = bobService.getTodaysReminders();
         List<Event> events = bobService.getTodaysEvents();
-        for (String reminder : reminders) {
+        for (Reminder reminder : reminders) {
             if (reminders.indexOf(reminder) == 0) {
-                todaysReminders.setText(reminder);
+                todaysReminders.setText(reminder.getDescription());
             } else {
-                todaysReminders.setText(todaysReminders.getText() + "\n" + reminder);
+                todaysReminders.setText(todaysReminders.getText() + "\n" + reminder.getDescription());
             }
         }
         for (Event event : events) {

@@ -21,7 +21,7 @@ public class BobService {
         return bobDao.addReminderToDatabase(newReminder);
     }  
 
-    public List<String> getTodaysReminders() {
+    public List<Reminder> getTodaysReminders() {
         return bobDao.getTodaysReminders(today);
     }
     
@@ -40,8 +40,8 @@ public class BobService {
         return today;
     }
 
-    public void removeOldReminders(LocalDate today) {
-        bobDao.removeOldReminders(today);
+    public boolean removeOld(LocalDate today) {
+        return bobDao.removeOld(today);
     }
 
    

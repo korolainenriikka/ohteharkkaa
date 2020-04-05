@@ -12,8 +12,7 @@ public class SQLBobDao implements BobDao{
     
     private Connection connection;
     
-    public SQLBobDao(String database) {
-        
+    public SQLBobDao(String database) {      
         try{
             connection = DriverManager.getConnection(database);
             Statement s = connection.createStatement();
@@ -37,15 +36,14 @@ public class SQLBobDao implements BobDao{
         }
     }
 
-    public List<String> getTodaysReminders(LocalDate today) {
-        ArrayList<String> todaysReminders = new ArrayList<>();
-
+    public List<Reminder> getTodaysReminders(LocalDate today) {
+        ArrayList<Reminder> todaysReminders = new ArrayList<>();
         try {
-            PreparedStatement stmt = connection.prepareStatement("SELECT description FROM Muistutukset WHERE date=(?);");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Muistutukset WHERE date=(?);");
             stmt.setString(1, today+"");
             ResultSet r = stmt.executeQuery();
             while (r.next()) {
-                todaysReminders.add(r.getString("description"));
+                todaysReminders.add(new Reminder(LocalDate.parse(r.getString("date")), r.getString("description")));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -55,13 +53,18 @@ public class SQLBobDao implements BobDao{
     }
 
     @Override
-    public void removeOldReminders(LocalDate today) {
+    public boolean removeOld(LocalDate today) {
         try {
-            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Muistutukset WHERE date < (?)");
-            stmt.setString(1, today+"");
-            stmt.executeUpdate();
+            PreparedStatement stmtReminder = connection.prepareStatement("DELETE FROM Muistutukset WHERE date < (?)");
+            PreparedStatement stmtEvent = connection.prepareStatement("DELETE FROM Tapahtumat WHERE date < (?)");
+            stmtReminder.setString(1, today+"");
+            stmtEvent.setString(1, today+"");
+            stmtReminder.executeUpdate();
+            stmtEvent.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
+            return false;
         }
     }
 
@@ -94,5 +97,11 @@ public class SQLBobDao implements BobDao{
 
         return todaysEvents;
     }
+
+    public Connection getConnection() {
+        return connection;
+    }
+    
+    
 
 }

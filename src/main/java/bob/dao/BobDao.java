@@ -8,9 +8,8 @@ import java.util.List;
 
 public interface BobDao {
     String addReminderToDatabase(Reminder newReminder);
+    String addEventToDatabase(Event newEvent);
     List<Event> getTodaysEvents(LocalDate today);
-    List<String> getTodaysReminders(LocalDate today);
-    void removeOldReminders(LocalDate today);
-
-    public String addEventToDatabase(Event newEvent);
+    List<Reminder> getTodaysReminders(LocalDate today);
+    boolean removeOld(LocalDate today);
 }
