@@ -28,6 +28,8 @@ Testeistä on toteutettuna yksikkötestit kaikille muille paitsi käyttöliittym
 
 [määrittelydokumentti](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
+[arkkitehtuurikuvaus](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 [työaikakirjanpito](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/työaikakirjanpito.md)
 
 
