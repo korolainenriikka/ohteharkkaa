@@ -1,10 +1,8 @@
 package bob.dao;
 
-import bob.domain.Event;
-import bob.domain.Reminder;
+import bob.domain.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class FakeBobDao implements BobDao {
 

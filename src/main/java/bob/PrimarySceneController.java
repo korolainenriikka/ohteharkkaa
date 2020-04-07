@@ -2,10 +2,8 @@ package bob;
 
 import bob.domain.*;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import java.util.*;
+import javafx.fxml.*;
 import javafx.scene.control.Label;
 
 public class PrimarySceneController implements Initializable {

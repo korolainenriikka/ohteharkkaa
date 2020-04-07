@@ -1,7 +1,6 @@
 package bob.dao;
 
-import bob.domain.Event;
-import bob.domain.Reminder;
+import bob.domain.*;
 import java.time.LocalDate;
 import java.util.List;
 

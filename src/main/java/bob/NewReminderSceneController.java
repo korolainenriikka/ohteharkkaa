@@ -5,8 +5,7 @@ import bob.domain.BobService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.*;
 import javafx.scene.control.*;
 
 public class NewReminderSceneController implements Initializable {

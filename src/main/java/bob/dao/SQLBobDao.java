@@ -1,12 +1,9 @@
 package bob.dao;
 
-import bob.domain.Event;
-import bob.domain.Reminder;
+import bob.domain.*;
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.*;
+import java.util.*;
 
 public class SQLBobDao implements BobDao {
 

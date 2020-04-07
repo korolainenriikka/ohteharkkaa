@@ -1,10 +1,8 @@
 package bob.domain;
 
 import bob.dao.BobDao;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Collections;
-import java.util.List;
+import java.time.*;
+import java.util.*;
 
 public class BobService {
 

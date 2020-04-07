@@ -1,7 +1,6 @@
 package bob.domain;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 
 public class Event implements Comparable<Event> {
 
