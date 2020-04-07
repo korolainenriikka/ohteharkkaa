@@ -43,7 +43,7 @@ public class BobServiceTest {
     @Test
     public void findsTodaysReminders() {
         bobService.createReminder(today, "lisätään testimuistutus!");
-        assertThat(bobService.getTodaysReminders().get(0).getDescription(), equalTo("lisätään testimuistutus!"));
+        assertThat(bobService.getTodaysReminders(todayf).get(0).getDescription(), equalTo("lisätään testimuistutus!"));
     }
 
     @Test
@@ -54,16 +54,11 @@ public class BobServiceTest {
     @Test
     public void findsTodaysEvents() {
         bobService.createEvent(today, now, "lisätään testitapahtuma!");
-        assertThat(bobService.getTodaysEvents().get(0).getDescription(), equalTo("lisätään testitapahtuma!"));
+        assertThat(bobService.getTodaysEvents(today).get(0).getDescription(), equalTo("lisätään testitapahtuma!"));
     }
 
     @Test
     public void removesOld() {
         assertTrue(bobService.removeOld(today));
-    }
-
-    @Test
-    public void todaysRight() {
-        assertThat(bobService.getToday(), equalTo(today));
     }
 }

@@ -2,6 +2,7 @@ package bob;
 
 import bob.domain.*;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.*;
 import javafx.fxml.*;
 import javafx.scene.control.Label;
@@ -17,10 +18,7 @@ public class PrimarySceneController implements SceneController {
     }
 
     @FXML
-    private Label todaysReminders;
-
-    @FXML
-    private Label todaysEvents;
+    private Label todaysCalendarItems;
 
     @FXML
     private void handleSetNewReminderScene() {
@@ -34,26 +32,37 @@ public class PrimarySceneController implements SceneController {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // skip
     }
 
-    public void getTodays() {
-        List<Reminder> reminders = bobService.getTodaysReminders();
-        List<Event> events = bobService.getTodaysEvents();
-        for (Reminder reminder : reminders) {
+    public void addTodaysCalendarToScene(LocalDate today) {
+        // get all items, form: events, *, reminders
+        List<String> todaysCalendarItemsList = bobService.getTodaysCalendarItems(today);
+        for (String moi : todaysCalendarItemsList) {
+            if (moi.equals("*") && !todaysCalendarItemsList.isEmpty()) {
+                todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n\n" + "MUISTA!");
+                continue;
+            }
+            if (todaysCalendarItemsList.indexOf(moi) == 0) {
+                todaysCalendarItems.setText("TÄNÄÄN");
+            } else {
+                todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n" + moi);
+            }
+        }
+
+        /*for (Reminder reminder : reminders) {
             if (reminders.indexOf(reminder) == 0) {
                 todaysReminders.setText(reminder.getDescription());
             } else {
-                todaysReminders.setText(todaysReminders.getText() + "\n" + reminder.getDescription());
+                todaysReminders.setText(todaysReminders.getText() + "\n" + reminder);
             }
         }
         for (Event event : events) {
             if (events.indexOf(event) == 0) {
                 todaysEvents.setText(event.toString());
             } else {
-                todaysEvents.setText(todaysEvents.getText() + "\n" + event.toString());
+                todaysEvents.setText(todaysEvents.getText() + "\n" + event);
             }
-        }
+        }*/
     }
 
 }

@@ -33,20 +33,28 @@ public class SQLBobDao implements BobDao {
         }
     }
 
-    public List<Reminder> getTodaysReminders(LocalDate today) {
-        ArrayList<Reminder> todaysReminders = new ArrayList<>();
+    public List<CalendarItem> getTodaysCalendarItems(LocalDate today) {
+        ArrayList<CalendarItem> todaysItems = new ArrayList<>();
         try {
+            
+            PreparedStatement stmt2 = connection.prepareStatement("SELECT * FROM Tapahtumat WHERE date=(?);");
+            stmt2.setString(1, today + "");
+            ResultSet r2 = stmt2.executeQuery();
+            while (r2.next()) {
+                todaysItems.add(new Event(LocalDate.parse(r2.getString("date")), LocalTime.parse(r2.getString("time")), r2.getString("description")));
+            } 
+            todaysItems.add(new Reminder(LocalDate.now(), "*"));
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Muistutukset WHERE date=(?);");
             stmt.setString(1, today + "");
             ResultSet r = stmt.executeQuery();
             while (r.next()) {
-                todaysReminders.add(new Reminder(LocalDate.parse(r.getString("date")), r.getString("description")));
-            }
+                todaysItems.add(new Reminder(LocalDate.parse(r.getString("date")), r.getString("description")));
+            }        
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
 
-        return todaysReminders;
+        return todaysItems;
     }
 
     @Override
@@ -76,27 +84,6 @@ public class SQLBobDao implements BobDao {
         } catch (SQLException e) {
             return e.getMessage();
         }
-    }
-
-    public List<Event> getTodaysEvents(LocalDate today) {
-        ArrayList<Event> todaysEvents = new ArrayList<>();
-
-        try {
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Tapahtumat WHERE date=(?);");
-            stmt.setString(1, today + "");
-            ResultSet r = stmt.executeQuery();
-            while (r.next()) {
-                todaysEvents.add(new Event(LocalDate.parse(r.getString("date")), LocalTime.parse(r.getString("time")), r.getString("description")));
-            }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-
-        return todaysEvents;
-    }
-
-    public Connection getConnection() {
-        return connection;
     }
 
 }

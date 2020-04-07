@@ -3,11 +3,9 @@ package bob;
 import bob.dao.SQLBobDao;
 import bob.domain.BobService;
 import java.time.LocalDate;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.stage.Stage;
 
 public class BobUi extends Application {
@@ -54,7 +52,7 @@ public class BobUi extends Application {
     }
 
     public void setPrimaryScene() {
-        primarySceneController.getTodays();
+        primarySceneController.addTodaysCalendarToScene(today);
         stage.setScene(primaryScene);
     }
 

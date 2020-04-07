@@ -35,8 +35,8 @@ public class FakeBobDao implements BobDao {
     }
 
     @Override
-    public List<Event> getTodaysEvents(LocalDate today) {
-        return events;
+    public List<CalendarItem> getTodaysCalendarItems(LocalDate today) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

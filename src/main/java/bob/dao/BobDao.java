@@ -10,9 +10,7 @@ public interface BobDao {
 
     String addEventToDatabase(Event newEvent);
 
-    List<Event> getTodaysEvents(LocalDate today);
-
-    List<Reminder> getTodaysReminders(LocalDate today);
+    List<CalendarItem> getTodaysCalendarItems(LocalDate today);
 
     boolean removeOld(LocalDate today);
 }
