@@ -12,3 +12,6 @@ Pvm | Tunnit | tehty
 24.3 | 5 | ensimmäinen toiminnallisuus 
 28.3 | 2 | yksikkötestit
 29.3 | 4 | ensimmäisen toiminnallisuuden parannuksia
+3.4 | 4 | kalenteritapahtuman lisääminen
+
+yht: 36 h

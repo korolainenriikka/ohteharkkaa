@@ -10,13 +10,17 @@ Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lail
 
 ## Toiminnallisuudet
 
-Ohjelman ensimmäinen toiminnallisuus on muistutusten lisääminen. Tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muisututuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä. Vanhentuneet muistutukset poistuvat tietokannasta automaattisesti.
+### muistutukset
+
+Muistutusten lisäämisen tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muistutuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä. Vanhentuneet muistutukset poistuvat tietokannasta automaattisesti.
+
+### kalenteritapahtumat
+
+Ohjelmaan voidaan lisätä kalenteritapahtumia, joilla on päivämäärä, sekä aika. Nämä tapahtumat näytetään aloitussivulla aikajärjestyksessä kyseisenä päivänä.
 
 ### Seuraavat muutokset
 
-Seuraavaksi ohjelmaan on tarkoitus lisätä uusi toiminnallisuus, sekä parantaa olemassaolevaa:
-
-* kalenteritapahtumat, joilla on päivämäärä sekä aika
+Seuraavaksi ohjelmaan on tarkoitus lisätä toiminnallisuus muistutusten tehdyksi merkkaamiseen:
 
 * muistutukselle tehty-boolean
 
