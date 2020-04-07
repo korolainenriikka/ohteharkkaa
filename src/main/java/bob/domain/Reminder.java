@@ -2,7 +2,7 @@ package bob.domain;
 
 import java.time.LocalDate;
 
-public class Reminder {
+public class Reminder implements CalendarItem {
 
     private LocalDate date;
     private String description;
@@ -18,6 +18,11 @@ public class Reminder {
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public String toString() {
+        return this.description;
     }
 
 }

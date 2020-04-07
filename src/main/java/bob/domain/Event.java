@@ -2,7 +2,7 @@ package bob.domain;
 
 import java.time.*;
 
-public class Event implements Comparable<Event> {
+public class Event implements Comparable<Event>, CalendarItem {
 
     private LocalDate date;
     private LocalTime time;
