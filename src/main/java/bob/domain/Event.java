@@ -3,7 +3,8 @@ package bob.domain;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Event implements Comparable<Event>{
+public class Event implements Comparable<Event> {
+
     private LocalDate date;
     private LocalTime time;
     private String description;
@@ -30,11 +31,10 @@ public class Event implements Comparable<Event>{
     public int compareTo(Event otherEvent) {
         return this.time.compareTo(otherEvent.time);
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "klo " + this.time + ": " + this.description;
     }
-    
-    
+
 }

@@ -3,6 +3,5 @@ package bob.domain;
 /**
  *
  * Sovelluslogiikka
- * 
+ *
  */
-

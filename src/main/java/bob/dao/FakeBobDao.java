@@ -6,7 +6,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FakeBobDao implements BobDao{
+public class FakeBobDao implements BobDao {
+
     private ArrayList<Reminder> reminders;
     private ArrayList<Event> events;
 
@@ -14,13 +15,13 @@ public class FakeBobDao implements BobDao{
         this.reminders = new ArrayList<>();
         this.events = new ArrayList<>();
     }
-    
+
     public String addReminderToDatabase(Reminder newReminder) {
         reminders.add(newReminder);
-        return("uusi muistutus lisätty:\n"+ newReminder.getDate() +"\n" + newReminder.getDescription());
+        return ("uusi muistutus lisätty:\n" + newReminder.getDate() + "\n" + newReminder.getDescription());
     }
-    
-     public List<Reminder> getTodaysReminders(LocalDate today) {
+
+    public List<Reminder> getTodaysReminders(LocalDate today) {
         return reminders;
     }
 
@@ -32,12 +33,12 @@ public class FakeBobDao implements BobDao{
     @Override
     public String addEventToDatabase(Event newEvent) {
         events.add(newEvent);
-        return("uusi tapahtuma lisätty:\n"+ newEvent.getDate() +"\n" + newEvent.getTime()+"\n" + newEvent.getDescription());
+        return ("uusi tapahtuma lisätty:\n" + newEvent.getDate() + "\n" + newEvent.getTime() + "\n" + newEvent.getDescription());
     }
 
     @Override
     public List<Event> getTodaysEvents(LocalDate today) {
-        return events;      
+        return events;
     }
-    
+
 }

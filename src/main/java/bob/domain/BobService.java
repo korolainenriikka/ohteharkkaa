@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class BobService {
-    
+
     private BobDao bobDao;
     private LocalDate today;
 
@@ -15,21 +15,21 @@ public class BobService {
         this.bobDao = bobDao;
         this.today = today;
     }
-    
+
     public String createReminder(LocalDate date, String description) {
         Reminder newReminder = new Reminder(date, description);
         return bobDao.addReminderToDatabase(newReminder);
-    }  
+    }
 
     public List<Reminder> getTodaysReminders() {
         return bobDao.getTodaysReminders(today);
     }
-    
+
     public String createEvent(LocalDate date, LocalTime time, String description) {
-        Event newEvent = new Event(date, time,  description);
+        Event newEvent = new Event(date, time, description);
         return bobDao.addEventToDatabase(newEvent);
-    }  
-    
+    }
+
     public List<Event> getTodaysEvents() {
         List<Event> todaysEvents = bobDao.getTodaysEvents(today);
         Collections.sort(todaysEvents);
@@ -44,5 +44,4 @@ public class BobService {
         return bobDao.removeOld(today);
     }
 
-   
 }

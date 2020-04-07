@@ -1,5 +1,4 @@
 
-
 import bob.dao.SQLBobDao;
 import bob.domain.Event;
 import bob.domain.Reminder;
@@ -29,9 +28,9 @@ public class BobDaoTest {
         this.bobDao = new SQLBobDao("jdbc:sqlite:testData.db");
         this.testReminder = new Reminder(today, "tämä on testimuistutus!");
     }
-    
+
     @After
-    public void tearDown() throws SQLException{
+    public void tearDown() throws SQLException {
         Connection c = bobDao.getConnection();
         Statement s = c.createStatement();
         s.execute("DROP TABLE IF EXISTS Muistutukset");
@@ -46,34 +45,34 @@ public class BobDaoTest {
     @Test
     public void addReminderToDatabase() {
         Reminder reminder = new Reminder(today, "tämä on testimuistutus!");
-        assertThat(bobDao.addReminderToDatabase(reminder), equalTo("uusi muistutus lisätty:\n"+ today +"\n" + "tämä on testimuistutus!"));
+        assertThat(bobDao.addReminderToDatabase(reminder), equalTo("uusi muistutus lisätty:\n" + today + "\n" + "tämä on testimuistutus!"));
     }
-    
-   @Test
-    public void reminderIsFoundInDatabase(){
+
+    @Test
+    public void reminderIsFoundInDatabase() {
         bobDao.addReminderToDatabase(testReminder);
         List<Reminder> reminders = bobDao.getTodaysReminders(today);
         assertThat(reminders.get(0).getDescription(), equalTo("tämä on testimuistutus!"));
-    }  
-    
+    }
+
     @Test
-    public void removeOldRemoves(){
+    public void removeOldRemoves() {
         bobDao.addReminderToDatabase(new Reminder(today.minusDays(1), "tämä on testimuistutus!"));
         bobDao.removeOld(today);
         assertThat(bobDao.getTodaysEvents(today.minusDays(1)).isEmpty(), is(true));
     }
-    
+
     @Test
     public void addEventToDatabase() {
         Event event = new Event(today, now, "tämä on testitapahtuma!");
-        assertThat(bobDao.addEventToDatabase(event), equalTo("uusi tapahtuma lisätty:\n"+ today +"\n" + now + "\n" + "tämä on testitapahtuma!"));
+        assertThat(bobDao.addEventToDatabase(event), equalTo("uusi tapahtuma lisätty:\n" + today + "\n" + now + "\n" + "tämä on testitapahtuma!"));
     }
-    
-   @Test
-    public void eventIsFoundInDatabase(){
+
+    @Test
+    public void eventIsFoundInDatabase() {
         bobDao.addEventToDatabase(new Event(today, now, "tämä on testitapahtuma!"));
         List<Event> events = bobDao.getTodaysEvents(today);
         assertThat(events.get(0).getDescription(), equalTo("tämä on testitapahtuma!"));
-    }  
-    
+    }
+
 }

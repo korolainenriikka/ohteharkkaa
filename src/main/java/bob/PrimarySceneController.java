@@ -1,8 +1,6 @@
 package bob;
 
-import bob.domain.BobService;
-import bob.domain.Event;
-import bob.domain.Reminder;
+import bob.domain.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,7 +23,7 @@ public class PrimarySceneController implements Initializable {
 
     @FXML
     private Label todaysReminders;
-    
+
     @FXML
     private Label todaysEvents;
 

@@ -28,14 +28,13 @@ public class NewEventSceneController implements Initializable {
 
     @FXML
     private DatePicker date;
-    
+
     @FXML
     private ChoiceBox hour;
-    
+
     @FXML
     private ChoiceBox minute;
-    
-    
+
     @FXML
     private Label okmessage;
 
@@ -46,8 +45,8 @@ public class NewEventSceneController implements Initializable {
     }
 
     @FXML
-    private void handleNewEvent(ActionEvent event) { 
-        LocalTime time = LocalTime.parse(hour.getValue()+":"+minute.getValue());
+    private void handleNewEvent(ActionEvent event) {
+        LocalTime time = LocalTime.parse(hour.getValue() + ":" + minute.getValue());
         String message = bobService.createEvent(date.getValue(), time, description.getText());
         description.setText("");
         okmessage.setText(message);

@@ -27,7 +27,7 @@ public class NewReminderSceneController implements Initializable {
 
     @FXML
     private DatePicker date;
-    
+
     @FXML
     private Label okmessage;
 
@@ -38,7 +38,7 @@ public class NewReminderSceneController implements Initializable {
     }
 
     @FXML
-    private void handleNewReminder(ActionEvent event) {  
+    private void handleNewReminder(ActionEvent event) {
         String message = bobService.createReminder(date.getValue(), description.getText());
         description.setText("");
         okmessage.setText(message);
