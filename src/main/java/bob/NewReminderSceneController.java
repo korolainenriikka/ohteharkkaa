@@ -8,16 +8,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 
-public class NewReminderSceneController implements Initializable {
+public class NewReminderSceneController implements SceneController {
 
     private BobUi application;
     private BobService bobService;
 
-    public void setApplication(BobUi application) {
+    public void setAttributes(BobUi application, BobService bobService) {
         this.application = application;
-    }
-
-    public void setBobService(BobService bobService) {
         this.bobService = bobService;
     }
 

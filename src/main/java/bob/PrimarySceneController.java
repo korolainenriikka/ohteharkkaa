@@ -6,16 +6,13 @@ import java.util.*;
 import javafx.fxml.*;
 import javafx.scene.control.Label;
 
-public class PrimarySceneController implements Initializable {
+public class PrimarySceneController implements SceneController {
 
     private BobUi application;
     private BobService bobService;
 
-    public void setApplication(BobUi application) {
+    public void setAttributes(BobUi application, BobService bobService) {
         this.application = application;
-    }
-
-    public void setBobService(BobService bobService) {
         this.bobService = bobService;
     }
 
@@ -40,7 +37,7 @@ public class PrimarySceneController implements Initializable {
         // skip
     }
 
-    public void initialize() {
+    public void getTodays() {
         List<Reminder> reminders = bobService.getTodaysReminders();
         List<Event> events = bobService.getTodaysEvents();
         for (Reminder reminder : reminders) {

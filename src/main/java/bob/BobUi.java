@@ -30,23 +30,19 @@ public class BobUi extends Application {
         FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
         Parent primaryRoot = primarySceneLoader.load();
         primarySceneController = primarySceneLoader.getController();
-        primarySceneController.setBobService(bobService);
-        primarySceneController.setApplication(this);
+        primarySceneController.setAttributes(this, bobService);
         primaryScene = new Scene(primaryRoot);
 
-        FXMLLoader newReminderSceneLoader = new FXMLLoader(getClass().getResource("/fxml/newReminderScene.fxml"));
-        Parent newReminderSceneRoot = newReminderSceneLoader.load();
-        NewReminderSceneController newReminderSceneController = newReminderSceneLoader.getController();
-        newReminderSceneController.setBobService(bobService);
-        newReminderSceneController.setApplication(this);
-        newReminderScene = new Scene(newReminderSceneRoot);
+        newReminderScene = initScene("/fxml/newReminderScene.fxml", new NewReminderSceneController());
+        newEventScene = initScene("/fxml/newEventScene.fxml", new NewReminderSceneController());
+    }
 
-        FXMLLoader newEventSceneLoader = new FXMLLoader(getClass().getResource("/fxml/newEventScene.fxml"));
-        Parent newEventSceneRoot = newEventSceneLoader.load();
-        NewEventSceneController newEventSceneController = newEventSceneLoader.getController();
-        newEventSceneController.setBobService(bobService);
-        newEventSceneController.setApplication(this);
-        newEventScene = new Scene(newEventSceneRoot);
+    private Scene initScene(String fxml, SceneController sceneController) throws Exception {
+        FXMLLoader sceneLoader = new FXMLLoader(getClass().getResource(fxml));
+        Parent root = sceneLoader.load();
+        sceneController = sceneLoader.getController();
+        sceneController.setAttributes(this, bobService);
+        return new Scene(root);
     }
 
     @Override
@@ -58,7 +54,7 @@ public class BobUi extends Application {
     }
 
     public void setPrimaryScene() {
-        primarySceneController.initialize();
+        primarySceneController.getTodays();
         stage.setScene(primaryScene);
     }
 
@@ -73,4 +69,5 @@ public class BobUi extends Application {
     public static void main(String[] args) {
         launch(BobUi.class);
     }
+
 }

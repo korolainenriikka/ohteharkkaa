@@ -5,8 +5,8 @@
     "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
-    <suppress files="bob.BobUijava" checks="[a-zA-Z0-9]*"/>
+    <suppress files="bob.BobUi.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="bob.PrimarySceneController.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="bob.newReminderSceneController.java" checks="[a-zA-Z0-9]*"/>
-    <suppress files="bob.newEventSceneController.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="bob.NewReminderSceneController.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="bob.NewEventSceneController.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>
