@@ -22,7 +22,7 @@ mvn compile exec:java -Dexec.mainClass=bob.Main
 
 ### testaus
 
-Testeistä on toteutettuna yksikkötestit muutamia (ks. alla) lukuun ottamatta kaikille muille paitsi käyttöliittymästä vastaaville luokille.
+Testeistä on toteutettuna yksikkötestit kaikille muille paitsi käyttöliittymästä vastaaville luokille.
 
 ## dokumentaatio
 
