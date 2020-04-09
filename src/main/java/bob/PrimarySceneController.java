@@ -43,10 +43,10 @@ public class PrimarySceneController implements SceneController {
             todaysCalendarItems.setText("“Sometimes the most important thing to do \nis to do nothing.” ");
         } else {
             makeTextDefaultFont(todaysCalendarItems);
+            todaysCalendarItems.setText("\n");
             addTodaysItemsToScene(todaysEvents, "TÄNÄÄN");
             addTodaysItemsToScene(todaysReminders, "MUISTA!");
         }
-
     }
 
     private void makeTextItalic(Label label) {
@@ -71,13 +71,11 @@ public class PrimarySceneController implements SceneController {
 
     private void addTodaysItemsToScene(List<String> todaysItems, String header) {
         if (!todaysItems.isEmpty()) {
-            todaysCalendarItems.setText(header + "\n");
+            todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n" + header);
             for (String event : todaysItems) {
-                if (todaysItems.indexOf(event) == 0) {
-                    todaysCalendarItems.setText(event);
-                }
                 todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n" + event);
             }
+            todaysCalendarItems.setText(todaysCalendarItems.getText()+"\n");
         }
     }
 }
