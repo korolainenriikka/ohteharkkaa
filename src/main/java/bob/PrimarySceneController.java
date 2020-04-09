@@ -40,11 +40,13 @@ public class PrimarySceneController implements SceneController {
         List<String> todaysReminders = bobService.getTodaysItemsAsString(Reminder.class);
         if (todaysEvents.isEmpty() && todaysReminders.isEmpty()) {
             makeTextItalic(todaysCalendarItems);
-            todaysCalendarItems.setText("“Sometimes the most important thing to do is to do nothing.” ");
+            todaysCalendarItems.setText("“Sometimes the most important thing to do \nis to do nothing.” ");
+        } else {
+            makeTextDefaultFont(todaysCalendarItems);
+            addTodaysItemsToScene(todaysEvents, "TÄNÄÄN");
+            addTodaysItemsToScene(todaysReminders, "MUISTA!");
         }
-        makeTextDefaultFont(todaysCalendarItems);
-        addTodaysItemsToScene(todaysEvents, "TÄNÄÄN");
-        addTodaysItemsToScene(todaysReminders, "MUISTA!");
+
     }
 
     private void makeTextItalic(Label label) {
@@ -56,7 +58,7 @@ public class PrimarySceneController implements SceneController {
                 );
         label.setFont(ITALIC_FONT);
     }
-    
+
     private void makeTextDefaultFont(Label label) {
         Font DEFAULT_FONT
                 = Font.font(
@@ -69,7 +71,7 @@ public class PrimarySceneController implements SceneController {
 
     private void addTodaysItemsToScene(List<String> todaysItems, String header) {
         if (!todaysItems.isEmpty()) {
-            todaysCalendarItems.setText(header+"\n");
+            todaysCalendarItems.setText(header + "\n");
             for (String event : todaysItems) {
                 if (todaysItems.indexOf(event) == 0) {
                     todaysCalendarItems.setText(event);
