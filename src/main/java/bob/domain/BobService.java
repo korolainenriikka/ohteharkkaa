@@ -7,42 +7,46 @@ import java.util.*;
 public class BobService {
 
     private BobDao bobDao;
+    private LocalDate today;
 
     public BobService(BobDao bobDao, LocalDate today) {
         this.bobDao = bobDao;
+        this.today = today;
     }
 
-    public String createReminder(LocalDate date, String description) {
-        Reminder newReminder = new Reminder(date, description);
-        return bobDao.addReminderToDatabase(newReminder);
-    }
-
-    /*public List<Reminder> getTodaysReminders(LocalDate today) {
-        return bobDao.getTodaysReminders(today);
-    }
-*/
-    public String createEvent(LocalDate date, LocalTime time, String description) {
+    public String createNewEvent(LocalDate date, LocalTime time, String description) {
         Event newEvent = new Event(date, time, description);
-        return bobDao.addEventToDatabase(newEvent);
+        if (bobDao.addEventToDatabase(newEvent)) {
+            return "uusi tapahtuma lisätty:\n" + newEvent.getDate() + "\n" + newEvent.getTime() + "\n" + newEvent.getDescription();
+        } else {
+            return "virhe!";
+        }
     }
 
-    /*public List<Event> getTodaysEvents(LocalDate today) {
-        List<Event> todaysEvents = bobDao.getTodaysEvents(today);
-        Collections.sort(todaysEvents);
-        return todaysEvents;
-    }*/
+    public String createNewReminder(LocalDate date, String description) {
+        Reminder newReminder = new Reminder(date, description);
+        if (bobDao.addReminderToDatabase(newReminder)) {
+            return "uusi muistutus lisätty:\n" + newReminder.getDate() + "\n" + newReminder.getDescription();
+        } else {
+            return "virhe!";
+        }
+    }
 
-    public boolean removeOld(LocalDate today) {
+    public boolean removeOld() {
         return bobDao.removeOld(today);
     }
 
-    public List<String> getTodaysCalendarItems(LocalDate today) {
-        List<CalendarItem> calendarItems = bobDao.getTodaysCalendarItems(today);
+    public List<String> getTodaysItemsAsString(Class<?> cls) {
         List<String> itemToStrings = new ArrayList<>();
-        for(CalendarItem item: calendarItems){
-            itemToStrings.add(item.toString());
+        List<CalendarItem> todaysItems = new ArrayList<>();
+        if (cls == Event.class) {
+            todaysItems = bobDao.getTodaysEvents(today);
+        } else {
+            todaysItems = bobDao.getTodaysReminders(today);
         }
-        return  itemToStrings;
+        for (CalendarItem i : todaysItems) {
+            itemToStrings.add(i.toString());
+        }
+        return itemToStrings;
     }
-
 }
