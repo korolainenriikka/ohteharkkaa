@@ -3,8 +3,7 @@ import bob.domain.Reminder;
 import java.time.LocalDate;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class ReminderTest {
 
@@ -31,5 +30,10 @@ public class ReminderTest {
     public void getDescriptionWorks() {
         assertThat(reminder.getDescription(), equalTo("tämä on testimuistutus"));
     }
+    
+     @Test
+     public void toStringReturnsRightString() {
+         assertThat(reminder.toString(), equalTo("tämä on testimuistutus"));
+     }
 
 }

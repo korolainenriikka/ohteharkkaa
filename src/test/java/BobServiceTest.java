@@ -1,19 +1,11 @@
 
-import bob.dao.BobDao;
-import bob.dao.FakeBobDao;
-import bob.domain.BobService;
-import bob.domain.Event;
-import bob.domain.Reminder;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import bob.dao.*;
+import bob.domain.*;
+import java.time.*;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class BobServiceTest {
 
@@ -37,28 +29,29 @@ public class BobServiceTest {
 
     @Test
     public void addRemiderToDatabaseWorks() {
-        assertThat(bobService.createReminder(today, "tämä on testimuistutus!"), equalTo("uusi muistutus lisätty:\n" + today + "\ntämä on testimuistutus!"));
-    }
-
-    @Test
-    public void findsTodaysReminders() {
-        bobService.createReminder(today, "lisätään testimuistutus!");
-        assertThat(bobService.getTodaysReminders(todayf).get(0).getDescription(), equalTo("lisätään testimuistutus!"));
+        assertThat(bobService.createNewReminder(today, ":)"), equalTo("uusi muistutus lisätty:\n" + today + "\n:)"));
     }
 
     @Test
     public void addEventToDatabaseWorks() {
-        assertThat(bobService.createEvent(today, now, "tämä on testitapahtuma!"), equalTo("uusi tapahtuma lisätty:\n" + today + "\n" + now + "\ntämä on testitapahtuma!"));
-    }
-
-    @Test
-    public void findsTodaysEvents() {
-        bobService.createEvent(today, now, "lisätään testitapahtuma!");
-        assertThat(bobService.getTodaysEvents(today).get(0).getDescription(), equalTo("lisätään testitapahtuma!"));
+        bobService.createNewEvent(today, now, ":D");
+        assertThat(bobService.createNewEvent(today, now, ":D"), equalTo("uusi tapahtuma lisätty:\n" + today + "\n" + now + "\n:D"));
     }
 
     @Test
     public void removesOld() {
-        assertTrue(bobService.removeOld(today));
+        assertTrue(bobService.removeOld());
+    }
+
+    @Test
+    public void findsTodaysEventsToStrings() {
+        bobService.createNewEvent(today, now, ":D");
+        assertThat(bobService.getTodaysItemsAsString(Event.class).get(0), equalTo("klo " +now + ": :D"));
+    }
+
+    @Test
+    public void findsTodaysRemindersToStrings() {
+        bobService.createNewReminder(today, ":)");
+        assertThat(bobService.getTodaysItemsAsString(Reminder.class).get(0), equalTo(":)"));
     }
 }

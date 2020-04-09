@@ -21,10 +21,16 @@ public class BobUi extends Application {
     @Override
     public void init() throws Exception {
         today = LocalDate.now();
+        initializeBobService();
+        initializeScenes();
+    }
 
+    private void initializeBobService() {
         bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"), today);
-        bobService.removeOld(today);
+        bobService.removeOld();
+    }
 
+    private void initializeScenes() throws Exception {
         FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
         Parent primaryRoot = primarySceneLoader.load();
         primarySceneController = primarySceneLoader.getController();
@@ -67,5 +73,4 @@ public class BobUi extends Application {
     public static void main(String[] args) {
         launch(BobUi.class);
     }
-
 }

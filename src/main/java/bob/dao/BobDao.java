@@ -6,11 +6,13 @@ import java.util.List;
 
 public interface BobDao {
 
-    String addReminderToDatabase(Reminder newReminder);
+    boolean addEventToDatabase(Event newEvent);
 
-    String addEventToDatabase(Event newEvent);
+    boolean addReminderToDatabase(Reminder newReminder);
 
-    List<CalendarItem> getTodaysCalendarItems(LocalDate today);
+    List<CalendarItem> getTodaysEvents(LocalDate today);
+
+    List<CalendarItem> getTodaysReminders(LocalDate today);
 
     boolean removeOld(LocalDate today);
 }

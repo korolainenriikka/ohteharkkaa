@@ -35,14 +35,12 @@ public class NewReminderSceneController implements SceneController {
 
     @FXML
     private void handleNewReminder(ActionEvent event) {
-        String message = bobService.createReminder(date.getValue(), description.getText());
+        String message = bobService.createNewReminder(date.getValue(), description.getText());
         description.setText("");
         okmessage.setText(message);
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // sk i p
     }
-
 }

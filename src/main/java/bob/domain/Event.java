@@ -35,5 +35,4 @@ public class Event implements Comparable<Event>, CalendarItem {
     public String toString() {
         return "klo " + this.time + ": " + this.description;
     }
-
 }

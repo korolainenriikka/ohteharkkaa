@@ -6,20 +6,33 @@ import java.util.*;
 
 public class FakeBobDao implements BobDao {
 
-    private ArrayList<Reminder> reminders;
-    private ArrayList<Event> events;
+    private ArrayList<CalendarItem> reminders;
+    private ArrayList<CalendarItem> events;
 
     public FakeBobDao() {
         this.reminders = new ArrayList<>();
         this.events = new ArrayList<>();
     }
 
-    public String addReminderToDatabase(Reminder newReminder) {
-        reminders.add(newReminder);
-        return ("uusi muistutus lisätty:\n" + newReminder.getDate() + "\n" + newReminder.getDescription());
+    @Override
+    public boolean addEventToDatabase(Event newEvent) {
+        events.add(newEvent);
+        return true;
     }
 
-    public List<Reminder> getTodaysReminders(LocalDate today) {
+    @Override
+    public boolean addReminderToDatabase(Reminder newReminder) {
+        reminders.add(newReminder);
+        return true;
+    }
+
+    @Override
+    public List<CalendarItem> getTodaysEvents(LocalDate today) {
+        return events;
+    }
+
+    @Override
+    public List<CalendarItem> getTodaysReminders(LocalDate today) {
         return reminders;
     }
 
@@ -27,16 +40,6 @@ public class FakeBobDao implements BobDao {
     public boolean removeOld(LocalDate today) {
         return true;
     }
-
-    @Override
-    public String addEventToDatabase(Event newEvent) {
-        events.add(newEvent);
-        return ("uusi tapahtuma lisätty:\n" + newEvent.getDate() + "\n" + newEvent.getTime() + "\n" + newEvent.getDescription());
-    }
-
-    @Override
-    public List<CalendarItem> getTodaysCalendarItems(LocalDate today) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
+    
 }

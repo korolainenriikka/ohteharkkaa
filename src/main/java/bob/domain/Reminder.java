@@ -24,5 +24,4 @@ public class Reminder implements CalendarItem {
     public String toString() {
         return this.description;
     }
-
 }

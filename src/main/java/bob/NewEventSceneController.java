@@ -43,14 +43,12 @@ public class NewEventSceneController implements SceneController {
     @FXML
     private void handleNewEvent(ActionEvent event) {
         LocalTime time = LocalTime.parse(hour.getValue() + ":" + minute.getValue());
-        String message = bobService.createEvent(date.getValue(), time, description.getText());
+        String message = bobService.createNewEvent(date.getValue(), time, description.getText());
         description.setText("");
         okmessage.setText(message);
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // sk i p
     }
-
 }

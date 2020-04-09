@@ -29,18 +29,7 @@ public class SQLBobDao implements BobDao {
         }
     }
 
-    public boolean addReminderToDatabase(Reminder newReminder) {
-        try {
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO Reminders(date, description) VALUES (?,?)");
-            stmt.setString(1, newReminder.getDate() + "");
-            stmt.setString(2, newReminder.getDescription());
-            stmt.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            return false;
-        }
-    }
-
+    
     public boolean addEventToDatabase(Event newEvent) {
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Events(date, time, description) VALUES (?,?,?)");
@@ -53,6 +42,19 @@ public class SQLBobDao implements BobDao {
             return false;
         }
     }
+    
+    public boolean addReminderToDatabase(Reminder newReminder) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO Reminders(date, description) VALUES (?,?)");
+            stmt.setString(1, newReminder.getDate() + "");
+            stmt.setString(2, newReminder.getDescription());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
 
     @Override
     public boolean removeOld(LocalDate today) {
@@ -102,5 +104,9 @@ public class SQLBobDao implements BobDao {
             System.err.println(e);
         }
         return todaysReminders;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }
