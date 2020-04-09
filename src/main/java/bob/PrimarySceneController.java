@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.*;
 import javafx.fxml.*;
 import javafx.scene.control.Label;
+import javafx.scene.text.*;
 
 public class PrimarySceneController implements SceneController {
 
@@ -35,34 +36,46 @@ public class PrimarySceneController implements SceneController {
     }
 
     public void addTodaysCalendarToScene(LocalDate today) {
-        // get all items, form: events, *, reminders
-        List<String> todaysCalendarItemsList = bobService.getTodaysCalendarItems(today);
-        for (String moi : todaysCalendarItemsList) {
-            if (moi.equals("*") && !todaysCalendarItemsList.isEmpty()) {
-                todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n\n" + "MUISTA!");
-                continue;
-            }
-            if (todaysCalendarItemsList.indexOf(moi) == 0) {
-                todaysCalendarItems.setText("TÄNÄÄN");
-            } else {
-                todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n" + moi);
-            }
+        List<String> todaysEvents = bobService.getTodaysItemsAsString(Event.class);
+        List<String> todaysReminders = bobService.getTodaysItemsAsString(Reminder.class);
+        if (todaysEvents.isEmpty() && todaysReminders.isEmpty()) {
+            makeTextItalic(todaysCalendarItems);
+            todaysCalendarItems.setText("“Sometimes the most important thing to do is to do nothing.” ");
         }
-
-        /*for (Reminder reminder : reminders) {
-            if (reminders.indexOf(reminder) == 0) {
-                todaysReminders.setText(reminder.getDescription());
-            } else {
-                todaysReminders.setText(todaysReminders.getText() + "\n" + reminder);
-            }
-        }
-        for (Event event : events) {
-            if (events.indexOf(event) == 0) {
-                todaysEvents.setText(event.toString());
-            } else {
-                todaysEvents.setText(todaysEvents.getText() + "\n" + event);
-            }
-        }*/
+        makeTextDefaultFont(todaysCalendarItems);
+        addTodaysItemsToScene(todaysEvents, "TÄNÄÄN");
+        addTodaysItemsToScene(todaysReminders, "MUISTA!");
     }
 
+    private void makeTextItalic(Label label) {
+        Font ITALIC_FONT
+                = Font.font(
+                        "Serif",
+                        FontPosture.ITALIC,
+                        Font.getDefault().getSize()
+                );
+        label.setFont(ITALIC_FONT);
+    }
+    
+    private void makeTextDefaultFont(Label label) {
+        Font DEFAULT_FONT
+                = Font.font(
+                        "Serif",
+                        FontPosture.REGULAR,
+                        Font.getDefault().getSize()
+                );
+        label.setFont(DEFAULT_FONT);
+    }
+
+    private void addTodaysItemsToScene(List<String> todaysItems, String header) {
+        if (!todaysItems.isEmpty()) {
+            todaysCalendarItems.setText(header+"\n");
+            for (String event : todaysItems) {
+                if (todaysItems.indexOf(event) == 0) {
+                    todaysCalendarItems.setText(event);
+                }
+                todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n" + event);
+            }
+        }
+    }
 }
