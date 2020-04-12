@@ -46,10 +46,10 @@ public class PrimarySceneController implements SceneController {
 
     private void setTopImage() {
         LocalTime time = LocalTime.now();
-        if (time.isAfter(LocalTime.parse("05:00")) && time.isBefore(LocalTime.NOON)) {
+        if (/*time.isAfter(LocalTime.parse("05:00")) &&*/ time.isBefore(LocalTime.NOON)) {
             topImage.setImage(new Image("file:src/main/resources/images/aamuarde.jpg"));
         } else if (time.isBefore(LocalTime.parse("16:00"))) {
-            topImage.setImage(new Image("file:src/mein/resources/images/paiva_arde.jpg"));
+            topImage.setImage(new Image("file:src/main/resources/images/paiva_arde.jpg"));
         } else {
             topImage.setImage(new Image("file:src/main/resources/images/ilta_arde.jpg"));
         }
