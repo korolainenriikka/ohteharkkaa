@@ -2,10 +2,11 @@ package bob;
 
 import bob.domain.*;
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.*;
 import java.util.*;
 import javafx.fxml.*;
 import javafx.scene.control.Label;
+import javafx.scene.image.*;
 import javafx.scene.text.*;
 
 public class PrimarySceneController implements SceneController {
@@ -22,6 +23,9 @@ public class PrimarySceneController implements SceneController {
     private Label todaysCalendarItems;
 
     @FXML
+    private ImageView topImage;
+
+    @FXML
     private void handleSetNewReminderScene() {
         application.setNewReminderScene();
     }
@@ -35,7 +39,23 @@ public class PrimarySceneController implements SceneController {
     public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
-    public void addTodaysCalendarToScene(LocalDate today) {
+    public void setSceneContent(LocalDate today) {
+        setTopImage();
+        setSceneContent();
+    }
+
+    private void setTopImage() {
+        LocalTime time = LocalTime.now();
+        if (time.isAfter(LocalTime.parse("05:00")) && time.isBefore(LocalTime.NOON)) {
+            topImage.setImage(new Image("file:src/main/resources/images/aamuarde.jpg"));
+        } else if (time.isBefore(LocalTime.parse("16:00"))) {
+            topImage.setImage(new Image("file:src/mein/resources/images/paiva_arde.jpg"));
+        } else {
+            topImage.setImage(new Image("file:src/main/resources/images/ilta_arde.jpg"));
+        }
+    }
+
+    private void setSceneContent() {
         List<String> todaysEvents = bobService.getTodaysItemsAsString(Event.class);
         List<String> todaysReminders = bobService.getTodaysItemsAsString(Reminder.class);
         if (todaysEvents.isEmpty() && todaysReminders.isEmpty()) {
@@ -75,7 +95,7 @@ public class PrimarySceneController implements SceneController {
             for (String event : todaysItems) {
                 todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n" + event);
             }
-            todaysCalendarItems.setText(todaysCalendarItems.getText()+"\n");
+            todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n");
         }
     }
 }

@@ -14,5 +14,6 @@ Pvm | Tunnit | tehty
 29.3 | 4 | ensimmäisen toiminnallisuuden parannuksia
 3.4 | 4 | kalenteritapahtuman lisääminen
 7.4 | 6 | checkstyle ja koodin siistmistä
+9.4 | 3 | koodi siistitty
 
-yht: 42 h
+yht: 45 h

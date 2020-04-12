@@ -13,11 +13,7 @@
     <children>
         <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
-                <ImageView fitHeight="300.0" fitWidth="655.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/primarySceneTop.jpg" />
-                    </image>
-                </ImageView>
+                <ImageView fx:id="topImage" fitHeight="300.0" fitWidth="655.0" pickOnBounds="true" preserveRatio="true"/>
                 <MenuButton mnemonicParsing="false" text="≡">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#handleSetNewReminderScene" text="lisää muistutus" />
@@ -30,7 +26,7 @@
             <center>
                 <VBox maxWidth="320.0" minHeight="417.0" prefHeight="417.0" prefWidth="320.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Label fx:id="todaysCalendarItems" text="Kalenteri tänään näyttää siltä että tyhjältä näyttää!" />
+                        <Label fx:id="todaysCalendarItems"/>
                     </children>
                 </VBox>
             </center>

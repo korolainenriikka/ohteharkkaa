@@ -58,7 +58,7 @@ public class BobUi extends Application {
     }
 
     public void setPrimaryScene() {
-        primarySceneController.addTodaysCalendarToScene(today);
+        primarySceneController.setSceneContent(today);
         stage.setScene(primaryScene);
     }
 
