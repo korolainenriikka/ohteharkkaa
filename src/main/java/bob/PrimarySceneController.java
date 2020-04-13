@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.*;
 import java.util.*;
 import javafx.fxml.*;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
@@ -43,6 +44,7 @@ public class PrimarySceneController implements SceneController {
 
     public void setSceneContent(LocalDate today) {
         setTopImage();
+        todaysCalendarItems.getChildren().clear();
         setSceneContent();
     }
 
@@ -60,6 +62,7 @@ public class PrimarySceneController implements SceneController {
     private void setSceneContent() {
         List<String> todaysEvents = bobService.getTodaysItemsAsString(Event.class);
         List<String> todaysReminders = bobService.getTodaysItemsAsString(Reminder.class);
+        todaysCalendarItems.getChildren().add(new Label("\n\n"));
         if (todaysEvents.isEmpty() && todaysReminders.isEmpty()) {
             createEmptyCalendarLabel();           
         } else {
@@ -102,11 +105,12 @@ public class PrimarySceneController implements SceneController {
         List<HBox> reminders = new ArrayList<>();
         if(!todaysReminders.isEmpty()){
             HBox header = new HBox();
-            header.getChildren().add(new Label("MUISTA!"));
+            header.getChildren().add(new Label("\nMUISTA!"));
             reminders.add(header);
         }
         for (String reminder : todaysReminders) {
             HBox hb = new HBox();
+            hb.setSpacing(10);
             hb.getChildren().addAll(new CheckBox(), new Label(reminder.toString()));
             reminders.add(hb);
         }
