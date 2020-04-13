@@ -22,14 +22,13 @@ public class SQLBobDao implements BobDao {
     private void createDatabase() {
         try {
             Statement s = connection.createStatement();
-            s.execute("CREATE TABLE IF NOT EXISTS Reminders(id INTEGER PRIMARY KEY, date DATE, description TEXT);");
+            s.execute("CREATE TABLE IF NOT EXISTS Reminders(id INTEGER PRIMARY KEY, date DATE, description TEXT, done BOOLEAN DEFAULT 'false');");
             s.execute("CREATE TABLE IF NOT EXISTS Events(id INTEGER PRIMARY KEY, date DATE, time TIME, description TEXT);");
         } catch (SQLException e) {
             System.err.println(e);
         }
     }
 
-    
     public boolean addEventToDatabase(Event newEvent) {
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Events(date, time, description) VALUES (?,?,?)");
@@ -39,10 +38,11 @@ public class SQLBobDao implements BobDao {
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }
-    
+
     public boolean addReminderToDatabase(Reminder newReminder) {
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Reminders(date, description) VALUES (?,?)");
@@ -51,21 +51,20 @@ public class SQLBobDao implements BobDao {
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }
 
-
     @Override
     public boolean removeOld(LocalDate today) {
-        String[] calendarItemTables = {"Reminders", "Events"};
         try {
-            PreparedStatement stmt = connection.prepareStatement("DELETE FROM ? WHERE date < (?)");
-            for (int i = 0; i < calendarItemTables.length; i++) {
-                stmt.setString(1, calendarItemTables[i]);
-                stmt.setString(2, today + "");
-                stmt.executeUpdate();
-            }
+            PreparedStatement stmt1 = connection.prepareStatement("DELETE FROM Events WHERE date < (?)");
+            PreparedStatement stmt2 = connection.prepareStatement("DELETE FROM Reminders WHERE date < (?)");
+            stmt1.setString(1, today + "");
+            stmt2.setString(1, today + "");
+            stmt1.executeUpdate();
+            stmt2.executeUpdate();
             return true;
         } catch (SQLException e) {
             return false;
