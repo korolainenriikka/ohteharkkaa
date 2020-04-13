@@ -5,8 +5,10 @@ import java.net.URL;
 import java.time.*;
 import java.util.*;
 import javafx.fxml.*;
-import javafx.scene.control.Label;
+import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.image.*;
+import javafx.scene.layout.*;
 import javafx.scene.text.*;
 
 public class PrimarySceneController implements SceneController {
@@ -20,7 +22,7 @@ public class PrimarySceneController implements SceneController {
     }
 
     @FXML
-    private Label todaysCalendarItems;
+    private VBox todaysCalendarItems;
 
     @FXML
     private ImageView topImage;
@@ -59,14 +61,20 @@ public class PrimarySceneController implements SceneController {
         List<String> todaysEvents = bobService.getTodaysItemsAsString(Event.class);
         List<String> todaysReminders = bobService.getTodaysItemsAsString(Reminder.class);
         if (todaysEvents.isEmpty() && todaysReminders.isEmpty()) {
-            makeTextItalic(todaysCalendarItems);
-            todaysCalendarItems.setText("\n“Sometimes the most important thing to do \nis to do nothing.” ");
+            createEmptyCalendarLabel();           
         } else {
-            makeTextDefaultFont(todaysCalendarItems);
-            todaysCalendarItems.setText("\n");
-            addTodaysItemsToScene(todaysEvents, "TÄNÄÄN");
-            addTodaysItemsToScene(todaysReminders, "MUISTA!");
+            List<Node> sceneContent = new ArrayList<>();
+            sceneContent.addAll(getEventsAsLabels(todaysEvents));
+            sceneContent.addAll(getRemindersAsHBox(todaysReminders));
+            todaysCalendarItems.getChildren().addAll(sceneContent);
+            Label eventheader = new Label("\nTÄNÄÄN");
         }
+    }
+    
+    private void createEmptyCalendarLabel() {
+        Label nonothing = new Label("\n“Sometimes the most important thing to do \nis to do nothing.” ");
+            makeTextItalic(nonothing);
+            todaysCalendarItems.getChildren().add(nonothing);
     }
 
     private void makeTextItalic(Label label) {
@@ -79,23 +87,31 @@ public class PrimarySceneController implements SceneController {
         label.setFont(ITALIC_FONT);
     }
 
-    private void makeTextDefaultFont(Label label) {
-        Font DEFAULT_FONT
-                = Font.font(
-                        "Serif",
-                        FontPosture.REGULAR,
-                        Font.getDefault().getSize()
-                );
-        label.setFont(DEFAULT_FONT);
+    private List<Label> getEventsAsLabels(List<String> todaysEvents) {
+        List<Label> events = new ArrayList<>();
+        if(!todaysEvents.isEmpty()){
+            events.add(new Label("TÄNÄÄN"));
+        }
+        for (String event : todaysEvents) {
+            events.add(new Label(event.toString()));
+        }
+        return events;
     }
 
-    private void addTodaysItemsToScene(List<String> todaysItems, String header) {
-        if (!todaysItems.isEmpty()) {
-            todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n" + header);
-            for (String event : todaysItems) {
-                todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n" + event);
-            }
-            todaysCalendarItems.setText(todaysCalendarItems.getText() + "\n");
+    private List<HBox> getRemindersAsHBox(List<String> todaysReminders) {
+        List<HBox> reminders = new ArrayList<>();
+        if(!todaysReminders.isEmpty()){
+            HBox header = new HBox();
+            header.getChildren().add(new Label("MUISTA!"));
+            reminders.add(header);
         }
+        for (String reminder : todaysReminders) {
+            HBox hb = new HBox();
+            hb.getChildren().addAll(new CheckBox(), new Label(reminder.toString()));
+            reminders.add(hb);
+        }
+        return reminders;
     }
+
+    
 }
