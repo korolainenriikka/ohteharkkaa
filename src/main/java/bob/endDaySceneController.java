@@ -11,16 +11,17 @@ public class endDaySceneController implements SceneController{
     private BobUi application;
     private BobService bobService;
     
+    @Override
+    public void setAttributes(BobUi application, BobService bobService) {
+        this.application = application;
+        this.bobService = bobService;
+    }
+    
     @FXML
     private void handleSetPrimaryScene(ActionEvent event) {
         application.setPrimaryScene();
     }
-
-    @Override
-    public void setAttributes(BobUi app, BobService bobService) {
-        this.application = application;
-        this.bobService = bobService;
-    }
+    
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
