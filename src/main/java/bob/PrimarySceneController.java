@@ -5,7 +5,6 @@ import java.net.URL;
 import java.time.*;
 import java.util.*;
 import javafx.fxml.*;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
@@ -37,6 +36,11 @@ public class PrimarySceneController implements SceneController {
     private void handleSetNewEventScene() {
         application.setNewEventScene();
     }
+    
+    @FXML
+    private void handleSetEndDayScene(){
+        application.setEndDayScene();
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -67,8 +71,8 @@ public class PrimarySceneController implements SceneController {
             createEmptyCalendarLabel();           
         } else {
             List<Node> sceneContent = new ArrayList<>();
-            sceneContent.addAll(getEventsAsLabels(todaysEvents));
-            sceneContent.addAll(getRemindersAsHBox(todaysReminders));
+            sceneContent.addAll(getItemsAsLabels(todaysEvents, "TÄNÄÄN"));
+            sceneContent.addAll(getItemsAsLabels(todaysReminders, "MUISTA!"));
             todaysCalendarItems.getChildren().addAll(sceneContent);
             Label eventheader = new Label("\nTÄNÄÄN");
         }
@@ -90,31 +94,15 @@ public class PrimarySceneController implements SceneController {
         label.setFont(ITALIC_FONT);
     }
 
-    private List<Label> getEventsAsLabels(List<String> todaysEvents) {
-        List<Label> events = new ArrayList<>();
-        if(!todaysEvents.isEmpty()){
-            events.add(new Label("TÄNÄÄN"));
+    private List<Label> getItemsAsLabels(List<String> todaysItems, String header) {
+        List<Label> items = new ArrayList<>();
+        if(!todaysItems.isEmpty()){
+            items.add(new Label("\n"+header));
         }
-        for (String event : todaysEvents) {
-            events.add(new Label(event.toString()));
+        for (String item : todaysItems) {
+            items.add(new Label(item.toString()));
         }
-        return events;
-    }
-
-    private List<HBox> getRemindersAsHBox(List<String> todaysReminders) {
-        List<HBox> reminders = new ArrayList<>();
-        if(!todaysReminders.isEmpty()){
-            HBox header = new HBox();
-            header.getChildren().add(new Label("\nMUISTA!"));
-            reminders.add(header);
-        }
-        for (String reminder : todaysReminders) {
-            HBox hb = new HBox();
-            hb.setSpacing(10);
-            hb.getChildren().addAll(new CheckBox(), new Label(reminder.toString()));
-            reminders.add(hb);
-        }
-        return reminders;
+        return items;
     }
 
     
