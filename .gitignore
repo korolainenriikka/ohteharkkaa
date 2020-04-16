@@ -1,5 +1,6 @@
 target
 laskarit/viikko2/Unicafe/target
 laskarit/viikko2/Maksukortti/target
-bobData.db
+.db
+nbactions.xml
 /nbproject/
