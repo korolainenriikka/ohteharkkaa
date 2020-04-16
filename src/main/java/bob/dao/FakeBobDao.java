@@ -27,7 +27,7 @@ public class FakeBobDao implements BobDao {
     }
 
     @Override
-    public List<CalendarItem> getTodaysEvents(LocalDate today) {
+    public List<CalendarItem> getTodaysEventsSorted(LocalDate today) {
         return events;
     }
 
