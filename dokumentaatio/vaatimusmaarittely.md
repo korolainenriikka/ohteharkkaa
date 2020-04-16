@@ -44,8 +44,6 @@ Seuraavaksi ohjelmaan on tarkoitus lisätä toiminnallisuus muistutusten tehdyks
  * työaikakirjanpito, joka tekee automaattisesti kurssien vaatimat dokumentit
  
  * jonkinlaisten muistilistojen ylläpito, esim. hyviä kirjoja, pakkauslistaa, ym.
- 
- * käyttöliittymän yläpalkin vaihtaminen vuorokaudenajan mukaan.
 
 ### Suuruudenhulluja toiminnallisuuksia
 
