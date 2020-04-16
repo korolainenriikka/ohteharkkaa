@@ -54,4 +54,11 @@ public class BobServiceTest {
         bobService.createNewReminder(today, ":)");
         assertThat(bobService.getTodaysItemsAsString(Reminder.class).get(0), equalTo(":)"));
     }
+    
+    @Test
+    public void reminderMovesToNextDay(){
+        bobService.moveReminderToNextDay(":)");
+        today = today.plusDays(1);
+        assertThat(bobService.getTodaysItemsAsString(Reminder.class), hasItem(":)"));
+    }
 }
