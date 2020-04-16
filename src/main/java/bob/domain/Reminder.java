@@ -6,10 +6,12 @@ public class Reminder implements CalendarItem {
 
     private LocalDate date;
     private String description;
+    private Boolean done;
 
     public Reminder(LocalDate date, String description) {
         this.date = date;
         this.description = description;
+        this.done = false;
     }
 
     public LocalDate getDate() {

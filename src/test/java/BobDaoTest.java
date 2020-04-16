@@ -52,7 +52,8 @@ public class BobDaoTest {
     @Test
     public void removeOldRemoves() {
         bobDao.addReminderToDatabase(new Reminder(today.minusDays(1), ":)"));
-        assertThat(bobDao.removeOld(today), is(true));
+        bobDao.removeOld(today);
+        assertThat(bobDao.getTodaysReminders(today.minusDays(1)).isEmpty(), is(true));
     }
 
     @Test

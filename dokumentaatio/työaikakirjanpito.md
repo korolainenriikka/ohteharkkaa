@@ -15,5 +15,6 @@ Pvm | Tunnit | tehty
 3.4 | 4 | kalenteritapahtuman lisääminen
 7.4 | 6 | checkstyle ja koodin siistmistä
 9.4 | 3 | koodi siistitty
+12.4 | 3 | grafiikkaa
 
-yht: 45 h
+yht: 48 h

@@ -17,6 +17,8 @@ public class BobUi extends Application {
     private PrimarySceneController primarySceneController;
     private Scene newReminderScene;
     private Scene newEventScene;
+    private Scene endDayScene;
+    private EndDaySceneController endDaySceneController;
 
     @Override
     public void init() throws Exception {
@@ -36,6 +38,12 @@ public class BobUi extends Application {
         primarySceneController = primarySceneLoader.getController();
         primarySceneController.setAttributes(this, bobService);
         primaryScene = new Scene(primaryRoot);
+        
+        FXMLLoader endDaySceneLoader = new FXMLLoader(getClass().getResource("/fxml/endDayScene.fxml"));
+        Parent endDayRoot = endDaySceneLoader.load();
+        endDaySceneController = endDaySceneLoader.getController();
+        endDaySceneController.setAttributes(this, bobService);
+        endDayScene = new Scene(endDayRoot);
 
         newReminderScene = initScene("/fxml/newReminderScene.fxml", new NewReminderSceneController());
         newEventScene = initScene("/fxml/newEventScene.fxml", new NewReminderSceneController());
@@ -69,8 +77,15 @@ public class BobUi extends Application {
     public void setNewEventScene() {
         stage.setScene(newEventScene);
     }
+    
+    public void setEndDayScene() {
+        endDaySceneController.setSceneContent(today);
+        stage.setScene(endDayScene);
+    }
 
     public static void main(String[] args) {
         launch(BobUi.class);
     }
+
+    
 }
