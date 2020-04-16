@@ -15,6 +15,7 @@ Pvm | Tunnit | tehty
 3.4 | 4 | kalenteritapahtuman lisääminen
 7.4 | 6 | checkstyle ja koodin siistmistä
 9.4 | 3 | koodi siistitty
-12.4 | 3 | grafiikkaa
+11.4 | 3 | käyttöliittymää
+13.4 | 2 | muistutusten boolean-toiminnallisuutta
 
-yht: 48 h
+yht: 50 h
