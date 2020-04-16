@@ -20,7 +20,7 @@ Ohjelmaan voidaan lisätä kalenteritapahtumia, joilla on päivämäärä, sekä
 
 ### Seuraavat muutokset
 
-Seuraavaksi ohjelmaan on tarkoitus lisätä toiminnallisuus muistutusten tehdyksi merkkaamiseen:
+Seuraavaksi ohjelmaan on tarkoitus lisätä toiminnallisuus muistutusten tehdyksi merkkaamiseen. Tekemättä jättämisten käsittely suoritetaan alla olevan iltanäkymän avulla.
 
 * muistutukselle tehty-boolean
 
