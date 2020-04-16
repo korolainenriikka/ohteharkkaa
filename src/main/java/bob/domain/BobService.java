@@ -49,4 +49,8 @@ public class BobService {
         }
         return itemToStrings;
     }
+
+    public void moveReminderToNextDay(String text) {
+        bobDao.addReminderToDatabase(new Reminder(today.plusDays(1), text));
+    }
 }
