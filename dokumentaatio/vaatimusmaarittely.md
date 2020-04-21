@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 
-Bob the personal assistant on henkilökohtainen sihteeri, jonka tarkoituksena on ulkoistaa mahdollisimman paljon arkisten asioiden muistamista ihan arkielämän helpotukseksi.
+Bob the personal assistant on henkilökohtainen sihteeri, jonka tarkoituksena on ulkoistaa mahdollisimman paljon arkisten asioiden muistamista.
 
 ## Käyttäjät
 
@@ -14,34 +14,25 @@ Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lail
 
 Muistutusten lisäämisen tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muistutuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä. Vanhentuneet muistutukset poistuvat tietokannasta automaattisesti.
 
+Ohjelman lopeta päivä -toiminnossa muistutukset voidaan merkata tehdyksi, ja tallennettaessa tekemättömät siirtyvät seuraavaan päivään.
+
 ### kalenteritapahtumat
 
 Ohjelmaan voidaan lisätä kalenteritapahtumia, joilla on päivämäärä, sekä aika. Nämä tapahtumat näytetään aloitussivulla aikajärjestyksessä kyseisenä päivänä.
 
-### Seuraavat muutokset
+### vappufiilikset
 
-Seuraavaksi ohjelmaan on tarkoitus lisätä toiminnallisuus muistutusten tehdyksi merkkaamiseen. Tekemättä jättämisten käsittely suoritetaan alla olevan iltanäkymän avulla.
+Vuoden kohokohdan eli vappupäivän lähentyessä myös bobi sai juhlasta osansa. Ensimmäisen näkymän vappufiilikset-osassa on kutakin vappua edeltävää ajanjaksoa sopivasti kuvaava fiilistelykuva.
 
-* muistutukselle tehty-boolean
-
-* tehty-booleanin tehdyksi kirjaaminen
-
-* tekemättä jääneiden muistutusten siirto seuraavalle päivälle
-
+Huonon huumorintajun, sekä tiettyjen ideoiden ohittamattomuuden vuoksi vappufiiliksiin vaikuttaa olennaisesti myös boolean-tyyppinen pandemia-muuttuja.
 
 ## Jatkokehitysideoita
 
-### Muistutustoiminnallisuus
-
- * muistutusten lisääminen viikottain, päivittäin ym.
-
  ### Muita toiminnallisuuksia (perusversion laajennukset)
 
- * treenipäiväkirja (linkki tietokantasovelluksen sivulle) (ja päivän treeni)
+ * kotitöiden tekemistä aikatauluttava toiminnallisuus (aloitettu, tallessa gitin ulkopuolella)
 
- * iltanäkymä, jossa bobi kyselisi mitä on tullut tehtyä ja mitkä tehtävät on syytä siirtä myöhempään
-
- * työaikakirjanpito, joka tekee automaattisesti kurssien vaatimat dokumentit
+ * työaikakirjanpito, joka ajastaa työntekoa, soittaa töitä tehtäessä haluttaessa [Harry Potter common room -taustaääniä](https://www.ambient-mixer.com/), ja tekee automaattisesti kurssien vaatimat md-dokumentit.
  
  * jonkinlaisten muistilistojen ylläpito, esim. hyviä kirjoja, pakkauslistaa, ym.
 
