@@ -13,33 +13,40 @@ import javafx.scene.text.*;
 
 public class PrimarySceneController implements SceneController {
 
-    private BobUi application;
+    private BobUi app;
     private BobService bobService;
+    private ImageView vabufeelsImg;
 
-    public void setAttributes(BobUi application, BobService bobService) {
-        this.application = application;
+    public void setAttributes(BobUi app, BobService bobService) {
+        this.app = app;
         this.bobService = bobService;
     }
 
     @FXML
-    private VBox todaysCalendarItems;
+    private VBox reminders;
+
+    @FXML
+    private VBox events;
+
+    @FXML
+    private VBox vappufeels;
 
     @FXML
     private ImageView topImage;
 
     @FXML
     private void handleSetNewReminderScene() {
-        application.setNewReminderScene();
+        app.setNewReminderScene();
     }
 
     @FXML
     private void handleSetNewEventScene() {
-        application.setNewEventScene();
+        app.setNewEventScene();
     }
-    
+
     @FXML
-    private void handleSetEndDayScene(){
-        application.setEndDayScene();
+    private void handleSetEndDayScene() {
+        app.setEndDayScene();
     }
 
     @Override
@@ -48,8 +55,13 @@ public class PrimarySceneController implements SceneController {
 
     public void setSceneContent(LocalDate today) {
         setTopImage();
-        todaysCalendarItems.getChildren().clear();
-        setSceneContent();
+        clearContent();
+        setTodaysContent();
+    }
+
+    private void clearContent() {
+        events.getChildren().clear();
+        reminders.getChildren().clear();
     }
 
     private void setTopImage() {
@@ -63,25 +75,39 @@ public class PrimarySceneController implements SceneController {
         }
     }
 
-    private void setSceneContent() {
-        List<String> todaysEvents = bobService.getTodaysItemsAsString(Event.class);
-        List<String> todaysReminders = bobService.getTodaysItemsAsString(Reminder.class);
-        todaysCalendarItems.getChildren().add(new Label("\n\n"));
-        if (todaysEvents.isEmpty() && todaysReminders.isEmpty()) {
-            createEmptyCalendarLabel();           
-        } else {
-            List<Node> sceneContent = new ArrayList<>();
-            sceneContent.addAll(getItemsAsLabels(todaysEvents, "TÄNÄÄN"));
-            sceneContent.addAll(getItemsAsLabels(todaysReminders, "MUISTA!"));
-            todaysCalendarItems.getChildren().addAll(sceneContent);
-            Label eventheader = new Label("\nTÄNÄÄN");
+    private void setTodaysContent() {
+        boolean nothingToDo = true;
+        nothingToDo = addTodaysEventsToScene(nothingToDo);
+        nothingToDo = addTodaysRemindersToScene(nothingToDo);
+        if (nothingToDo) {
+            createEmptyCalendarLabel();
         }
+        insertVappuFeels();
+
     }
-    
+
+    private boolean addTodaysEventsToScene(boolean nothingToDo) {
+        List<String> todaysEvents = bobService.getDaysItemsAsString(Event.class, app.getToday());
+        if (todaysEvents.isEmpty()) {
+            return true;
+        }
+        events.getChildren().addAll(getItemsAsLabels(todaysEvents, "TÄNÄÄN TAPAHTUU:"));
+        return false;
+    }
+
+    private boolean addTodaysRemindersToScene(boolean nothingToDo) {
+        List<String> todaysReminders = bobService.getDaysItemsAsString(Reminder.class, app.getToday());
+        if (nothingToDo && todaysReminders.isEmpty()) {
+            return true;
+        }
+        reminders.getChildren().addAll(getItemsAsLabels(todaysReminders, "MUISTA:"));
+        return false;
+    }
+
     private void createEmptyCalendarLabel() {
         Label nonothing = new Label("\n“Sometimes the most important thing to do \nis to do nothing.” ");
-            makeTextItalic(nonothing);
-            todaysCalendarItems.getChildren().add(nonothing);
+        makeTextItalic(nonothing);
+        events.getChildren().add(nonothing);
     }
 
     private void makeTextItalic(Label label) {
@@ -96,8 +122,8 @@ public class PrimarySceneController implements SceneController {
 
     private List<Label> getItemsAsLabels(List<String> todaysItems, String header) {
         List<Label> items = new ArrayList<>();
-        if(!todaysItems.isEmpty()){
-            items.add(new Label("\n"+header));
+        if (!todaysItems.isEmpty()) {
+            items.add(new Label("\n" + header));
         }
         for (String item : todaysItems) {
             items.add(new Label(item.toString()));
@@ -105,5 +131,45 @@ public class PrimarySceneController implements SceneController {
         return items;
     }
 
-    
+    private void insertVappuFeels() {
+        String thisYear = LocalDate.now().getYear() + "";
+        if (app.getToday().isAfter(LocalDate.parse(thisYear + "-02-01")) && app.getToday().isBefore(LocalDate.parse(thisYear + "-05-07"))) {
+            insertVappuImg();
+            vabufeelsImg.setImage(new Image(getImagePath(thisYear)));
+
+        }
+
+    }
+
+    private void insertVappuImg() {
+        vappufeels.getChildren().add(new Label("\nPÄIVÄN VAPPUFIILIKSET:"));
+        vabufeelsImg = new ImageView();
+        vabufeelsImg.setFitHeight(150);
+        vabufeelsImg.setFitWidth(150);
+        vappufeels.getChildren().add(vabufeelsImg);
+    }
+
+    private String getImagePath(String thisYear) {
+        String path = "file:src/main/resources/images/";
+        if (app.getToday().isBefore(LocalDate.parse(thisYear + "-03-01"))) {
+            Random r = new Random(1);
+            if (r.nextInt() == 0) {
+                return path + "talviunivabubobi_kylki.jpg";
+            } else {
+                return path + "talviunivabubobi_selka.jpg";
+            }
+        } else if (app.getToday().isBefore(LocalDate.parse(thisYear + "-03-15"))) {
+            return path + "talviuniltaheraavavabubobi.jpg";
+        } else if (app.getToday().isBefore(LocalDate.parse(thisYear + "-04-01"))) {
+            return path + "kevatvabubobi.jpg";
+        } else if (app.getToday().isBefore(LocalDate.parse(thisYear + "-04-20"))) {
+            return path + "koristelevavabubobi.jpg";
+        } else if (app.getToday().isBefore(LocalDate.parse(thisYear + "-04-30"))) {
+            return path + "vabuilevabobi.jpg";
+        } else if (app.getToday().isBefore(LocalDate.parse(thisYear + "-05-02"))) {
+            return path + "kreisibailuvabubobi.jpg";
+        } else {
+            return path + "darravabubobi.jpg";
+        }
+    }
 }
