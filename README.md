@@ -51,11 +51,12 @@ Komento
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston, joka ajetaan komennolla (huom. vielä tuntemattomasta syystä ohjelma toimii ainoastaan näin, siirtymällä hakemistoon target ja ajamalla jar siellä osa kuvatiedostoista puuttuu. (ohjaaja/katselmoija jos hoksaat mikä on vikana apu kelpaa!))
+generoi hakemistoon _target_ suoritettavan jar-tiedoston, joka ajetaan komennolla 
 
 ```
 java -jar target/Bob-0.000-SNAPSHOT.jar
 ```
+(huom. vielä tuntemattomasta syystä ohjelma toimii ainoastaan näin, siirtymällä hakemistoon target ja ajamalla jar siellä osa kuvatiedostoista puuttuu. (ohjaaja/katselmoija jos hoksaat mikä on vikana apu kelpaa!))
 
 ### Checkstyle
 
