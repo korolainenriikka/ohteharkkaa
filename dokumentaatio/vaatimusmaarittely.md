@@ -8,7 +8,7 @@ Bob the personal assistant on henkilökohtainen sihteeri, jonka tarkoituksena on
 
 Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lailla omien tarpeiden mukaan elävä ja kehittyvä.
 
-## Toiminnallisuudet
+## Toteutetut toiminnallisuudet
 
 ### muistutukset
 
