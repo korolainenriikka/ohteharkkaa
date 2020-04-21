@@ -19,7 +19,7 @@ public class BobServiceTest {
         this.today = LocalDate.now();
         this.now = LocalTime.now();
         this.bobDao = new FakeBobDao();
-        this.bobService = new BobService(bobDao, today);
+        this.bobService = new BobService(bobDao);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class BobServiceTest {
 
     @Test
     public void removesOld() {
-        assertTrue(bobService.removeOld());
+        assertTrue(bobService.removeOld(today));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class BobServiceTest {
     
     @Test
     public void reminderMovesToNextDay(){
-        bobService.moveReminderToNextDay(":)");
+        bobService.moveReminderToNextDay(":)", today);
         today = today.plusDays(1);
         assertThat(bobService.getDaysItemsAsString(Reminder.class, today), hasItem(":)"));
     }
