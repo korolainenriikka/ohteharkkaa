@@ -9,7 +9,7 @@
     <children>
         <HBox prefHeight="100.0" prefWidth="200.0">
             <children>
-                <ImageView fx:id="topImage" fitHeight="300.0" fitWidth="655.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="topImage" fitHeight="300.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true" />
                 <MenuButton mnemonicParsing="false" text="≡">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#handleSetNewReminderScene" text="lisää muistutus" />
