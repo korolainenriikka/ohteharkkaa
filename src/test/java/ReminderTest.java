@@ -30,10 +30,9 @@ public class ReminderTest {
     public void getDescriptionWorks() {
         assertThat(reminder.getDescription(), equalTo("tämä on testimuistutus"));
     }
-    
-     @Test
-     public void toStringReturnsRightString() {
-         assertThat(reminder.toString(), equalTo("tämä on testimuistutus"));
-     }
 
+    @Test
+    public void toStringReturnsRightString() {
+        assertThat(reminder.toString(), equalTo("tämä on testimuistutus"));
+    }
 }
