@@ -31,7 +31,7 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>pokemontietokanta/ui/*</exclude>
+                        <exclude>bob/*.java</exclude>
                     </excludes>
                 </configuration>
                 <executions>
