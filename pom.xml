@@ -31,13 +31,7 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>bob/Main.java</exclude>
-                        <exclude>bob/PrimarySceneController.java</exclude>
-                        <exclude>bob/NewEventSceneController.java</exclude>
-                        <exclude>bob/NewReminderSceneController.java</exclude>
-                        <exclude>bob/EndDaySceneController.java</exclude>
-                        <exclude>bob/BobUi.java</exclude>
-                        <exclude>bob/SceneController.java</exclude>
+                        <exclude>bob/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
