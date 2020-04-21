@@ -51,7 +51,7 @@ generoi hakemistoon _target_ suoritettavan jar-tiedoston.
 
 ### Checkstyle
 
-Tiedostoon [checkstyle.xml](https://github.com/korolainenriikka/BobThePersonalAssistant/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+Tiedostoon [checkstyle.xml](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
 
 ```
  mvn jxr:jxr checkstyle:checkstyle
