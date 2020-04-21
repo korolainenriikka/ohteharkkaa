@@ -64,6 +64,7 @@ public class PrimarySceneController implements SceneController {
     private void clearContent() {
         events.getChildren().clear();
         reminders.getChildren().clear();
+        vappufeels.getChildren().clear();
     }
 
     private void setTopImage() {
