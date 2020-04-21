@@ -12,6 +12,10 @@ Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn m
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/resources/images/primarySceneBottom.jpg" width="300" height="300"/>
 
+## releaset
+
+[viikko 5](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/releases)
+
 ## komentorivitoiminnot
 
 ### ohjelman suoritus
