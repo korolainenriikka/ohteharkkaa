@@ -48,7 +48,6 @@ public class BobDaoTest {
         assertThat(bobDao.addReminderToDatabase(reminder), is(true));
     }
 
-    //tässä tesstissä mitäkummaaaa????
     @Test
     public void removeOldRemoves() {
         bobDao.addReminderToDatabase(new Reminder(today.minusDays(1), ":)"));
@@ -66,7 +65,7 @@ public class BobDaoTest {
     @Test
     public void eventIsFoundInDatabase() {
         bobDao.addEventToDatabase(new Event(today, now, ":D"));
-        List<CalendarItem> events = bobDao.getTodaysEvents(today);
+        List<CalendarItem> events = bobDao.getTodaysEventsSorted(today);
         assertThat(events.get(0).toString(), equalTo("klo " + now + ": :D"));
     }
 }

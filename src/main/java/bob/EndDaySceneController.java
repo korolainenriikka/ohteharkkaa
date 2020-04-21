@@ -12,12 +12,12 @@ import javafx.scene.layout.*;
 
 public class EndDaySceneController implements SceneController {
 
-    private BobUi application;
+    private BobUi app;
     private BobService bobService;
 
     @Override
-    public void setAttributes(BobUi application, BobService bobService) {
-        this.application = application;
+    public void setAttributes(BobUi app, BobService bobService) {
+        this.app = app;
         this.bobService = bobService;
     }
 
@@ -31,7 +31,7 @@ public class EndDaySceneController implements SceneController {
 
     @FXML
     private void handleSetPrimaryScene(ActionEvent event) {
-        application.setPrimaryScene();
+        app.setPrimaryScene();
     }
 
     @FXML
@@ -39,10 +39,10 @@ public class EndDaySceneController implements SceneController {
         for (CheckBox cb : reminders.keySet()) {
             if (!cb.isSelected()) {
                 //undone reminder is added to next day
-                bobService.moveReminderToNextDay(reminders.get(cb).getText());
-            } 
+                bobService.moveReminderToNextDay(reminders.get(cb).getText(), app.getToday());
+            }
         }
-        application.setPrimaryScene();
+        app.setPrimaryScene();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class EndDaySceneController implements SceneController {
     }
 
     private void addRemindersToScene() {
-        List<String> todaysRemindersAsString = bobService.getTodaysItemsAsString(Reminder.class);
+        List<String> todaysRemindersAsString = bobService.getDaysItemsAsString(Reminder.class, app.getToday());
         List<HBox> remindersAsHBox = new ArrayList<>();
         if (!todaysRemindersAsString.isEmpty()) {
             HBox header = new HBox();
@@ -67,7 +67,7 @@ public class EndDaySceneController implements SceneController {
             HBox hb = new HBox();
             hb.setSpacing(10);
             CheckBox checker = new CheckBox();
-            Label label= new Label(reminder.toString());
+            Label label = new Label(reminder.toString());
             reminders.put(checker, label);
             hb.getChildren().addAll(checker, label);
             remindersAsHBox.add(hb);

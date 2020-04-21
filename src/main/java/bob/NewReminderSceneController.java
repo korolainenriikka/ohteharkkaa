@@ -3,6 +3,7 @@ package bob;
 import bob.BobUi;
 import bob.domain.BobService;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -35,9 +36,13 @@ public class NewReminderSceneController implements SceneController {
 
     @FXML
     private void handleNewReminder(ActionEvent event) {
-        String message = bobService.createNewReminder(date.getValue(), description.getText());
-        description.setText("");
-        okmessage.setText(message);
+        if (date.getValue() == null || description.getText() == null) {
+            okmessage.setText("syötä pyydetyt tiedot");
+        } else {
+            String message = bobService.createNewReminder(date.getValue(), description.getText());
+            description.setText("");
+            okmessage.setText(message);
+        }
     }
 
     @Override

@@ -72,11 +72,11 @@ public class SQLBobDao implements BobDao {
     }
 
     @Override
-    public List<CalendarItem> getTodaysEvents(LocalDate today) {
+    public List<CalendarItem> getTodaysEventsSorted(LocalDate today) {
         List<CalendarItem> todaysEvents = new ArrayList<>();
         PreparedStatement stmt2;
         try {
-            stmt2 = connection.prepareStatement("SELECT * FROM Events WHERE date=(?);");
+            stmt2 = connection.prepareStatement("SELECT * FROM Events WHERE date=(?) ORDER BY date;");
             stmt2.setString(1, today + "");
             ResultSet r2 = stmt2.executeQuery();
             while (r2.next()) {
@@ -91,11 +91,11 @@ public class SQLBobDao implements BobDao {
     @Override
     public List<CalendarItem> getTodaysReminders(LocalDate today) {
         List<CalendarItem> todaysReminders = new ArrayList<>();
-        PreparedStatement stmt2;
+        PreparedStatement stmt;
         try {
-            stmt2 = connection.prepareStatement("SELECT * FROM Reminders WHERE date=(?);");
-            stmt2.setString(1, today + "");
-            ResultSet r2 = stmt2.executeQuery();
+            stmt = connection.prepareStatement("SELECT * FROM Reminders WHERE date=(?);");
+            stmt.setString(1, today + "");
+            ResultSet r2 = stmt.executeQuery();
             while (r2.next()) {
                 todaysReminders.add(new Reminder(LocalDate.parse(r2.getString("date")), r2.getString("description")));
             }
@@ -108,4 +108,5 @@ public class SQLBobDao implements BobDao {
     public Connection getConnection() {
         return connection;
     }
+
 }

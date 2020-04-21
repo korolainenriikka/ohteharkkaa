@@ -42,10 +42,14 @@ public class NewEventSceneController implements SceneController {
 
     @FXML
     private void handleNewEvent(ActionEvent event) {
-        LocalTime time = LocalTime.parse(hour.getValue() + ":" + minute.getValue());
-        String message = bobService.createNewEvent(date.getValue(), time, description.getText());
-        description.setText("");
-        okmessage.setText(message);
+        if (date.getValue() == null || description.getText() == null) {
+            okmessage.setText("syötä pyydetyt tiedot");
+        } else {
+            LocalTime time = LocalTime.parse(hour.getValue() + ":" + minute.getValue());
+            String message = bobService.createNewEvent(date.getValue(), time, description.getText());
+            description.setText("");
+            okmessage.setText(message);
+        }
     }
 
     @Override

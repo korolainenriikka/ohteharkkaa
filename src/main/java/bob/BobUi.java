@@ -19,17 +19,19 @@ public class BobUi extends Application {
     private Scene newEventScene;
     private Scene endDayScene;
     private EndDaySceneController endDaySceneController;
+    private boolean pandemic;
 
     @Override
     public void init() throws Exception {
         today = LocalDate.now();
+        pandemic = true;
         initializeBobService();
         initializeScenes();
     }
 
     private void initializeBobService() {
-        bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"), today);
-        bobService.removeOld();
+        bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"));
+        bobService.removeOld(today);
     }
 
     private void initializeScenes() throws Exception {
@@ -38,7 +40,7 @@ public class BobUi extends Application {
         primarySceneController = primarySceneLoader.getController();
         primarySceneController.setAttributes(this, bobService);
         primaryScene = new Scene(primaryRoot);
-        
+
         FXMLLoader endDaySceneLoader = new FXMLLoader(getClass().getResource("/fxml/endDayScene.fxml"));
         Parent endDayRoot = endDaySceneLoader.load();
         endDaySceneController = endDaySceneLoader.getController();
@@ -77,15 +79,21 @@ public class BobUi extends Application {
     public void setNewEventScene() {
         stage.setScene(newEventScene);
     }
-    
+
     public void setEndDayScene() {
         endDaySceneController.setSceneContent(today);
         stage.setScene(endDayScene);
+    }
+
+    public LocalDate getToday() {
+        return today;
     }
 
     public static void main(String[] args) {
         launch(BobUi.class);
     }
 
-    
+    boolean isPandemic() {
+        return pandemic;
+    }
 }

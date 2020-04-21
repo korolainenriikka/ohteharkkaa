@@ -1,0 +1,903 @@
+ALOITETTU CHORE-SETTI!!!
+
+chore.java:
+package bob.domain;
+
+import java.time.DayOfWeek;
+
+public class Chore {
+
+    private String name;
+    private DayOfWeek weekday;
+    private int nextCompletionWeek;
+    private int weeksBetweenCompletions;
+
+    public Chore(String name, DayOfWeek weekday, int nextCompletionWeek, int weeksBetweenCompletions) {
+        this.name = name;
+        this.weekday = weekday;
+        this.nextCompletionWeek = nextCompletionWeek;
+        this.weeksBetweenCompletions = weeksBetweenCompletions;
+    }
+
+    public Chore(String name, DayOfWeek weekday) {
+        this.name = name;
+        this.weekday = weekday;
+    }
+
+    public String toString() {
+        return this.name + "!";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public DayOfWeek getWeekday() {
+        return weekday;
+    }
+
+    public int getNextCompletionWeek() {
+        return nextCompletionWeek;
+    }
+
+    public int getWeeksBetweenCompletions() {
+        return weeksBetweenCompletions;
+    }
+
+    public void testi(){
+        System.out.println("testimmuutosss!");
+    }
+}
+
+
+chorescene.fxml:
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bob.ui.scenecontrollers.ChoreSceneController">
+    <children>
+        <Button layoutX="568.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSetPrimaryScene" prefHeight="22.0" prefWidth="68.0" text="Palaa" />
+        <Label layoutX="242.0" layoutY="81.0" text="Kotihommia!">
+            <font>
+                <Font name="KacstPen" size="26.0" />
+            </font>
+        </Label>
+        <GridPane layoutX="200.0" layoutY="210.0" prefHeight="456.0" prefWidth="260.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="maanantai" />
+                <Label text="tiistai" GridPane.rowIndex="1" />
+                <Label text="keskiviikko" GridPane.rowIndex="2" />
+                <Label text="torstai" GridPane.rowIndex="3" />
+                <Label text="lauantai" GridPane.rowIndex="5" />
+                <Label text="perjantai" GridPane.rowIndex="4" />
+                <Label text="sunnuntai" GridPane.rowIndex="6" />
+                <Label GridPane.columnIndex="1" />
+                <Label GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Label GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <Label GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Label GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            </children>
+        </GridPane>
+        <Button layoutX="274.0" layoutY="750.0" mnemonicParsing="false" text="muokkaa" />
+    </children>
+</AnchorPane>
+
+ChoreSceneController.java:
+package bob.ui.scenecontrollers;
+
+import bob.domain.*;
+import bob.ui.*;
+import java.net.URL;
+import java.time.DayOfWeek;
+import java.util.*;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+
+public class ChoreSceneController implements SceneController {
+
+    private BobUi app;
+    private BobService bobService;
+
+    @FXML
+    private GridPane hommagrid;
+
+    @Override
+    public void setAttributes(BobUi app, BobService bobService) {
+        this.app = app;
+        this.bobService = bobService;
+    }
+
+    @FXML
+    private void handleSetPrimaryScene(ActionEvent event) {
+        app.setPrimaryScene();
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    }
+
+    public void setSceneContent() {
+        addDaysChoresToScene(DayOfWeek.MONDAY, 0, 1);
+        addDaysChoresToScene(DayOfWeek.TUESDAY, 1, 1);
+        addDaysChoresToScene(DayOfWeek.WEDNESDAY, 2, 1);
+        addDaysChoresToScene(DayOfWeek.THURSDAY, 3, 1);
+        addDaysChoresToScene(DayOfWeek.FRIDAY, 4, 1);
+        addDaysChoresToScene(DayOfWeek.SATURDAY, 5, 1);
+        addDaysChoresToScene(DayOfWeek.SUNDAY, 6, 1);
+    }
+
+    private void addDaysChoresToScene(DayOfWeek dayOfWeek, int row, int column) {
+        List<String> chores = bobService.getDaysChoresAsString(dayOfWeek, app.getWeeknumber() + 1);
+        for(String c : chores){
+            hommagrid.add(new Label(c), row, column);
+        }      
+    }
+
+}
+
+primaryscenecontroller.java:
+package bob.ui.scenecontrollers;
+
+import bob.domain.*;
+import bob.ui.BobUi;
+import java.net.URL;
+import java.time.*;
+import java.util.*;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
+import javafx.scene.text.*;
+
+public class PrimarySceneController implements SceneController {
+
+    private BobUi app;
+    private BobService bobService;
+
+    public void setAttributes(BobUi app, BobService bobService) {
+        this.app = app;
+        this.bobService = bobService;
+    }
+
+    @FXML
+    private VBox events;
+
+    @FXML
+    private VBox reminders;
+
+    @FXML
+    private VBox chores;
+
+    @FXML
+    private ImageView topImage;
+
+    @FXML
+    private void handleSetNewReminderScene() {
+        app.setNewReminderScene();
+    }
+
+    @FXML
+    private void handleSetNewEventScene() {
+        app.setNewEventScene();
+    }
+
+    @FXML
+    private void handleSetEndDayScene() {
+        app.setEndDayScene();
+    }
+
+    @FXML
+    private void handleSetKotihommaScene() {
+        app.setChoreScene();
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+    }
+
+    public void setSceneContent(LocalDate today) {
+        setTopImage();
+        clearContent();
+        setTodaysContent();
+    }
+
+    private void clearContent() {
+        events.getChildren().clear();
+        reminders.getChildren().clear();
+        chores.getChildren().clear();
+    }
+
+    private void setTopImage() {
+        LocalTime time = LocalTime.now();
+        if (time.isAfter(LocalTime.parse("05:00")) && time.isBefore(LocalTime.NOON)) {
+            topImage.setImage(new Image("file:src/main/resources/images/aamuarde.jpg"));
+        } else if (time.isBefore(LocalTime.parse("16:00"))) {
+            topImage.setImage(new Image("file:src/main/resources/images/paiva_arde.jpg"));
+        } else {
+            topImage.setImage(new Image("file:src/main/resources/images/ilta_arde.jpg"));
+        }
+    }
+
+    private void setTodaysContent() {
+        boolean nothingToDo = true;
+        nothingToDo = addTodaysEventsToScene(nothingToDo);
+        nothingToDo = addTodaysRemindersToScene(nothingToDo);
+        nothingToDo = addTodaysChoresToScene(nothingToDo);
+        if (nothingToDo) {
+            createEmptyCalendarLabel();
+        }
+    }
+
+    private boolean addTodaysEventsToScene(boolean nothingToDo) {
+        List<String> todaysEvents = bobService.getDaysItemsAsString(Event.class, app.getToday());
+        if (todaysEvents.isEmpty()) {
+            return true;
+        }
+        events.getChildren().addAll(getItemsAsLabels(todaysEvents, "TÄNÄÄN"));
+        return false;
+    }
+
+    private boolean addTodaysRemindersToScene(boolean nothingToDo) {
+        List<String> todaysReminders = bobService.getDaysItemsAsString(Reminder.class, app.getToday());
+        if (nothingToDo && todaysReminders.isEmpty()) {
+            return true;
+        }
+        reminders.getChildren().addAll(getItemsAsLabels(todaysReminders, "MUISTA!"));
+        return false;
+    }
+
+    private boolean addTodaysChoresToScene(boolean nothingToDo) {
+        List<String> todaysChores = bobService.getDaysChoresAsString(app.getTodayWeekday(), app.getWeeknumber());
+        if (nothingToDo && todaysChores.isEmpty()) {
+            return true;
+        }
+        chores.getChildren().addAll(getItemsAsLabels(todaysChores, "KOTIHOMMIA!"));
+        return false;
+    }
+
+    private void createEmptyCalendarLabel() {
+        Label nonothing = new Label("\n“Sometimes the most important thing to do \nis to do nothing.” ");
+        makeTextItalic(nonothing);
+        events.getChildren().add(nonothing);
+    }
+
+    private void makeTextItalic(Label label) {
+        Font ITALIC_FONT
+                = Font.font(
+                        "Serif",
+                        FontPosture.ITALIC,
+                        Font.getDefault().getSize()
+                );
+        label.setFont(ITALIC_FONT);
+    }
+
+    private List<Label> getItemsAsLabels(List<String> todaysItems, String header) {
+        List<Label> items = new ArrayList<>();
+        if (!todaysItems.isEmpty()) {
+            items.add(new Label("\n" + header));
+        }
+        for (String item : todaysItems) {
+            items.add(new Label(item.toString()));
+        }
+        return items;
+    }
+
+}
+
+bobui.java:
+package bob.ui;
+
+import bob.ui.scenecontrollers.*;
+import bob.dao.*;
+import bob.domain.BobService;
+import java.time.*;
+import java.time.temporal.*;
+import java.util.Locale;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.*;
+import javafx.stage.Stage;
+
+public class BobUi extends Application {
+
+    private BobService bobService;
+    private LocalDate today;
+    private DayOfWeek todayWeekday;
+    private int weeknumber;
+    private Stage stage;
+    private Scene primaryScene;
+    private Scene newReminderScene;
+    private Scene newEventScene;
+    private Scene endDayScene;
+    private Scene choreScene;
+    private PrimarySceneController primarySceneController;
+    private EndDaySceneController endDaySceneController;
+    private ChoreSceneController choreSceneController;
+
+    @Override
+    public void init() throws Exception {
+        initializeTimeVariables();
+        initializeBobService();
+        initializeScenes();
+    }
+
+    private void initializeTimeVariables() {
+        today = LocalDate.now();
+        todayWeekday = today.getDayOfWeek();
+        TemporalField weekOfYear = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+        weeknumber = today.get(weekOfYear);
+    }
+
+    private void initializeBobService() {
+        String db = "jdbc:sqlite:bobData.db";
+        bobService = new BobService(new SQLCalendarItemDao(db), new SQLChoreDao(db));
+        bobService.removeOld(today);
+    }
+
+    private void initializeScenes() throws Exception {
+        FXMLLoader primarySceneLoader = new FXMLLoader(getClass().getResource("/fxml/primaryScene.fxml"));
+        Parent primaryRoot = primarySceneLoader.load();
+        primarySceneController = primarySceneLoader.getController();
+        primarySceneController.setAttributes(this, bobService);
+        primaryScene = new Scene(primaryRoot);
+
+        FXMLLoader endDaySceneLoader = new FXMLLoader(getClass().getResource("/fxml/endDayScene.fxml"));
+        Parent endDayRoot = endDaySceneLoader.load();
+        endDaySceneController = endDaySceneLoader.getController();
+        endDaySceneController.setAttributes(this, bobService);
+        endDayScene = new Scene(endDayRoot);
+
+        FXMLLoader choreSceneLoader = new FXMLLoader(getClass().getResource("/fxml/choreScene.fxml"));
+        Parent choreRoot = choreSceneLoader.load();
+        choreSceneController = choreSceneLoader.getController();
+        choreSceneController.setAttributes(this, bobService);
+        choreScene = new Scene(choreRoot);
+
+        newReminderScene = initScene("/fxml/newReminderScene.fxml", new NewReminderSceneController());
+        newEventScene = initScene("/fxml/newEventScene.fxml", new NewReminderSceneController());
+    }
+
+    private Scene initScene(String fxml, SceneController sceneController) throws Exception {
+        FXMLLoader sceneLoader = new FXMLLoader(getClass().getResource(fxml));
+        Parent root = sceneLoader.load();
+        sceneController = sceneLoader.getController();
+        sceneController.setAttributes(this, bobService);
+        return new Scene(root);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        this.stage = primaryStage;
+        setPrimaryScene();
+        primaryStage.setTitle("bob the personal assistant <3");
+        stage.show();
+    }
+
+    public void quit() {
+        bobService.MarkNextCompletionsOfTodaysChores(todayWeekday);
+        stage.close();
+    }
+
+    public void setPrimaryScene() {
+        primarySceneController.setSceneContent(today);
+        stage.setScene(primaryScene);
+    }
+
+    public void setNewReminderScene() {
+        stage.setScene(newReminderScene);
+    }
+
+    public void setNewEventScene() {
+        stage.setScene(newEventScene);
+    }
+
+    public void setEndDayScene() {
+        endDaySceneController.setSceneContent(today);
+        stage.setScene(endDayScene);
+    }
+
+    public void setChoreScene() {
+        choreSceneController.setSceneContent();
+        stage.setScene(choreScene);
+    }
+
+    public LocalDate getToday() {
+        return today;
+    }
+
+    public DayOfWeek getTodayWeekday() {
+        return todayWeekday;
+    }
+
+    public int getWeeknumber() {
+        return weeknumber;
+    }
+
+    public static void main(String[] args) {
+        launch(BobUi.class);
+    }
+
+}
+
+primaryscene.fxml:
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="880.0" maxWidth="650.0" prefHeight="880.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bob.ui.scenecontrollers.PrimarySceneController">
+    <children>
+        <VBox layoutX="152.0" layoutY="276.0" maxWidth="442.0" minHeight="417.0" prefHeight="429.0" prefWidth="343.0" spacing="2.0">
+            <children>
+                <VBox fx:id="events"/>
+                <VBox fx:id="reminders"/>
+                <VBox fx:id="chores"/>
+            </children>
+        </VBox>
+        <ImageView fitHeight="162.0" fitWidth="158.0" layoutX="248.0" layoutY="718.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/primarySceneBottom.jpg" />
+            </image>
+        </ImageView>
+        <MenuButton layoutX="598.0" layoutY="14.0" mnemonicParsing="false" text="≡">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleSetNewReminderScene" text="lisää muistutus" />
+                <MenuItem mnemonicParsing="false" onAction="#handleSetNewEventScene" text="lisää kalenteritapahtuma" />
+                <MenuItem mnemonicParsing="false" onAction="#handleSetKotihommaScene" text="kotihommia!" />
+                <MenuItem mnemonicParsing="false" onAction="#handleSetEndDayScene" text="lopeta päivä" />
+            </items>
+        </MenuButton>
+        <ImageView fx:id="topImage" fitHeight="300.0" fitWidth="594.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
+    </children>
+</AnchorPane>
+
+calendaritemdao.java:
+package bob.dao;
+
+import bob.domain.*;
+import java.time.LocalDate;
+import java.util.List;
+
+public interface CalendarItemDao {
+
+    boolean addEventToDatabase(Event newEvent);
+
+    boolean addReminderToDatabase(Reminder newReminder);
+
+    List<CalendarItem> getTodaysEventsSorted(LocalDate today);
+
+    List<CalendarItem> getTodaysReminders(LocalDate today);
+
+    boolean removeOld(LocalDate today);
+}
+
+choredao.java
+package bob.dao;
+
+import bob.domain.Chore;
+import java.time.*;
+import java.util.List;
+
+public interface ChoreDao {
+    
+    List<Chore> getDaysChores(DayOfWeek todayWeekday, int weeknumber);
+
+    public void markNextCompletionsOfDaysChores(DayOfWeek weekday);
+}
+
+FakeCalendarItemDao.java:
+package bob.dao;
+
+import bob.domain.*;
+import java.time.LocalDate;
+import java.util.*;
+
+public class FakeCalendarItemDao implements CalendarItemDao {
+
+    private ArrayList<CalendarItem> reminders;
+    private ArrayList<CalendarItem> events;
+
+    public FakeCalendarItemDao() {
+        this.reminders = new ArrayList<>();
+        this.events = new ArrayList<>();
+    }
+
+    @Override
+    public boolean addEventToDatabase(Event newEvent) {
+        events.add(newEvent);
+        return true;
+    }
+
+    @Override
+    public boolean addReminderToDatabase(Reminder newReminder) {
+        reminders.add(newReminder);
+        return true;
+    }
+
+    @Override
+    public List<CalendarItem> getTodaysEventsSorted(LocalDate today) {
+        return events;
+    }
+
+    @Override
+    public List<CalendarItem> getTodaysReminders(LocalDate today) {
+        return reminders;
+    }
+
+    @Override
+    public boolean removeOld(LocalDate today) {
+        return true;
+    }
+    
+    
+}
+
+FakeChoreDao.java
+
+package bob.dao;
+
+
+import bob.dao.ChoreDao;
+import bob.domain.Chore;
+import java.time.*;
+import java.util.*;
+
+public class FakeChoreDao implements ChoreDao {
+    
+    ArrayList<Chore> chores;
+
+    @Override
+    public List<Chore> getDaysChores(DayOfWeek todayWeekday, int weeknumber) {
+        return chores;
+    }
+
+    @Override
+    public void markNextCompletionsOfDaysChores(DayOfWeek weekday) {
+    }
+
+}
+
+SQLCalendarItemDao.java:
+package bob.dao;
+
+import bob.domain.*;
+import java.sql.*;
+import java.time.*;
+import java.util.*;
+
+public class SQLCalendarItemDao implements CalendarItemDao {
+
+    private Connection connection;
+
+    public SQLCalendarItemDao(String database) {
+        try {
+            connection = DriverManager.getConnection(database);
+        } catch (SQLException e) {
+            System.err.println(e);
+
+        }
+        createTables();
+    }
+
+    private void createTables() {
+        try {
+            Statement s = connection.createStatement();
+            s.execute("CREATE TABLE IF NOT EXISTS Reminders(id INTEGER PRIMARY KEY, date DATE, description TEXT);");
+            s.execute("CREATE TABLE IF NOT EXISTS Events(id INTEGER PRIMARY KEY, date DATE, time TIME, description TEXT);");
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    public boolean addEventToDatabase(Event newEvent) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO Events(date, time, description) VALUES (?,?,?)");
+            stmt.setString(1, newEvent.getDate() + "");
+            stmt.setString(2, newEvent.getTime() + "");
+            stmt.setString(3, newEvent.getDescription());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean addReminderToDatabase(Reminder newReminder) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO Reminders(date, description) VALUES (?,?)");
+            stmt.setString(1, newReminder.getDate() + "");
+            stmt.setString(2, newReminder.getDescription());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public boolean removeOld(LocalDate today) {
+        try {
+            PreparedStatement stmt1 = connection.prepareStatement("DELETE FROM Events WHERE date < (?)");
+            PreparedStatement stmt2 = connection.prepareStatement("DELETE FROM Reminders WHERE date < (?)");
+            stmt1.setString(1, today + "");
+            stmt2.setString(1, today + "");
+            stmt1.executeUpdate();
+            stmt2.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public List<CalendarItem> getTodaysEventsSorted(LocalDate today) {
+        List<CalendarItem> todaysEvents = new ArrayList<>();
+        PreparedStatement stmt2;
+        try {
+            stmt2 = connection.prepareStatement("SELECT * FROM Events WHERE date=(?) ORDER BY time;");
+            stmt2.setString(1, today + "");
+            ResultSet r2 = stmt2.executeQuery();
+            while (r2.next()) {
+                todaysEvents.add(new Event(LocalDate.parse(r2.getString("date")), LocalTime.parse(r2.getString("time")), r2.getString("description")));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return todaysEvents;
+    }
+
+    @Override
+    public List<CalendarItem> getTodaysReminders(LocalDate today) {
+        List<CalendarItem> todaysReminders = new ArrayList<>();
+        PreparedStatement stmt2;
+        try {
+            stmt2 = connection.prepareStatement("SELECT * FROM Reminders WHERE date=(?);");
+            stmt2.setString(1, today + "");
+            ResultSet r2 = stmt2.executeQuery();
+            while (r2.next()) {
+                todaysReminders.add(new Reminder(LocalDate.parse(r2.getString("date")), r2.getString("description")));
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return todaysReminders;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+}
+
+sqlchoredao.java:
+package bob.dao;
+
+import bob.domain.Chore;
+import java.sql.*;
+import java.time.*;
+import java.util.*;
+
+public class SQLChoreDao implements ChoreDao{
+    
+    private Connection connection;
+
+    public SQLChoreDao(String database) {
+        try {
+            connection = DriverManager.getConnection(database);
+        } catch (SQLException e) {
+            System.err.println(e);
+
+        }
+        createTables();
+    }
+
+    private void createTables() {
+        try {
+            Statement s = connection.createStatement();
+            s.execute("CREATE TABLE IF NOT EXISTS Chores(id INTEGER PRIMARY KEY, name TEXT, weekday TEXT, nextcompletionweek INTEGER, weeksbetweencompletions INTEGER);");
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    @Override
+    public List<Chore> getDaysChores(DayOfWeek weekday, int weeknumber) {
+        List<Chore> todaysChores = new ArrayList<>();
+        try {
+            PreparedStatement  stmt = connection.prepareStatement("SELECT * FROM Chores WHERE weekday=(?) AND nextcompletionweek=(?);");
+            stmt.setString(1, weekday+"");            
+            stmt.setInt(2, weeknumber);
+            ResultSet r = stmt.executeQuery();
+            while (r.next()) {
+                Chore c = new Chore(r.getString("name"), DayOfWeek.valueOf(r.getString("weekday")));
+                todaysChores.add(c);
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return todaysChores;
+    }
+
+    @Override
+    public void markNextCompletionsOfDaysChores(DayOfWeek weekday) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("update chores set nextcompletionweek=nextcompletionweek+weeksbetweencompletions where weekday=(?);");
+                stmt.setString(1, weekday+"");
+                stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }           
+    }
+    
+}
+
+bobService.java
+package bob.domain;
+
+import bob.dao.*;
+import java.time.*;
+import java.util.*;
+
+public class BobService {
+
+    private CalendarItemDao calendarItemDao;
+    private ChoreDao choreDao;
+
+
+    public BobService(CalendarItemDao calendarItemDao, ChoreDao choreDao) {
+        this.calendarItemDao = calendarItemDao;
+        this.choreDao = choreDao;
+    }
+    
+
+    public String createNewEvent(LocalDate date, LocalTime time, String description) {
+        Event newEvent = new Event(date, time, description);
+        if (calendarItemDao.addEventToDatabase(newEvent)) {
+            return "uusi tapahtuma lisätty:\n" + newEvent.getDate() + "\n" + newEvent.getTime() + "\n" + newEvent.getDescription();
+        } else {
+            return "virhe!";
+        }
+    }
+
+    public String createNewReminder(LocalDate date, String description) {
+        Reminder newReminder = new Reminder(date, description);
+        if (calendarItemDao.addReminderToDatabase(newReminder)) {
+            return "uusi muistutus lisätty:\n" + newReminder.getDate() + "\n" + newReminder.getDescription();
+        } else {
+            return "virhe!";
+        }
+    }
+
+    public boolean removeOld(LocalDate beforeDate) {
+        return calendarItemDao.removeOld(beforeDate);
+    }
+
+    public List<String> getDaysItemsAsString(Class<?> cls, LocalDate date) {
+        List<String> itemToStrings = new ArrayList<>();
+        List<CalendarItem> todaysItems = new ArrayList<>();
+        if (cls == Event.class) {
+            todaysItems = calendarItemDao.getTodaysEventsSorted(date);
+        } else {
+            todaysItems = calendarItemDao.getTodaysReminders(date);
+        }
+        for (CalendarItem i : todaysItems) {
+            itemToStrings.add(i.toString());
+        }
+        return itemToStrings;
+    }
+
+    public void moveReminderToNextDay(String text, LocalDate date) {
+        calendarItemDao.addReminderToDatabase(new Reminder(date.plusDays(1), text));
+    }
+
+    public List<String> getDaysChoresAsString(DayOfWeek weekday, int weeknumber) {
+        List<Chore> todaysChores = choreDao.getDaysChores(weekday, weeknumber);
+        List<String> choresAsString = new ArrayList<>();
+        for(Chore c : todaysChores){
+            choresAsString.add(c.toString());
+        }
+        return choresAsString;
+    }
+
+    public void MarkNextCompletionsOfTodaysChores(DayOfWeek weekday) {
+        choreDao.markNextCompletionsOfDaysChores(weekday);
+    }
+}
+
+bobservicetest.java
+import bob.dao.FakeChoreDao;
+import bob.dao.*;
+import bob.domain.*;
+import java.time.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
+import org.junit.*;
+
+public class BobServiceTest {
+
+    private BobService bobService;
+    private CalendarItemDao calendarItemDao;
+    private ChoreDao choreDao;
+    private LocalDate today;
+    private LocalTime now;
+
+    @Before
+    public void setUp() {
+        this.today = LocalDate.now();
+        this.now = LocalTime.now();
+        this.calendarItemDao = new FakeCalendarItemDao();
+        this.choreDao = new FakeChoreDao();
+        this.bobService = new BobService(calendarItemDao, choreDao);
+    }
+
+    @Test
+    public void bobServiceExists() {
+        assertThat(bobService, is(notNullValue()));
+    }
+
+    @Test
+    public void addRemiderToDatabaseWorks() {
+        assertThat(bobService.createNewReminder(today, ":)"), equalTo("uusi muistutus lisätty:\n" + today + "\n:)"));
+    }
+
+    @Test
+    public void addEventToDatabaseWorks() {
+        bobService.createNewEvent(today, now, ":D");
+        assertThat(bobService.createNewEvent(today, now, ":D"), equalTo("uusi tapahtuma lisätty:\n" + today + "\n" + now + "\n:D"));
+    }
+
+    @Test
+    public void removesOld() {
+        assertTrue(bobService.removeOld(today));
+    }
+
+    @Test
+    public void findsTodaysEventsToStrings() {
+        bobService.createNewEvent(today, now, ":D");
+        assertThat(bobService.getDaysItemsAsString(Event.class, today).get(0), equalTo("klo " +now + ": :D"));
+    }
+
+    @Test
+    public void findsTodaysRemindersToStrings() {
+        bobService.createNewReminder(today, ":)");
+        assertThat(bobService.getDaysItemsAsString(Reminder.class, today).get(0), equalTo(":)"));
+    }
+    
+    @Test
+    public void reminderMovesToNextDay(){
+        bobService.moveReminderToNextDay(":)", today);
+        today = today.plusDays(1);
+        assertThat(bobService.getDaysItemsAsString(Reminder.class, today), hasItem(":)"));
+    }
+}

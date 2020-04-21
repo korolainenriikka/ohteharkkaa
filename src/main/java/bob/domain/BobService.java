@@ -7,11 +7,9 @@ import java.util.*;
 public class BobService {
 
     private BobDao bobDao;
-    private LocalDate today;
 
-    public BobService(BobDao bobDao, LocalDate today) {
+    public BobService(BobDao bobDao) {
         this.bobDao = bobDao;
-        this.today = today;
     }
 
     public String createNewEvent(LocalDate date, LocalTime time, String description) {
@@ -32,17 +30,17 @@ public class BobService {
         }
     }
 
-    public boolean removeOld() {
-        return bobDao.removeOld(today);
+    public boolean removeOld(LocalDate date) {
+        return bobDao.removeOld(date);
     }
 
-    public List<String> getTodaysItemsAsString(Class<?> cls) {
+    public List<String> getDaysItemsAsString(Class<?> cls, LocalDate date) {
         List<String> itemToStrings = new ArrayList<>();
         List<CalendarItem> todaysItems = new ArrayList<>();
         if (cls == Event.class) {
-            todaysItems = bobDao.getTodaysEvents(today);
+            todaysItems = bobDao.getTodaysEventsSorted(date);
         } else {
-            todaysItems = bobDao.getTodaysReminders(today);
+            todaysItems = bobDao.getTodaysReminders(date);
         }
         for (CalendarItem i : todaysItems) {
             itemToStrings.add(i.toString());
@@ -50,7 +48,8 @@ public class BobService {
         return itemToStrings;
     }
 
-    public void moveReminderToNextDay(String text) {
-        bobDao.addReminderToDatabase(new Reminder(today.plusDays(1), text));
+    public void moveReminderToNextDay(String text, LocalDate date) {
+        bobDao.addReminderToDatabase(new Reminder(date.plusDays(1), text));
     }
+
 }

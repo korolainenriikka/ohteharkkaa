@@ -51,7 +51,7 @@ public class PrimarySceneController implements SceneController {
     }
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {       
+    public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
     public void setSceneContent(LocalDate today) {
@@ -59,7 +59,7 @@ public class PrimarySceneController implements SceneController {
         setTopImage();
         clearContent();
         setTodaysContent();
-    }  
+    }
 
     private void clearContent() {
         events.getChildren().clear();
@@ -136,7 +136,7 @@ public class PrimarySceneController implements SceneController {
     private void insertVappuFeels() {
         String thisYear = LocalDate.now().getYear() + "";
         if (app.getToday().isAfter(LocalDate.parse(thisYear + "-02-01")) && app.getToday().isBefore(LocalDate.parse(thisYear + "-05-07"))) {
-            insertVappuImg(thisYear);           
+            insertVappuImg(thisYear);
         }
     }
 
@@ -148,19 +148,19 @@ public class PrimarySceneController implements SceneController {
         vabufeelsImgView.setImage(new Image(getImagePath(thisYear)));
         images = new HBox();
         images.setSpacing(5);
-        if (pandemic) {           
+        if (pandemic) {
             insertPartyingCoronaVirus();
-        } 
+        }
         images.getChildren().add(vabufeelsImgView);
         vappufeels.getChildren().add(images);
-        
+
     }
-    
-    private void insertPartyingCoronaVirus() {         
-            ImageView coronaView = new ImageView(new Image("file:src/main/resources/images/vabukorona.jpg"));
-            coronaView.setFitHeight(70);
-            coronaView.setFitWidth(70);
-            images.getChildren().addAll(coronaView);
+
+    private void insertPartyingCoronaVirus() {
+        ImageView coronaView = new ImageView(new Image("file:src/main/resources/images/vabukorona.jpg"));
+        coronaView.setFitHeight(70);
+        coronaView.setFitWidth(70);
+        images.getChildren().addAll(coronaView);
     }
 
     private String getImagePath(String thisYear) {
@@ -187,5 +187,4 @@ public class PrimarySceneController implements SceneController {
         }
     }
 
-    
 }

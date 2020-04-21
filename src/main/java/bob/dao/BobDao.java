@@ -10,9 +10,10 @@ public interface BobDao {
 
     boolean addReminderToDatabase(Reminder newReminder);
 
-    List<CalendarItem> getTodaysEvents(LocalDate today);
+    List<CalendarItem> getTodaysEventsSorted(LocalDate today);
 
     List<CalendarItem> getTodaysReminders(LocalDate today);
 
     boolean removeOld(LocalDate today);
+
 }

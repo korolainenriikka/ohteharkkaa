@@ -40,6 +40,5 @@ public class FakeBobDao implements BobDao {
     public boolean removeOld(LocalDate today) {
         return true;
     }
-    
-    
+
 }
