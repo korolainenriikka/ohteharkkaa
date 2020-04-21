@@ -17,5 +17,9 @@ Pvm | Tunnit | tehty
 9.4 | 3 | koodi siistitty
 11.4 | 3 | käyttöliittymää
 13.4 | 2 | muistutusten boolean-toiminnallisuutta
+15.4 | 4 | muistutusten siirto ja testejä
+19.4 | 6 | kotihommatoimintoa (lisätään bobiin myöhemmin), sekä refaktorointia
+20.4 | 2 | ideointia ja vappufiiliksiä
+21.4 | 5 | release 1 sekä vappufiilikset
 
-yht: 50 h
+yht: 67 h
