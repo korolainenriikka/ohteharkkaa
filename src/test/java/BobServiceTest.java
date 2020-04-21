@@ -46,19 +46,19 @@ public class BobServiceTest {
     @Test
     public void findsTodaysEventsToStrings() {
         bobService.createNewEvent(today, now, ":D");
-        assertThat(bobService.getTodaysItemsAsString(Event.class).get(0), equalTo("klo " +now + ": :D"));
+        assertThat(bobService.getDaysItemsAsString(Event.class, today).get(0), equalTo("klo " +now + ": :D"));
     }
 
     @Test
     public void findsTodaysRemindersToStrings() {
         bobService.createNewReminder(today, ":)");
-        assertThat(bobService.getTodaysItemsAsString(Reminder.class).get(0), equalTo(":)"));
+        assertThat(bobService.getDaysItemsAsString(Reminder.class, today).get(0), equalTo(":)"));
     }
     
     @Test
     public void reminderMovesToNextDay(){
         bobService.moveReminderToNextDay(":)");
         today = today.plusDays(1);
-        assertThat(bobService.getTodaysItemsAsString(Reminder.class), hasItem(":)"));
+        assertThat(bobService.getDaysItemsAsString(Reminder.class, today), hasItem(":)"));
     }
 }
