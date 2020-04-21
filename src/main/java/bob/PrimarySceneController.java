@@ -15,7 +15,8 @@ public class PrimarySceneController implements SceneController {
 
     private BobUi app;
     private BobService bobService;
-    private ImageView vabufeelsImg;
+    private boolean pandemic;
+    private HBox images;
 
     public void setAttributes(BobUi app, BobService bobService) {
         this.app = app;
@@ -50,14 +51,15 @@ public class PrimarySceneController implements SceneController {
     }
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(URL arg0, ResourceBundle arg1) {       
     }
 
     public void setSceneContent(LocalDate today) {
+        pandemic = app.isPandemic();
         setTopImage();
         clearContent();
         setTodaysContent();
-    }
+    }  
 
     private void clearContent() {
         events.getChildren().clear();
@@ -134,26 +136,38 @@ public class PrimarySceneController implements SceneController {
     private void insertVappuFeels() {
         String thisYear = LocalDate.now().getYear() + "";
         if (app.getToday().isAfter(LocalDate.parse(thisYear + "-02-01")) && app.getToday().isBefore(LocalDate.parse(thisYear + "-05-07"))) {
-            insertVappuImg();
-            vabufeelsImg.setImage(new Image(getImagePath(thisYear)));
-
+            insertVappuImg(thisYear);           
         }
-
     }
 
-    private void insertVappuImg() {
+    private void insertVappuImg(String thisYear) {
         vappufeels.getChildren().add(new Label("\nPÄIVÄN VAPPUFIILIKSET:"));
-        vabufeelsImg = new ImageView();
-        vabufeelsImg.setFitHeight(150);
-        vabufeelsImg.setFitWidth(150);
-        vappufeels.getChildren().add(vabufeelsImg);
+        ImageView vabufeelsImgView = new ImageView();
+        vabufeelsImgView.setFitHeight(150);
+        vabufeelsImgView.setFitWidth(150);
+        vabufeelsImgView.setImage(new Image(getImagePath(thisYear)));
+        images = new HBox();
+        images.setSpacing(5);
+        if (pandemic) {           
+            insertPartyingCoronaVirus();
+        } 
+        images.getChildren().add(vabufeelsImgView);
+        vappufeels.getChildren().add(images);
+        
+    }
+    
+    private void insertPartyingCoronaVirus() {         
+            ImageView coronaView = new ImageView(new Image("file:src/main/resources/images/vabukorona.jpg"));
+            coronaView.setFitHeight(70);
+            coronaView.setFitWidth(70);
+            images.getChildren().addAll(coronaView);
     }
 
     private String getImagePath(String thisYear) {
         String path = "file:src/main/resources/images/";
         if (app.getToday().isBefore(LocalDate.parse(thisYear + "-03-01"))) {
-            Random r = new Random(1);
-            if (r.nextInt() == 0) {
+            Random r = new Random();
+            if (r.nextInt(2) == 0) {
                 return path + "talviunivabubobi_kylki.jpg";
             } else {
                 return path + "talviunivabubobi_selka.jpg";
@@ -172,4 +186,6 @@ public class PrimarySceneController implements SceneController {
             return path + "darravabubobi.jpg";
         }
     }
+
+    
 }
