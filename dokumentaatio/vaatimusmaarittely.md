@@ -32,7 +32,7 @@ Huonon huumorintajun, sekä tiettyjen ideoiden ohittamattomuuden vuoksi vappufii
 
  * kotitöiden tekemistä aikatauluttava toiminnallisuus (aloitettu, tallessa gitin ulkopuolella)
 
- * työaikakirjanpito, joka ajastaa työntekoa, soittaa töitä tehtäessä haluttaessa (Harry Potter common room -taustaääniä)[https://www.ambient-mixer.com/], ja tekee automaattisesti kurssien vaatimat md-dokumentit.
+ * työaikakirjanpito, joka ajastaa työntekoa, soittaa töitä tehtäessä haluttaessa [Harry Potter common room -taustaääniä](https://www.ambient-mixer.com/), ja tekee automaattisesti kurssien vaatimat md-dokumentit.
  
  * jonkinlaisten muistilistojen ylläpito, esim. hyviä kirjoja, pakkauslistaa, ym.
 
