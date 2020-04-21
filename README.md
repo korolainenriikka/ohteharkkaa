@@ -51,7 +51,11 @@ Komento
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston.
+generoi hakemistoon _target_ suoritettavan jar-tiedoston, joka ajetaan komennolla
+
+```
+java -jar target/Bob-0.000-SNAPSHOT.jar
+```
 
 ### Checkstyle
 
