@@ -2,9 +2,8 @@ package bob;
 
 import bob.domain.*;
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.*;
 import java.util.*;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -27,6 +26,9 @@ public class EndDaySceneController implements SceneController {
     @FXML
     private Button save;
 
+    @FXML
+    private Label worktime;
+
     private HashMap<CheckBox, Label> reminders;
 
     @FXML
@@ -42,7 +44,7 @@ public class EndDaySceneController implements SceneController {
                 bobService.moveReminderToNextDay(reminders.get(cb).getText(), app.getToday());
             }
         }
-        app.setPrimaryScene();
+        app.stop();
     }
 
     @Override
@@ -53,6 +55,7 @@ public class EndDaySceneController implements SceneController {
         todaysReminders.getChildren().clear();
         reminders = new HashMap<>();
         addRemindersToScene();
+        addWorkTimeToScene();
     }
 
     private void addRemindersToScene() {
@@ -73,6 +76,12 @@ public class EndDaySceneController implements SceneController {
             remindersAsHBox.add(hb);
         }
         todaysReminders.getChildren().addAll(remindersAsHBox);
+    }
+
+    private void addWorkTimeToScene() {
+        LocalTime worked = app.getWorkTime();
+        String formatted = worked.getHour() + " h " + worked.getMinute() + " min";
+        worktime.setText(formatted);
     }
 
 }
