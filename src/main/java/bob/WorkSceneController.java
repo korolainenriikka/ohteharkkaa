@@ -2,6 +2,8 @@ package bob;
 
 import bob.domain.BobService;
 import java.net.URL;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ public class WorkSceneController implements SceneController {
     
     private BobUi app;
     private BobService bobService;
+    private AnimationTimer timer;
 
     @Override
     public void setAttributes(BobUi app, BobService bobService) {
@@ -23,25 +26,12 @@ public class WorkSceneController implements SceneController {
   
     @FXML
     private void startWorking(){
-        new AnimationTimer() {
-            long edellinen = 0;
-            @Override
-            public void handle(long nykyhetki) {
-                if (nykyhetki - edellinen < 100000000) {
-                    return;
-                }
-                this.edellinen = nykyhetki;
-                workTimer.setText(edellinen+"");
-            }
-        }.start();
-
+        timer.start();
     }
-                        
-    
     
     @FXML
     private void pauseTimer(){
-        System.out.println("pause!");
+        timer.stop();
     }
     
     @FXML
@@ -51,5 +41,16 @@ public class WorkSceneController implements SceneController {
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        timer = new AnimationTimer() {
+            long prev = 0;
+            @Override
+            public void handle(long now) {
+                if (now - prev < 1000000000) {
+                    return;
+                }
+                workTimer.setText(LocalTime.parse(workTimer.getText(), DateTimeFormatter.ofPattern("HH:mm[:ss]")).plusSeconds(1)+"");
+                this.prev=now;
+            }
+        };
     }    
 }
