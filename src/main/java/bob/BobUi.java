@@ -28,6 +28,7 @@ public class BobUi extends Application {
         today = LocalDate.now();
         pandemic = true;
         initializeBobService();
+        workTime = bobService.getWorkTime(today);
         initializeScenes();
     }
 
@@ -64,6 +65,8 @@ public class BobUi extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        
+
         this.stage = primaryStage;
         setPrimaryScene();
         primaryStage.setTitle("bob the personal assistant <3");
@@ -87,30 +90,33 @@ public class BobUi extends Application {
         endDaySceneController.setSceneContent(today);
         stage.setScene(endDayScene);
     }
-    
-     void setWorkScene() {
-         stage.setScene(workScene);
+
+    void setWorkScene() {
+        stage.setScene(workScene);
     }
 
     public LocalDate getToday() {
         return today;
     }
 
+    public LocalTime getWorkTime() {
+        return workTime;
+    }
+
     boolean isPandemic() {
         return pandemic;
-    }   
+    }
 
     void updateWorkTime(LocalTime time) {
         workTime = time;
     }
-    
+
     public static void main(String[] args) {
         launch(BobUi.class);
-    }    
-    
+    }
+
     @Override
-    public void stop(){
-        System.out.println(workTime+"");
-        System.out.println("suljetaaaaaaaaaaan!!!!");
+    public void stop() {
+        bobService.saveWorkedTime(workTime, today);
     }
 }
