@@ -24,6 +24,7 @@ public class SQLBobDao implements BobDao {
             Statement s = connection.createStatement();
             s.execute("CREATE TABLE IF NOT EXISTS Reminders(id INTEGER PRIMARY KEY, date DATE, description TEXT, done BOOLEAN DEFAULT 'false');");
             s.execute("CREATE TABLE IF NOT EXISTS Events(id INTEGER PRIMARY KEY, date DATE, time TIME, description TEXT);");
+            s.execute("CREATE TABLE IF NOT EXISTS Worktime(id INTEGER PRIMARY KEY, date DATE, time TIME);");
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -74,13 +75,12 @@ public class SQLBobDao implements BobDao {
     @Override
     public List<CalendarItem> getTodaysEventsSorted(LocalDate today) {
         List<CalendarItem> todaysEvents = new ArrayList<>();
-        PreparedStatement stmt2;
         try {
-            stmt2 = connection.prepareStatement("SELECT * FROM Events WHERE date=(?) ORDER BY date;");
-            stmt2.setString(1, today + "");
-            ResultSet r2 = stmt2.executeQuery();
-            while (r2.next()) {
-                todaysEvents.add(new Event(LocalDate.parse(r2.getString("date")), LocalTime.parse(r2.getString("time")), r2.getString("description")));
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Events WHERE date=(?) ORDER BY date;");
+            stmt.setString(1, today + "");
+            ResultSet r = stmt.executeQuery();
+            while (r.next()) {
+                todaysEvents.add(new Event(LocalDate.parse(r.getString("date")), LocalTime.parse(r.getString("time")), r.getString("description")));
             }
         } catch (SQLException e) {
             System.err.println(e);
@@ -91,13 +91,12 @@ public class SQLBobDao implements BobDao {
     @Override
     public List<CalendarItem> getTodaysReminders(LocalDate today) {
         List<CalendarItem> todaysReminders = new ArrayList<>();
-        PreparedStatement stmt;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM Reminders WHERE date=(?);");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Reminders WHERE date=(?);");
             stmt.setString(1, today + "");
-            ResultSet r2 = stmt.executeQuery();
-            while (r2.next()) {
-                todaysReminders.add(new Reminder(LocalDate.parse(r2.getString("date")), r2.getString("description")));
+            ResultSet r = stmt.executeQuery();
+            while (r.next()) {
+                todaysReminders.add(new Reminder(LocalDate.parse(r.getString("date")), r.getString("description")));
             }
         } catch (SQLException e) {
             System.err.println(e);
@@ -107,6 +106,45 @@ public class SQLBobDao implements BobDao {
 
     public Connection getConnection() {
         return connection;
+    }
+
+    public void updateWorkTime(LocalTime workTime, LocalDate date) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("UPDATE Worktime SET time=(?) WHERE date=(?)");
+            stmt.setString(1, workTime + "");
+            stmt.setString(2, date + "");
+            stmt.execute();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    @Override
+    public LocalTime getWorkTime(LocalDate date) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Worktime WHERE date=(?)");
+            stmt.setString(1, date + "");
+            ResultSet r = stmt.executeQuery();
+            if (!r.next()) {
+                insertNoWorkToDb(date);
+            } else {
+                return LocalTime.parse(r.getString("time"));
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return LocalTime.parse("00:00:00");
+    }
+
+    private void insertNoWorkToDb(LocalDate date) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO Worktime(date, time) VALUES ((?),'00:00:00')");
+            stmt.setString(1, date + "");
+            stmt.execute();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
     }
 
 }
