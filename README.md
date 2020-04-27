@@ -4,8 +4,6 @@
 
 Bob the personal assistant on henkilökohtainen sihteeri, jonka ydin yllä: mitä enemmän on ulkoistettu, sitä enemmän on ulkoistettu, ja sitä enemmän on aikaa mukavammille asioille. Kyseessä on käyttöön tehtävä, yleistarpeellinen ohjelmisto.
 
-Nykyisessä versiossa ohjelmisto muistuttaa yksinkertaista kalenteria.
-
 *Due to the current situation with Covid-19*:
 
 Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn mukavuuden vuoksi työstä tulee todennäköisesti huomattavasti vaatimuksia laajempi. Mikäli ohjaaja tai katselmoija huomaa koodissa jotain korjattavaa tai hoksaa hauskoja kehitysidoita, jotka eivät välttämättä kurssin puitteisiin sisälly, ehdotuksia otetaan ilolla vastaan.
