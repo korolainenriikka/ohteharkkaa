@@ -57,7 +57,7 @@ java -jar target/Bob-0.000-SNAPSHOT.jar
 
 ### Checkstyle
 
-Tiedostoon [checkstyle.xml](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+Tiedoston [checkstyle.xml](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
 
 ```
  mvn jxr:jxr checkstyle:checkstyle
