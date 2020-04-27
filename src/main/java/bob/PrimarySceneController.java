@@ -49,6 +49,11 @@ public class PrimarySceneController implements SceneController {
     private void handleSetEndDayScene() {
         app.setEndDayScene();
     }
+    
+    @FXML
+    private void handleWorkScene(){
+        System.out.println("heyoooo!");
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
