@@ -28,7 +28,7 @@ Huonon huumorintajun, sekä tiettyjen ideoiden ohittamattomuuden vuoksi vappufii
 
 ### työskentelytila
 
-Työskentele-välilehden alla on työaikaa seuraava ajastin, sekä mahdollisuus soittaa [Harry Potter -taustaääniä](https://www.ambient-mixer.com/).
+Työskentele-välilehden alla on työaikaa seuraava ajastin, sekä mahdollisuus soittaa [Harry Potter -taustaääniä](https://www.ambient-mixer.com/). Työaika on aina päiväkohtainen, ja ajastin nollaantuu päivän vaihtuessa. Tehty työaika päivittyy tietokantaan aina ohjelman sulkemisen yhteydessä, ja lopeta päivä-sivulla näkyy päivän aikana tehty työmäärä.
 
 ## Jatkokehitysideoita
  ### Parannuksia olemassa oleviin toiminnallisuuksiin
