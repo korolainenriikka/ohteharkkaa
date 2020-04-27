@@ -19,6 +19,7 @@ public class WorkSceneController implements SceneController {
     public void setAttributes(BobUi app, BobService bobService) {
         this.app = app;
         this.bobService = bobService;
+        workTimer.setText(app.getWorkTime()+"");
     }
     
     @FXML
@@ -48,7 +49,9 @@ public class WorkSceneController implements SceneController {
                 if (now - prev < 1000000000) {
                     return;
                 }
-                workTimer.setText(LocalTime.parse(workTimer.getText(), DateTimeFormatter.ofPattern("HH:mm[:ss]")).plusSeconds(1)+"");
+                LocalTime worktime = LocalTime.parse(workTimer.getText(), DateTimeFormatter.ofPattern("HH[:mm[:ss]]")).plusSeconds(1);
+                app.updateWorkTime(worktime);
+                workTimer.setText(worktime+"");
                 this.prev=now;
             }
         };
