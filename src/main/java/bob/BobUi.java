@@ -2,7 +2,7 @@ package bob;
 
 import bob.dao.SQLBobDao;
 import bob.domain.BobService;
-import java.time.LocalDate;
+import java.time.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -17,9 +17,11 @@ public class BobUi extends Application {
     private PrimarySceneController primarySceneController;
     private Scene newReminderScene;
     private Scene newEventScene;
+    private Scene workScene;
     private Scene endDayScene;
     private EndDaySceneController endDaySceneController;
     private boolean pandemic;
+    private LocalTime workTime;
 
     @Override
     public void init() throws Exception {
@@ -48,6 +50,7 @@ public class BobUi extends Application {
         endDayScene = new Scene(endDayRoot);
 
         newReminderScene = initScene("/fxml/newReminderScene.fxml", new NewReminderSceneController());
+        workScene = initScene("/fxml/workScene.fxml", new WorkSceneController());
         newEventScene = initScene("/fxml/newEventScene.fxml", new NewReminderSceneController());
     }
 
@@ -84,16 +87,30 @@ public class BobUi extends Application {
         endDaySceneController.setSceneContent(today);
         stage.setScene(endDayScene);
     }
+    
+     void setWorkScene() {
+         stage.setScene(workScene);
+    }
 
     public LocalDate getToday() {
         return today;
     }
 
-    public static void main(String[] args) {
-        launch(BobUi.class);
-    }
-
     boolean isPandemic() {
         return pandemic;
+    }   
+
+    void updateWorkTime(LocalTime time) {
+        workTime = time;
+    }
+    
+    public static void main(String[] args) {
+        launch(BobUi.class);
+    }    
+    
+    @Override
+    public void stop(){
+        System.out.println(workTime+"");
+        System.out.println("suljetaaaaaaaaaaan!!!!");
     }
 }
