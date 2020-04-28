@@ -4,17 +4,19 @@
 
 Bob the personal assistant on henkilökohtainen sihteeri, jonka ydin yllä: mitä enemmän on ulkoistettu, sitä enemmän on ulkoistettu, ja sitä enemmän on aikaa mukavammille asioille. Kyseessä on käyttöön tehtävä, yleistarpeellinen ohjelmisto.
 
-Nykyisessä versiossa ohjelmisto muistuttaa yksinkertaista kalenteria.
-
 *Due to the current situation with Covid-19*:
 
 Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn mukavuuden vuoksi työstä tulee todennäköisesti huomattavasti vaatimuksia laajempi. Mikäli ohjaaja tai katselmoija huomaa koodissa jotain korjattavaa tai hoksaa hauskoja kehitysidoita, jotka eivät välttämättä kurssin puitteisiin sisälly, ehdotuksia otetaan ilolla vastaan.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/resources/images/primarySceneBottom.jpg" width="300" height="300"/>
 
-## komentorivitoiminnot
+## Releaset
 
-### ohjelman suoritus
+[viikko 5](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/releases)
+
+## Komentorivitoiminnot
+
+### Ohjelman suoritus
 
 ohjelma suoritetaan hakemiston juuressa komennolla 
 
@@ -47,11 +49,15 @@ Komento
 mvn package
 ```
 
-generoi hakemistoon _target_ suoritettavan jar-tiedoston.
+generoi hakemistoon _target_ suoritettavan jar-tiedoston, joka ajetaan komennolla 
+
+```
+java -jar target/Bob-0.000-SNAPSHOT.jar
+```
 
 ### Checkstyle
 
-Tiedostoon [checkstyle.xml](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+Tiedoston [checkstyle.xml](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
 
 ```
  mvn jxr:jxr checkstyle:checkstyle

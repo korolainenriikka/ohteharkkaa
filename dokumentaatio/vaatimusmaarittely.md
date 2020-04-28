@@ -8,7 +8,7 @@ Bob the personal assistant on henkilökohtainen sihteeri, jonka tarkoituksena on
 
 Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lailla omien tarpeiden mukaan elävä ja kehittyvä.
 
-## Toiminnallisuudet
+## Toteutetut toiminnallisuudet
 
 ### muistutukset
 
@@ -26,13 +26,21 @@ Vuoden kohokohdan eli vappupäivän lähentyessä myös bobi sai juhlasta osansa
 
 Huonon huumorintajun, sekä tiettyjen ideoiden ohittamattomuuden vuoksi vappufiiliksiin vaikuttaa olennaisesti myös boolean-tyyppinen pandemia-muuttuja.
 
+### työskentelytila
+
+Työskentele-välilehden alla on työaikaa seuraava ajastin, sekä mahdollisuus soittaa [Harry Potter -taustaääniä](https://www.ambient-mixer.com/). Työaika on aina päiväkohtainen, ja ajastin nollaantuu päivän vaihtuessa. Tehty työaika päivittyy tietokantaan aina ohjelman sulkemisen yhteydessä, ja lopeta päivä-sivulla näkyy päivän aikana tehty työmäärä.
+
 ## Jatkokehitysideoita
+ ### Parannuksia olemassa oleviin toiminnallisuuksiin
+ * työajan seurannan mediaplayerit automaattisesti toistavat äänitiedoston uudelleen sen pätyttyä
+ 
+ * työaika-ajastin tallentaa jonkinlaiseen havainnollistavaan muotoon dataa työajoista (esim. kirjoittaa työaikakirjanpito-markdowneja)
+ 
+ * lisättyjä kalenterijuttuja (muistutukset ja tapahtumat) voi jälkikäteen tarkkailla, ja muokata.
 
  ### Muita toiminnallisuuksia (perusversion laajennukset)
 
  * kotitöiden tekemistä aikatauluttava toiminnallisuus (aloitettu, tallessa gitin ulkopuolella)
-
- * työaikakirjanpito, joka ajastaa työntekoa, soittaa töitä tehtäessä haluttaessa [Harry Potter common room -taustaääniä](https://www.ambient-mixer.com/), ja tekee automaattisesti kurssien vaatimat md-dokumentit.
  
  * jonkinlaisten muistilistojen ylläpito, esim. hyviä kirjoja, pakkauslistaa, ym.
 
