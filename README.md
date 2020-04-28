@@ -12,6 +12,8 @@ Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn m
 
 ## Releaset
 
+[viikko 6](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/releases)
+
 [viikko 5](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/releases)
 
 ## Komentorivitoiminnot
