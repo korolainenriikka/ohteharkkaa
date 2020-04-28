@@ -65,6 +65,17 @@ Tiedoston [checkstyle.xml](https://github.com/korolainenriikka/BobThePersonalAss
 
 Virheilmoitukset löytyvät selaimella avattavasta tiedostosta _target/site/checkstyle.html_
 
+### JavaDoc
+
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
+
+JavaDocia voi tarkastella avaamalla selaimella tiedosto _target/site/apidocs/index.html_
+
+
 ## Dokumentaatio
 
 [määrittelydokumentti](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/vaatimusmaarittely.md)
