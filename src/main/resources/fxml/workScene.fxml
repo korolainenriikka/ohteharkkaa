@@ -2,14 +2,17 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bob.WorkSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="880.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bob.ui.WorkSceneController">
    <children>
       <Button fx:id="WorkButton" layoutX="153.0" layoutY="378.0" mnemonicParsing="false" onAction="#startWorking" text="Työskentele" />
       <Button fx:id="breakButton" layoutX="294.0" layoutY="378.0" mnemonicParsing="false" onAction="#pauseTimer" text="Tauko" />
       <Button fx:id="returnButton" layoutX="574.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleSetPrimaryScene" text="Palaa" />
-      <Label fx:id="workTImer" layoutX="159.0" layoutY="324.0" text="00:00:00" />
+      <Label fx:id="workTimer" layoutX="159.0" layoutY="345.0" text="00:00:00" />
+      <Label layoutX="159.0" layoutY="236.0" text="Valitse taustaääni:" />
+      <RadioButton fx:id="hogwartsLibrary" layoutX="159.0" layoutY="270.0" mnemonicParsing="false" text="Hogwarts library" />
+      <RadioButton fx:id="hufflepuffCommonRoom" layoutX="159.0" layoutY="302.0" mnemonicParsing="false" text="Hufflepuff common room" />
    </children>
 </AnchorPane>

@@ -21,5 +21,6 @@ Pvm | Tunnit | tehty
 19.4 | 6 | kotihommatoimintoa (lisätään bobiin myöhemmin), sekä refaktorointia
 20.4 | 2 | ideointia ja vappufiiliksiä
 21.4 | 5 | release 1 sekä vappufiilikset
+27.4 | 4 | työaika-ajastin, ui refaktorointi
 
-yht: 67 h
+yht: 71 h

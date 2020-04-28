@@ -1,9 +1,8 @@
 target
 laskarit/viikko2/Unicafe/target
 laskarit/viikko2/Maksukortti/target
-.db
 bobData.db
 nbactions.xml
-/nbproject/testData.db
 choreStuff
-satunnaisiajuttuja.txt
+*.txt
+testData.db

@@ -1,7 +1,7 @@
 package bob.dao;
 
 import bob.domain.*;
-import java.time.LocalDate;
+import java.time.*;
 import java.util.List;
 
 public interface BobDao {
@@ -15,5 +15,9 @@ public interface BobDao {
     List<CalendarItem> getTodaysReminders(LocalDate today);
 
     boolean removeOld(LocalDate today);
+    
+    public void updateWorkTime(LocalTime workTime, LocalDate date);
+
+    public LocalTime getWorkTime(LocalDate date);
 
 }

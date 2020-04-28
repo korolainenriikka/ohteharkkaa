@@ -51,5 +51,13 @@ public class BobService {
     public void moveReminderToNextDay(String text, LocalDate date) {
         bobDao.addReminderToDatabase(new Reminder(date.plusDays(1), text));
     }
+    
+    public void saveWorkedTime(LocalTime time, LocalDate date){
+        bobDao.updateWorkTime(time, date);
+    }
+
+    public LocalTime getWorkTime(LocalDate date) {
+        return bobDao.getWorkTime(date);
+    }
 
 }

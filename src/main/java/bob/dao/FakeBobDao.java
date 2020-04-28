@@ -2,16 +2,19 @@ package bob.dao;
 
 import bob.domain.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class FakeBobDao implements BobDao {
 
     private ArrayList<CalendarItem> reminders;
     private ArrayList<CalendarItem> events;
+    private LocalTime worktime;
 
     public FakeBobDao() {
         this.reminders = new ArrayList<>();
         this.events = new ArrayList<>();
+        this.worktime = LocalTime.parse("00:00:00");
     }
 
     @Override
@@ -39,6 +42,16 @@ public class FakeBobDao implements BobDao {
     @Override
     public boolean removeOld(LocalDate today) {
         return true;
+    }
+
+    @Override
+    public void updateWorkTime(LocalTime workTime, LocalDate date) {
+        this.worktime = workTime;
+    }
+
+    @Override
+    public LocalTime getWorkTime(LocalDate date) {
+        return worktime;
     }
 
 }
