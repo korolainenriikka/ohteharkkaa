@@ -31,14 +31,20 @@ Huonon huumorintajun, sekä tiettyjen ideoiden ohittamattomuuden vuoksi vappufii
 Työskentele-välilehden alla on työaikaa seuraava ajastin, sekä mahdollisuus soittaa [Harry Potter -taustaääniä](https://www.ambient-mixer.com/). Työaika on aina päiväkohtainen, ja ajastin nollaantuu päivän vaihtuessa. Tehty työaika päivittyy tietokantaan aina ohjelman sulkemisen yhteydessä, ja lopeta päivä-sivulla näkyy päivän aikana tehty työmäärä.
 
 ## Jatkokehitysideoita
- ### Parannuksia olemassa oleviin toiminnallisuuksiin
- * työajan seurannan mediaplayerit automaattisesti toistavat äänitiedoston uudelleen sen pätyttyä
+
+### Ohjelman väärään/epätavalliseen käyttöön varautuminen
+
+* jonkinlainen päivän lopettamisen tarkistus: päivä on aina lopetettava (tai esim. kaikki hommat siirretään myöhempään), ja päivää ei voi lopettaa useasti
+
+* primary scenestä skrollattava, kun juttua on sivulla niin paljon, ettei mahdu oletuskoon ikkunaan
+
+### Parannuksia olemassa oleviin toiminnallisuuksiin
  
  * työaika-ajastin tallentaa jonkinlaiseen havainnollistavaan muotoon dataa työajoista (esim. kirjoittaa työaikakirjanpito-markdowneja)
  
- * lisättyjä kalenterijuttuja (muistutukset ja tapahtumat) voi jälkikäteen tarkkailla, ja muokata.
+ * lisättyjä kalenterijuttuja (muistutukset ja tapahtumat) voi jälkikäteen tarkkailla, ja muokata
 
- ### Muita toiminnallisuuksia (perusversion laajennukset)
+### Muita toiminnallisuuksia (perusversion laajennukset)
 
  * kotitöiden tekemistä aikatauluttava toiminnallisuus (aloitettu, tallessa gitin ulkopuolella)
  
