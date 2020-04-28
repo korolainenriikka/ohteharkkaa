@@ -27,7 +27,7 @@ Tapahtumien lisääminen tapahtuu muistutuksen tapaan, erona tapahtumalle voidaa
 
 Työskentelytilassa voidaan valita työskentelyyn sopiva taustaääni, ja käynnistää tai pysäyttää ajastin painikkeista _työskentele_ ja _tauko_.
 
-<img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/tyoskentelynakyma.png" width="650" height="880"/>
+<img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/tyoskentelytila.png" width="650" height="880"/>
 
 ## Päivän lopettaminen
 
