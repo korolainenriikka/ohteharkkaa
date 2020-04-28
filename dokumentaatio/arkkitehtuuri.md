@@ -28,7 +28,7 @@ Sovelluksen loogisen datamallin muodostavat luokat [Reminder](https://github.com
 
 Toiminnallisista kokonaisuuksista vastaa luokan [BobService](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/domain/BobService.java) ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin.
 
-_BobService_ pääsee käsiksi tallennettuun tietoon tallennuksesta vastaavan pakkauksessa _bobapp.dao_ sijaitsevan rajapinnan _BobDao_ välityksellä. 
+_BobService_ pääsee käsiksi tallennettuun tietoon tallennuksesta vastaavan pakkauksessa _bob.dao_ sijaitsevan rajapinnan _BobDao_ välityksellä. 
 
 TodoServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 
