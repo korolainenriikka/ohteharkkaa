@@ -1,13 +1,11 @@
 package bob.ui;
 
-import bob.ui.BobUi;
 import bob.domain.*;
 import bob.ui.BobUi;
 import java.net.URL;
 import java.time.*;
 import java.util.*;
 import javafx.fxml.*;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
@@ -51,9 +49,9 @@ public class PrimarySceneController implements SceneController {
     private void handleSetEndDayScene() {
         app.setEndDayScene();
     }
-    
+
     @FXML
-    private void handleWorkScene(){
+    private void handleWorkScene() {
         app.setWorkScene();
     }
 
@@ -65,7 +63,19 @@ public class PrimarySceneController implements SceneController {
         pandemic = app.isPandemic();
         setTopImage();
         clearContent();
-        setTodaysContent();
+        setTodaysCalendar();
+        insertVappuFeels();
+    }
+
+    private void setTopImage() {
+        LocalTime time = LocalTime.now();
+        if (time.isAfter(LocalTime.parse("05:00")) && time.isBefore(LocalTime.NOON)) {
+            topImage.setImage(new Image("file:src/main/resources/images/primarySceneTop/aamuarde.jpg"));
+        } else if (time.isBefore(LocalTime.parse("16:00"))) {
+            topImage.setImage(new Image("file:src/main/resources/images/primarySceneTop/paiva_arde.jpg"));
+        } else {
+            topImage.setImage(new Image("file:src/main/resources/images/primarySceneTop/ilta_arde.jpg"));
+        }
     }
 
     private void clearContent() {
@@ -74,26 +84,13 @@ public class PrimarySceneController implements SceneController {
         vappufeels.getChildren().clear();
     }
 
-    private void setTopImage() {
-        LocalTime time = LocalTime.now();
-        if (time.isAfter(LocalTime.parse("05:00")) && time.isBefore(LocalTime.NOON)) {
-            topImage.setImage(new Image("file:src/main/resources/images/aamuarde.jpg"));
-        } else if (time.isBefore(LocalTime.parse("16:00"))) {
-            topImage.setImage(new Image("file:src/main/resources/images/paiva_arde.jpg"));
-        } else {
-            topImage.setImage(new Image("file:src/main/resources/images/ilta_arde.jpg"));
-        }
-    }
-
-    private void setTodaysContent() {
+    private void setTodaysCalendar() {
         boolean nothingToDo = true;
         nothingToDo = addTodaysEventsToScene(nothingToDo);
         nothingToDo = addTodaysRemindersToScene(nothingToDo);
         if (nothingToDo) {
             createEmptyCalendarLabel();
         }
-        insertVappuFeels();
-
     }
 
     private boolean addTodaysEventsToScene(boolean nothingToDo) {
@@ -150,29 +147,32 @@ public class PrimarySceneController implements SceneController {
 
     private void insertVappuImg(String thisYear) {
         vappufeels.getChildren().add(new Label("\nPÄIVÄN VAPPUFIILIKSET:"));
+        images = new HBox();
+        images.setSpacing(5);
+        createImageView(thisYear);
+    }
+
+    private void createImageView(String thisYear) {
         ImageView vabufeelsImgView = new ImageView();
         vabufeelsImgView.setFitHeight(150);
         vabufeelsImgView.setFitWidth(150);
         vabufeelsImgView.setImage(new Image(getImagePath(thisYear)));
-        images = new HBox();
-        images.setSpacing(5);
+        images.getChildren().add(vabufeelsImgView);     
         if (pandemic) {
             insertPartyingCoronaVirus();
         }
-        images.getChildren().add(vabufeelsImgView);
         vappufeels.getChildren().add(images);
-
     }
 
     private void insertPartyingCoronaVirus() {
-        ImageView coronaView = new ImageView(new Image("file:src/main/resources/images/vabukorona.jpg"));
+        ImageView coronaView = new ImageView(new Image("file:src/main/resources/images/vabu/vabukorona.jpg"));
         coronaView.setFitHeight(70);
         coronaView.setFitWidth(70);
-        images.getChildren().addAll(coronaView);
+        images.getChildren().add(coronaView);
     }
 
     private String getImagePath(String thisYear) {
-        String path = "file:src/main/resources/images/";
+        String path = "file:src/main/resources/images/vabu/";
         if (app.getToday().isBefore(LocalDate.parse(thisYear + "-03-01"))) {
             Random r = new Random();
             if (r.nextInt(2) == 0) {
@@ -194,5 +194,4 @@ public class PrimarySceneController implements SceneController {
             return path + "darravabubobi.jpg";
         }
     }
-
 }

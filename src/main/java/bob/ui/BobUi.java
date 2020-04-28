@@ -65,12 +65,15 @@ public class BobUi extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        
-
         this.stage = primaryStage;
         setPrimaryScene();
         primaryStage.setTitle("bob the personal assistant <3");
         stage.show();
+    }
+
+    @Override
+    public void stop() {
+        bobService.saveWorkedTime(workTime, today);
     }
 
     public void setPrimaryScene() {
@@ -113,10 +116,5 @@ public class BobUi extends Application {
 
     public static void main(String[] args) {
         launch(BobUi.class);
-    }
-
-    @Override
-    public void stop() {
-        bobService.saveWorkedTime(workTime, today);
     }
 }

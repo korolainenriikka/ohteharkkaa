@@ -1,7 +1,6 @@
 package bob.ui;
 
 import bob.ui.SceneController;
-import bob.ui.BobUi;
 import bob.domain.BobService;
 import bob.ui.BobUi;
 import java.net.URL;
@@ -66,20 +65,24 @@ public class WorkSceneController implements SceneController {
     }
 
     private void initializeAmbientPlayer() {
+        createToggleGroup();
+        libraryPlayer = createMediaPlayerFromURL("/sounds/Hogwarts-Library.mp3");
+        hufflepuffPlayer = createMediaPlayerFromURL("/sounds/Hufflepuff-Commonroom.mp3");
+    }
+       
+    private void createToggleGroup() {
         final ToggleGroup group = new ToggleGroup();
         hogwartsLibrary.setToggleGroup(group);
         hufflepuffCommonRoom.setToggleGroup(group);
-        Media librarySound = createMediaFromURL("/sounds/Hogwarts-Library.mp3");
-        libraryPlayer = new MediaPlayer(librarySound);
-        Media hufflepuffCommonRoomSound = createMediaFromURL("/sounds/Hufflepuff-Commonroom.mp3");
-        hufflepuffPlayer = new MediaPlayer(hufflepuffCommonRoomSound);
     }
 
-    private Media createMediaFromURL(String url) {
+    private MediaPlayer createMediaPlayerFromURL(String url) {
         URL mediaUrl = getClass().getResource(url);
         String mediaStringUrl = mediaUrl.toExternalForm();
-        Media librarySound = new javafx.scene.media.Media(mediaStringUrl);
-        return librarySound;
+        Media sound = new javafx.scene.media.Media(mediaStringUrl);
+        MediaPlayer player = new MediaPlayer(sound);
+        player.setCycleCount(MediaPlayer.INDEFINITE);
+        return player;
     }
 
     private void initializeWorkTimer() {

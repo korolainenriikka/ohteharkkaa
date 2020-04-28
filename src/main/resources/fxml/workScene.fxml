@@ -12,7 +12,7 @@
       <Button fx:id="returnButton" layoutX="574.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleSetPrimaryScene" text="Palaa" />
       <Label fx:id="workTimer" layoutX="159.0" layoutY="345.0" text="00:00:00" />
       <Label layoutX="159.0" layoutY="236.0" text="Valitse taustaääni:" />
-      <RadioButton fx:id="hogwartsLibrary" layoutX="159.0" layoutY="270.0" mnemonicParsing="false" text="Hogwarts library" />
+      <RadioButton fx:id="hogwartsLibrary" layoutX="159.0" layoutY="268.0" mnemonicParsing="false" text="Hogwarts library" />
       <RadioButton fx:id="hufflepuffCommonRoom" layoutX="159.0" layoutY="302.0" mnemonicParsing="false" text="Hufflepuff common room" />
    </children>
 </AnchorPane>

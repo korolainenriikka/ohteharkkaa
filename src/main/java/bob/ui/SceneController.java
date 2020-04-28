@@ -1,6 +1,5 @@
 package bob.ui;
 
-import bob.ui.BobUi;
 import bob.domain.BobService;
 import bob.ui.BobUi;
 import javafx.fxml.Initializable;

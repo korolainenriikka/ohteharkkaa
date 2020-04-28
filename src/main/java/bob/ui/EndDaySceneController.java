@@ -1,6 +1,5 @@
 package bob.ui;
 
-import bob.ui.BobUi;
 import bob.domain.*;
 import bob.ui.BobUi;
 import java.net.URL;
@@ -26,9 +25,6 @@ public class EndDaySceneController implements SceneController {
     private VBox todaysReminders;
 
     @FXML
-    private Button save;
-
-    @FXML
     private Label worktime;
 
     private HashMap<CheckBox, Label> reminders;
@@ -42,7 +38,6 @@ public class EndDaySceneController implements SceneController {
     private void saveSelections() {
         for (CheckBox cb : reminders.keySet()) {
             if (!cb.isSelected()) {
-                //undone reminder is added to next day
                 bobService.moveReminderToNextDay(reminders.get(cb).getText(), app.getToday());
             }
         }
@@ -85,5 +80,4 @@ public class EndDaySceneController implements SceneController {
         String formatted = worked.getHour() + " h " + worked.getMinute() + " min";
         worktime.setText(formatted);
     }
-
 }
