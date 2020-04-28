@@ -58,7 +58,8 @@ public class SQLBobDao implements BobDao {
     }
 
     /**
-     * Metori lisää parametrina annetun Reminder-olion tietokannan reminders-tauluun.
+     * Metori lisää parametrina annetun Reminder-olion tietokannan
+     * reminders-tauluun.
      *
      * @param newReminder lisättävä muistutus
      *
@@ -78,8 +79,9 @@ public class SQLBobDao implements BobDao {
     }
 
     /**
-     * Metodi poistaa tietokannasta kaikki kalenteritapahtumat sekä muistutukset,
-     * joiden päivämäärä on ennen parametrina annettua päivämäärää.
+     * Metodi poistaa tietokannasta kaikki kalenteritapahtumat sekä
+     * muistutukset, joiden päivämäärä on ennen parametrina annettua
+     * päivämäärää.
      *
      * @param today päivämäärä, jota edeltävä tieto poistetaan
      *
@@ -168,8 +170,8 @@ public class SQLBobDao implements BobDao {
     }
 
     /**
-     * Metodi hakee tietokannasta tehdyn työajan. Jos aikaa ei löydy, tietokantaan
-     * lisätään tyhjää työaikaa indikoiva rivi.
+     * Metodi hakee tietokannasta tehdyn työajan. Jos aikaa ei löydy,
+     * tietokantaan lisätään tyhjää työaikaa indikoiva rivi.
      *
      * @param date päivä, jonka työaika haetaan
      *

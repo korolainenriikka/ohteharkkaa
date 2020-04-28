@@ -157,7 +157,7 @@ public class PrimarySceneController implements SceneController {
         vabufeelsImgView.setFitHeight(150);
         vabufeelsImgView.setFitWidth(150);
         vabufeelsImgView.setImage(new Image(getImagePath(thisYear)));
-        images.getChildren().add(vabufeelsImgView);     
+        images.getChildren().add(vabufeelsImgView);
         if (pandemic) {
             insertPartyingCoronaVirus();
         }

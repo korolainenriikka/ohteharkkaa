@@ -5,7 +5,6 @@ import java.time.LocalDate;
 /**
  * Muistutusta kuvaava luokka.
  */
-
 public class Reminder implements CalendarItem {
 
     private LocalDate date;

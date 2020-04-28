@@ -5,7 +5,6 @@ import java.time.*;
 /**
  * Kalenteritapahtumaa kuvaava luokka, aika-parametri ei pakollinen
  */
-
 public class Event implements Comparable<Event>, CalendarItem {
 
     private LocalDate date;
@@ -44,7 +43,7 @@ public class Event implements Comparable<Event>, CalendarItem {
             return -1;
         } else {
             return this.time.compareTo(otherEvent.time);
-        }      
+        }
     }
 
     /**

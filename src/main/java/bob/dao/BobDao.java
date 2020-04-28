@@ -15,7 +15,7 @@ public interface BobDao {
     List<CalendarItem> getTodaysReminders(LocalDate today);
 
     boolean removeOld(LocalDate today);
-    
+
     public void updateWorkTime(LocalTime workTime, LocalDate date);
 
     public LocalTime getWorkTime(LocalDate date);

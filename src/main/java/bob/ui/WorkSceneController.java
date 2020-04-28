@@ -69,7 +69,7 @@ public class WorkSceneController implements SceneController {
         libraryPlayer = createMediaPlayerFromURL("/sounds/Hogwarts-Library.mp3");
         hufflepuffPlayer = createMediaPlayerFromURL("/sounds/Hufflepuff-Commonroom.mp3");
     }
-       
+
     private void createToggleGroup() {
         final ToggleGroup group = new ToggleGroup();
         hogwartsLibrary.setToggleGroup(group);

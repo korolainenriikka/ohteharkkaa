@@ -16,8 +16,8 @@ public class BobService {
     }
 
     /**
-     * Metodi luo parametreistä uuden event-olion, lisää olion dao:n välityksellä
-     * tietokantaan, ja palauttaa vahvistusviestin.
+     * Metodi luo parametreistä uuden event-olion, lisää olion dao:n
+     * välityksellä tietokantaan, ja palauttaa vahvistusviestin.
      *
      * @param date päivä, jolloin tapahtuma on
      * @param time tapahtuman ajankohta
@@ -38,7 +38,7 @@ public class BobService {
     }
 
     /**
-     * Metodi luo parametreista uuden reminder-loin, lisää olion tietokantaan 
+     * Metodi luo parametreista uuden reminder-loin, lisää olion tietokantaan
      * dao-luokan välityksllä, ja palauttaa vahvistusviestin.
      *
      * @param date muistutuksen päivämäärä
@@ -68,7 +68,7 @@ public class BobService {
     }
 
     /**
-     * Metodi palauttaa parametrina annettua luokkaa sekä päivää vastaavat 
+     * Metodi palauttaa parametrina annettua luokkaa sekä päivää vastaavat
      * kalenteritapahtumat tai muistutukset niiden merkkijonoesityksenä
      * tietokannasta dao-luokan välityksellä.
      *
@@ -92,8 +92,8 @@ public class BobService {
     }
 
     /**
-     * Metodi luo parametreistä uuden muistutuksen, lisää päivämäärää yhdellä
-     * ja lisää muistutuksen dao-luokan välityksellä tietokantaan.
+     * Metodi luo parametreistä uuden muistutuksen, lisää päivämäärää yhdellä ja
+     * lisää muistutuksen dao-luokan välityksellä tietokantaan.
      *
      * @param text muistutuksen kuvaus
      * @param date muistutuksen päivämäärä
