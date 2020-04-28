@@ -22,5 +22,6 @@ Pvm | Tunnit | tehty
 20.4 | 2 | ideointia ja vappufiiliksiä
 21.4 | 5 | release 1 sekä vappufiilikset
 27.4 | 4 | työaika-ajastin, ui refaktorointi
+28.4 | 6 | 6. deadlinen vaatimuksia: javadoc, testejä, dokumentaatiota, koodin siistimistä
 
-yht: 71 h
+yht: 77 h
