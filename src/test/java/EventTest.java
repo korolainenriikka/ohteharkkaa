@@ -1,11 +1,9 @@
 
 import bob.domain.Event;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class EventTest {
 
@@ -41,13 +39,25 @@ public class EventTest {
     }
 
     @Test
-    public void eventHappeningBeforeComparesFalse() {
+    public void eventHappeningBeforeComparesTrue() {
         Event otherEvent = new Event(today, LocalTime.parse("00:00"), "moikkumoi");
         assertThat(event.compareTo(otherEvent), is(1));
+    }
+    
+    @Test
+    public void eventWithNoTimeComparesFalse() {
+        Event otherEvent = new Event(today, null, "moikkumoi");
+        assertThat(otherEvent.compareTo(event), is(-1));
     }
 
     @Test
     public void testToString() {
         assertThat(event.toString(), equalTo("klo " + now + ": tämä on testitapahtuma"));
+    }
+    
+    @Test
+    public void testToStringWithNullTime() {
+        Event nullEvent = new Event(today, null, "moikkumoi");
+        assertThat(nullEvent.toString(), equalTo("moikkumoi"));
     }
 }

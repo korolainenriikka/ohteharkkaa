@@ -8,6 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.stage.Stage;
 
+/**
+ * Käyttöliittymäluokka.
+ */
 public class BobUi extends Application {
 
     private BobService bobService;
@@ -23,6 +26,10 @@ public class BobUi extends Application {
     private boolean pandemic;
     private LocalTime workTime;
 
+    /**
+     * Metodi alustaa sovelluksen: määrittää päivämäärän, pandemiatilanteen,
+     * alustaa sovelluslogiikan, hakee työajan sekä alustaa näkymät.
+     */
     @Override
     public void init() throws Exception {
         today = LocalDate.now();
@@ -63,6 +70,11 @@ public class BobUi extends Application {
         return new Scene(root);
     }
 
+    /**
+     * Metodi käynnistää sovelluksen.
+     *
+     * @param primaryStage ikkuna, jolle sovellus käynnistyy
+     */
     @Override
     public void start(Stage primaryStage) {
         this.stage = primaryStage;
@@ -71,29 +83,49 @@ public class BobUi extends Application {
         stage.show();
     }
 
+    /**
+     * Metodi sulkee sovelluksen ja tallentaa samalla työajan.
+     */
     @Override
     public void stop() {
         bobService.saveWorkedTime(workTime, today);
     }
 
+    /**
+     * Metodi kutsuu päänäkymään tiedot lisäävää metodia ja asettaa ikkunaan
+     * päänäkymän.
+     */
     public void setPrimaryScene() {
         primarySceneController.setSceneContent(today);
         stage.setScene(primaryScene);
     }
 
+    /**
+     * Metodi asettaa ikkunaan näkymän, jolla lisätään muistutuksia.
+     */
     public void setNewReminderScene() {
         stage.setScene(newReminderScene);
     }
 
+    /**
+     * Metodi asettaa ikkunaan näkymän, jolla lisätään tapahtumia.
+     */
     public void setNewEventScene() {
         stage.setScene(newEventScene);
     }
 
+    /**
+     * Metodi kutsuu näkymään tiedot lisäävää metodia ja asettaa ikkunaan päivän
+     * lopetusnäkymän.
+     */
     public void setEndDayScene() {
         endDaySceneController.setSceneContent(today);
         stage.setScene(endDayScene);
     }
 
+    /**
+     * Metodi asettaa ikkunaan työskentelynäkymän.
+     */
     void setWorkScene() {
         stage.setScene(workScene);
     }
@@ -110,6 +142,10 @@ public class BobUi extends Application {
         return pandemic;
     }
 
+    /**
+     * Metodi päivittää ui-luokan työaikamuuttujan.
+     *
+     */
     void updateWorkTime(LocalTime time) {
         workTime = time;
     }

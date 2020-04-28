@@ -1,0 +1,7 @@
+package bob.ui;
+
+/**
+ *
+ * Käyttöliittymä
+ *
+ */

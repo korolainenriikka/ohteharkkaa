@@ -2,6 +2,10 @@ package bob.domain;
 
 import java.time.*;
 
+/**
+ * Kalenteritapahtumaa kuvaava luokka, aika-parametri ei pakollinen
+ */
+
 public class Event implements Comparable<Event>, CalendarItem {
 
     private LocalDate date;
@@ -26,13 +30,34 @@ public class Event implements Comparable<Event>, CalendarItem {
         return description;
     }
 
+    /**
+     * Metodi vertaa tapahtumaa toiseen, vertailukohteena aika. Null-arvoinen
+     * arvioidaan aina aiemmaksi.
+     *
+     * @param
+     *
+     * @return
+     */
     @Override
     public int compareTo(Event otherEvent) {
-        return this.time.compareTo(otherEvent.time);
+        if (time == null) {
+            return -1;
+        } else {
+            return this.time.compareTo(otherEvent.time);
+        }      
     }
 
+    /**
+     * Metodi palauttaa kalenteritapahtuman merkkijonoesityksenä.
+     *
+     * @return merkkijonoesitys
+     */
     @Override
     public String toString() {
-        return "klo " + this.time + ": " + this.description;
+        if (this.time == null) {
+            return this.description;
+        } else {
+            return "klo " + this.time + ": " + this.description;
+        }
     }
 }

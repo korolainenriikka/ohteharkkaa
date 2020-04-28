@@ -1,8 +1,7 @@
 package bob.dao;
 
 import bob.domain.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.*;
 import java.util.*;
 
 public class FakeBobDao implements BobDao {
@@ -19,12 +18,18 @@ public class FakeBobDao implements BobDao {
 
     @Override
     public boolean addEventToDatabase(Event newEvent) {
+        if (newEvent.getDescription() == null || newEvent.getDate() == null) {
+            return false;
+        }
         events.add(newEvent);
         return true;
     }
 
     @Override
     public boolean addReminderToDatabase(Reminder newReminder) {
+        if (newReminder.getDescription() == null || newReminder.getDate() == null) {
+            return false;
+        }
         reminders.add(newReminder);
         return true;
     }

@@ -1,6 +1,7 @@
 
 import bob.dao.SQLBobDao;
 import bob.domain.*;
+import java.io.File;
 import java.sql.*;
 import java.time.*;
 import java.util.List;
@@ -25,10 +26,8 @@ public class BobDaoTest {
 
     @After
     public void tearDown() throws SQLException {
-        Connection c = bobDao.getConnection();
-        Statement s = c.createStatement();
-        s.execute("DROP TABLE IF EXISTS Reminders");
-        s.execute("DROP TABLE IF EXISTS Events");
+        File file = new File("testData.db");
+        file.delete();
     }
 
     @Test
@@ -39,6 +38,12 @@ public class BobDaoTest {
     @Test
     public void addEventToDatabase() {
         Event event = new Event(today, now, ":D");
+        assertThat(bobDao.addEventToDatabase(event), is(true));
+    }
+    
+    @Test
+    public void addEventWithNullTimeToDatabase(){
+        Event event = new Event(today, null, ":D");
         assertThat(bobDao.addEventToDatabase(event), is(true));
     }
 
@@ -63,9 +68,23 @@ public class BobDaoTest {
     }
 
     @Test
-    public void eventIsFoundInDatabase() {
+    public void eventIsFoundInDatabaseReturnsSorted() {
+        bobDao.addEventToDatabase(new Event(today, null, ":D"));
         bobDao.addEventToDatabase(new Event(today, now, ":D"));
         List<CalendarItem> events = bobDao.getTodaysEventsSorted(today);
-        assertThat(events.get(0).toString(), equalTo("klo " + now + ": :D"));
+        assertThat(events.get(0).toString(), equalTo(":D"));
+        assertThat(events.get(1).toString(), equalTo("klo " + now + ": :D"));
+    }
+    
+    @Test
+    public void firstGetWorktimeInsertsEmptyTimeData(){
+        assertThat(bobDao.getWorkTime(today), equalTo(LocalTime.parse("00:00:00")));
+    }
+    
+    @Test 
+    public void worktimeUpdatesInDatabase(){
+        bobDao.getWorkTime(today);
+        bobDao.updateWorkTime(LocalTime.parse("12:34:56"), today);
+        assertThat(bobDao.getWorkTime(today), equalTo(LocalTime.parse("12:34:56")));
     }
 }

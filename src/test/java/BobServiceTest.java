@@ -31,11 +31,25 @@ public class BobServiceTest {
     public void addRemiderToDatabaseWorks() {
         assertThat(bobService.createNewReminder(today, ":)"), equalTo("uusi muistutus lisätty:\n" + today + "\n:)"));
     }
+    
+    @Test
+    public void addFalseReminderToDatabaseReturnsError() {
+        assertThat(bobService.createNewReminder(null, null), equalTo("virhe!"));
+    }
 
     @Test
     public void addEventToDatabaseWorks() {
-        bobService.createNewEvent(today, now, ":D");
         assertThat(bobService.createNewEvent(today, now, ":D"), equalTo("uusi tapahtuma lisätty:\n" + today + "\n" + now + "\n:D"));
+    }
+    
+    @Test
+    public void addEventWtihNoTimeToDatabase() {
+        assertThat(bobService.createNewEvent(today, null, ":D"), equalTo("uusi tapahtuma lisätty:\n" + today + "\n:D"));
+    }
+    
+    @Test
+    public void addFalseEventToDatabaseReturnsError() {
+        assertThat(bobService.createNewEvent(null, null, null), equalTo("virhe!"));
     }
 
     @Test
@@ -60,5 +74,11 @@ public class BobServiceTest {
         bobService.moveReminderToNextDay(":)", today);
         today = today.plusDays(1);
         assertThat(bobService.getDaysItemsAsString(Reminder.class, today), hasItem(":)"));
+    }
+    
+    @Test
+    public void workTimeUpdates() {
+        bobService.saveWorkedTime(LocalTime.parse("00:00:01"), today);
+        assertThat(bobService.getWorkTime(today), equalTo(LocalTime.parse("00:00:01")));
     }
 }

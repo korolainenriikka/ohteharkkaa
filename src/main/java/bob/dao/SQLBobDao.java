@@ -5,6 +5,9 @@ import java.sql.*;
 import java.time.*;
 import java.util.*;
 
+/**
+ * Tiedon pysyväistallennuksesta tietokantaan vastaava luokka.
+ */
 public class SQLBobDao implements BobDao {
 
     private Connection connection;
@@ -14,7 +17,6 @@ public class SQLBobDao implements BobDao {
             connection = DriverManager.getConnection(database);
         } catch (SQLException e) {
             System.err.println(e);
-
         }
         createDatabase();
     }
@@ -30,11 +32,22 @@ public class SQLBobDao implements BobDao {
         }
     }
 
+    /**
+     * Metori lisää parametrina annetun Event-olion tietokannan events-tauluun.
+     *
+     * @param newEvent lisättävä tapahtuma
+     *
+     * @return true/false (onnistuiko lisäys)
+     */
     public boolean addEventToDatabase(Event newEvent) {
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Events(date, time, description) VALUES (?,?,?)");
             stmt.setString(1, newEvent.getDate() + "");
-            stmt.setString(2, newEvent.getTime() + "");
+            if (newEvent.getTime() == null) {
+                stmt.setString(2, null);
+            } else {
+                stmt.setString(2, newEvent.getTime() + "");
+            }
             stmt.setString(3, newEvent.getDescription());
             stmt.executeUpdate();
             return true;
@@ -44,6 +57,13 @@ public class SQLBobDao implements BobDao {
         }
     }
 
+    /**
+     * Metori lisää parametrina annetun Reminder-olion tietokannan reminders-tauluun.
+     *
+     * @param newReminder lisättävä muistutus
+     *
+     * @return true/false (onnistuiko lisäys)
+     */
     public boolean addReminderToDatabase(Reminder newReminder) {
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Reminders(date, description) VALUES (?,?)");
@@ -57,6 +77,14 @@ public class SQLBobDao implements BobDao {
         }
     }
 
+    /**
+     * Metodi poistaa tietokannasta kaikki kalenteritapahtumat sekä muistutukset,
+     * joiden päivämäärä on ennen parametrina annettua päivämäärää.
+     *
+     * @param today päivämäärä, jota edeltävä tieto poistetaan
+     *
+     * @return true/false (onnistuiko lisäys)
+     */
     @Override
     public boolean removeOld(LocalDate today) {
         try {
@@ -72,15 +100,26 @@ public class SQLBobDao implements BobDao {
         }
     }
 
+    /**
+     * Metodi palauttaa päivän kalenteritapahtumat ajan mukaan järjestyksessä.
+     *
+     * @param today päivä, jolta tapahtumat palautetaan.
+     *
+     * @return lista tapahtumista
+     */
     @Override
     public List<CalendarItem> getTodaysEventsSorted(LocalDate today) {
         List<CalendarItem> todaysEvents = new ArrayList<>();
         try {
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Events WHERE date=(?) ORDER BY date;");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Events WHERE date=(?) ORDER BY time;");
             stmt.setString(1, today + "");
             ResultSet r = stmt.executeQuery();
             while (r.next()) {
-                todaysEvents.add(new Event(LocalDate.parse(r.getString("date")), LocalTime.parse(r.getString("time")), r.getString("description")));
+                if (r.getString("time") == null) {
+                    todaysEvents.add(new Event(LocalDate.parse(r.getString("date")), null, r.getString("description")));
+                } else {
+                    todaysEvents.add(new Event(LocalDate.parse(r.getString("date")), LocalTime.parse(r.getString("time")), r.getString("description")));
+                }
             }
         } catch (SQLException e) {
             System.err.println(e);
@@ -88,6 +127,13 @@ public class SQLBobDao implements BobDao {
         return todaysEvents;
     }
 
+    /**
+     * Metodi palauttaa päivän muistutukset.
+     *
+     * @param today päivä, jolta muistutukset palautetaan.
+     *
+     * @return lista muistutuksista
+     */
     @Override
     public List<CalendarItem> getTodaysReminders(LocalDate today) {
         List<CalendarItem> todaysReminders = new ArrayList<>();
@@ -104,10 +150,12 @@ public class SQLBobDao implements BobDao {
         return todaysReminders;
     }
 
-    public Connection getConnection() {
-        return connection;
-    }
-
+    /**
+     * Metodi päivittää tietokantaan tehdyn työn määrän.
+     *
+     * @param workTime työaika
+     * @param date päivä, jonka työaika päivitetään
+     */
     public void updateWorkTime(LocalTime workTime, LocalDate date) {
         try {
             PreparedStatement stmt = connection.prepareStatement("UPDATE Worktime SET time=(?) WHERE date=(?)");
@@ -119,6 +167,14 @@ public class SQLBobDao implements BobDao {
         }
     }
 
+    /**
+     * Metodi hakee tietokannasta tehdyn työajan. Jos aikaa ei löydy, tietokantaan
+     * lisätään tyhjää työaikaa indikoiva rivi.
+     *
+     * @param date päivä, jonka työaika haetaan
+     *
+     * @return työaika LocalTime-oliona
+     */
     @Override
     public LocalTime getWorkTime(LocalDate date) {
         try {
@@ -130,7 +186,6 @@ public class SQLBobDao implements BobDao {
             } else {
                 return LocalTime.parse(r.getString("time"));
             }
-
         } catch (SQLException e) {
             System.err.println(e);
         }
@@ -146,5 +201,4 @@ public class SQLBobDao implements BobDao {
             System.err.println(e);
         }
     }
-
 }
