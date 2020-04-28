@@ -24,7 +24,7 @@ public class SQLBobDao implements BobDao {
     private void createDatabase() {
         try {
             Statement s = connection.createStatement();
-            s.execute("CREATE TABLE IF NOT EXISTS Reminders(id INTEGER PRIMARY KEY, date DATE, description TEXT, done BOOLEAN DEFAULT 'false');");
+            s.execute("CREATE TABLE IF NOT EXISTS Reminders(id INTEGER PRIMARY KEY, date DATE, description TEXT);");
             s.execute("CREATE TABLE IF NOT EXISTS Events(id INTEGER PRIMARY KEY, date DATE, time TIME, description TEXT);");
             s.execute("CREATE TABLE IF NOT EXISTS Worktime(id INTEGER PRIMARY KEY, date DATE, time TIME);");
         } catch (SQLException e) {
