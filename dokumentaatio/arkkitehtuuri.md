@@ -30,7 +30,7 @@ Toiminnallisista kokonaisuuksista vastaa luokan [BobService](https://github.com/
 
 _BobService_ pääsee käsiksi tallennettuun tietoon tallennuksesta vastaavan pakkauksessa _bob.dao_ sijaitsevan rajapinnan _BobDao_ välityksellä. 
 
-TodoServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
+BobServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/pakkauksetJaLuokat.jpg" width="600" height="800"/>
 
