@@ -80,6 +80,8 @@ JavaDocia voi tarkastella avaamalla selaimella tiedosto _target/site/apidocs/ind
 
 ## Dokumentaatio
 
+[käyttöohje](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kaytto_ohje.md)
+
 [määrittelydokumentti](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [arkkitehtuurikuvaus](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/arkkitehtuuri.md)
