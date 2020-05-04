@@ -1,5 +1,12 @@
 # Käyttöohje
 
+## Sovelluksen käynnistäminen
+
+Sovellus käynnistyy hakemiston juuressa komennolla
+```
+java -jar java -jar target/Bob-0.000-SNAPSHOT.jar
+```
+
 ## Päänäkymä
 
 Päänäkymä näyttää kaikki sovellukseen ko. päivälle lisätyt kalenteritapahtumat sekä muistutukset. 
