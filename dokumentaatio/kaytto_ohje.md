@@ -32,7 +32,7 @@ Tapahtumien lisääminen tapahtuu muistutuksen tapaan, erona tapahtumalle voidaa
 
 ## Työskentelytila
 
-Työskentelytilassa voidaan valita työskentelyyn sopiva taustaääni, ja käynnistää tai pysäyttää ajastin painikkeista _työskentele_ ja _tauko_.
+Työskentelytilassa voidaan valita työskentelyyn sopiva taustaääni, ja käynnistää tai pysäyttää ajastin painikkeista _työskentele_ ja _tauko_. Ajastin mittaa päiväkohtaista työskentelyaikaa.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/tyoskentelytila.png" width="650" height="880"/>
 
