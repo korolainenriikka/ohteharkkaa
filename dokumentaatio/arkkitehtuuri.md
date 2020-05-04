@@ -59,3 +59,9 @@ Kuvataan seuraavaksi sovelluksen toimintalogiikka muutaman päätoiminnallisuude
 Kun sovellukseen lisätään uusi muistutus käyttöliittymän lisää-painikkeesta, kutsutaan ui:n metodia createNewReminder(). Tämän jälkeen ui:n newReminderSceneController kutsuu sovelluslogiikasta vastaavaa BobService-luokkaa, ja sen metodia createNewReminder(). BobService puolestaan kutsuu bobDao-pakkauksessa olevaa SQLBobDao-luokkaa BobDao-rajapinnan välityksellä. Muistutus lisätään tietokantaan, ja dao-luokka palauttaa vahvistuksena arvon true. Tämän seurauksena BobService palauttaa merkkijonomuotoisen vahvistusviestin, joka lisätään UI:ssa sovelluksen senhetkiseen näkymään, ja edelleen käyttäjälle.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/uusi_muistutus_sekvenssi.jpg" width="600" height="400"/>
+
+#### uuden kalenteritapahtuman lisääminen
+
+#### työskentelyn aloittaminen
+
+#### päivän lopettaminen
