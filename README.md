@@ -86,6 +86,8 @@ JavaDocia voi tarkastella avaamalla selaimella tiedosto _target/site/apidocs/ind
 
 [arkkitehtuurikuvaus](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+[testausdokumentti]((https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/testausdokumentti.md)
+
 [työaikakirjanpito](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/työaikakirjanpito.md)
 
 
