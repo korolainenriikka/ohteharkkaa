@@ -28,9 +28,9 @@ Sovelluksen loogisen datamallin muodostavat luokat [Reminder](https://github.com
 
 Toiminnallisista kokonaisuuksista vastaa luokan [BobService](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/domain/BobService.java) ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin.
 
-_BobService_ pääsee käsiksi käyttäjiin ja todoihin tietojen tallennuksesta vastaavan pakkauksessa _bobapp.dao_ sijaitsevan rajapinnan _BobDao_ välityksellä. 
+_BobService_ pääsee käsiksi tallennettuun tietoon tallennuksesta vastaavan pakkauksessa _bob.dao_ sijaitsevan rajapinnan _BobDao_ välityksellä. 
 
-TodoServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
+BobServicen ja ohjelman muiden osien suhdetta kuvaava luokka/pakkauskaavio:
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/pakkauksetJaLuokat.jpg" width="600" height="800"/>
 
@@ -59,3 +59,9 @@ Kuvataan seuraavaksi sovelluksen toimintalogiikka muutaman päätoiminnallisuude
 Kun sovellukseen lisätään uusi muistutus käyttöliittymän lisää-painikkeesta, kutsutaan ui:n metodia createNewReminder(). Tämän jälkeen ui:n newReminderSceneController kutsuu sovelluslogiikasta vastaavaa BobService-luokkaa, ja sen metodia createNewReminder(). BobService puolestaan kutsuu bobDao-pakkauksessa olevaa SQLBobDao-luokkaa BobDao-rajapinnan välityksellä. Muistutus lisätään tietokantaan, ja dao-luokka palauttaa vahvistuksena arvon true. Tämän seurauksena BobService palauttaa merkkijonomuotoisen vahvistusviestin, joka lisätään UI:ssa sovelluksen senhetkiseen näkymään, ja edelleen käyttäjälle.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/uusi_muistutus_sekvenssi.jpg" width="600" height="400"/>
+
+#### uuden kalenteritapahtuman lisääminen
+
+#### työskentelyn aloittaminen
+
+#### päivän lopettaminen
