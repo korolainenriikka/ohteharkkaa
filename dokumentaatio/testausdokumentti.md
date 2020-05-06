@@ -1,15 +1,13 @@
 # Testausdokumentti
-(outline mallina todoapp testausdoc)
-Ohjelmaa on testattu sekä automatisoiduin yksikkö- ja integraatiotestein JUnitilla sekä manuaalisesti tapahtunein järjestelmätason testein.
+Ohjelmaa on testattu sekä integraatiotestein JUnit-testeillä, että järjestelmätasolla jo usean kuukauden ajan käyttämällä ohjelmaa sen aiottuun tarkoitukseen.
 
 ## Yksikkö- ja integraatiotestaus
 
-* bobservicelle tarvittavat integraatiotestit
-* yksikkötestit sinne, minne integraatio ei ulotu!
+Ohjelman sovelluslogiikkaan sekä tiedon pysyväistallennuksesta vastaavaan luokkaan on toteutettu integraatiotestit. Nämä testit kattavat samalla kaikki domain-pakkauksen luokat, joten erillistä yksikkötestausta ei ole ollut tarpeen toteuttaa.
 
 ### Sovelluslogiikka
 
-...
+Sovelluslogiikan _BobService_ luokkaa on testattu keskusmuistiin tallentavan valekomponentin avustuksella niin, että kaikki sovelluslogiikan oletetut vahvistusviestit, sekä muut toiminnallisuudet ovat katettuna. Integraatiotestit on pääasiassa toteutettu niin, että sovelluslogiikan välityksellä tallennetaan joko _Event_ tai _Reminder_-olio, ja haetaan sama olio dao:sta toisella metodilla.
 
 ### DAO
 
@@ -17,13 +15,15 @@ Ohjelman DAO-luokille on toteutettu testit hyödyntäen erillistä testitietokan
 
 ### Testikattavuus
 
-Käyttöliittymäkerrosta lukuunottamatta sovelluksen testauksen rivikattavuus on ... ja haarautumakattavuus ...
-* screenshot testikattavuusraportista!!
-* testaamatta jäivät... daon catchit!
+Sovelluksen dao- ja domain-pakkausten keskimääräinen rivikattavuus on 91% ja haarautumakattavuus 88%.
+
+<img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/jacoco_final.png" height=100/>
+
+Testaamatta jäivät ainoastaan SQLBobDao-luokan catch-lohkot.
 
 ## Järjestelmätestaus
 
-Sovelluksen järjestelmätestaus suoritettiin manuaalisesti.
+Sovelluksen järjestelmätestaus suoritettiin manuaalisesti. TÄYTÄ TÄÄ KU KÄYT VIKAA KERTAA SETIT LÄPI!
 
 ### Asennus
 
@@ -34,9 +34,6 @@ Sovelluksen järjestelmätestaus suoritettiin manuaalisesti.
 (lataa jar ja release ja testaa kaikki mahollinen sitte tänne mitä teit!)
 
 ## Sovellukseen jääneet laatuongelmat
-
-Sovellus ei tällä hetkellä ota lainkaan kantaa muistutusten suorittamiseen muutoin kuin erillisellä kirjaamisella lopeta päivä -sivulla.
-Mikäli siis esim. päivä lopetetaan useasti, sovellus duplikoi olemassa olevia muistutuksia.
 
 Lisäksi sovellus ei anna järkevää virheilmoitusta, mikäli ...(avaa dao system err)
 
