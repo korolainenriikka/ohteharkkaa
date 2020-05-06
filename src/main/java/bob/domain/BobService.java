@@ -122,4 +122,15 @@ public class BobService {
     public LocalTime getWorkTime(LocalDate date) {
         return bobDao.getWorkTime(date);
     }
+
+    /**
+     * Metodi palauttaa tietokannasta haetun työajan kysytyltä päivältä.
+     *
+     * @param date päivä, jolta työaika haetaan
+     *
+     * @return työaika
+     */
+    public void deleteReminderByDescription(String text) {
+        bobDao.deleteReminderByDescription(text);
+    }
 }
