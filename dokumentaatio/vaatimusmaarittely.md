@@ -14,7 +14,7 @@ Sovellus on täysin henkilökohtainen, omiin tarpeisiin kustomoitu ja yhtä lail
 
 Muistutusten lisäämisen tarkoitus on esimerkiksi eliminoida kirjastosakot lisäämällä laina-ajat tietokantaan, kirjata ylös koulutöiden deadlineja, ym. Toiminnallisuuteen kuuluu muistutuksen luominen, ja luodun muistutuksen näyttäminen määritettynä päivänä. Vanhentuneet muistutukset poistuvat tietokannasta automaattisesti.
 
-Ohjelman lopeta päivä -toiminnossa muistutukset voidaan merkata tehdyksi, ja tallennettaessa tekemättömät siirtyvät seuraavaan päivään.
+Ohjelman lopeta päivä -toiminnossa muistutukset voidaan merkata tehdyksi, ja tallennettaessa tehdyt poistuvat. Tekemättömät siirtyvät seuraavana päivänä sovellusta avattaessa ko. päivälle, ja samalla lykätty muistutus merkataan huutomerkillä, joita kertyy tarvittaessa muistutukseen myös useampia lykkäyspäivien määrän mukaisesti.
 
 ### Kalenteritapahtumat
 
@@ -34,9 +34,9 @@ Työskentele-välilehden alla on työaikaa seuraava ajastin, sekä mahdollisuus 
 
 ### Ohjelman väärään/epätavalliseen käyttöön varautuminen
 
-* jonkinlainen päivän lopettamisen tarkistus: päivä on aina lopetettava (tai esim. kaikki hommat siirretään myöhempään), ja päivää ei voi lopettaa useasti
-
 * primary scenestä skrollattava kun sivulla on paljon sisältöä
+
+* pitkien muistutus- ja tapahtumatekstien tapauksessa Label pitäisi saada usealle riville
 
 ### Parannuksia olemassa oleviin toiminnallisuuksiin
  
