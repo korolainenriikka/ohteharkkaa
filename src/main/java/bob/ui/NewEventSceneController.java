@@ -9,6 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 
+/**
+ * Tapahtumanlisäämisnäkymän FXML-kontrolleri.
+ */
 public class NewEventSceneController implements SceneController {
 
     private BobUi application;

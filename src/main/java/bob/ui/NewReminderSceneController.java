@@ -8,6 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 
+/**
+ * Muistutuksenlisäämissnäkymän FXML-kontrolleri.
+ */
 public class NewReminderSceneController implements SceneController {
 
     private BobUi application;

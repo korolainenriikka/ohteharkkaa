@@ -12,17 +12,17 @@
       <Button layoutX="568.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSetPrimaryScene" prefHeight="22.0" prefWidth="68.0" text="Palaa" />
       <VBox layoutX="151.0" layoutY="162.0" spacing="25">
         <children>
-            <VBox fx:id="todaysReminders" layoutX="151.0" layoutY="162.0" spacing="10"/>
+            <VBox fx:id="todaysReminders" layoutX="151.0" layoutY="162.0" spacing="10" />
             <VBox layoutX="151.0" layoutY="162.0" spacing="10">
                 <children>
-                    <Label text="Tänään työskennelty:"/>
+                    <Label text="Tänään työskennelty:" />
                     <Label fx:id="worktime" text="0 h" />
                 </children>
       </VBox>
         </children>
       </VBox>
       
-      <Button fx:id="save" layoutX="288.0" layoutY="616.0" mnemonicParsing="false" onAction="#saveSelections" text="Tallenna ja sulje" />
+      <Button fx:id="save" layoutX="263.0" layoutY="617.0" mnemonicParsing="false" onAction="#saveSelections" text="Tallenna ja sulje" />
       <ImageView fitHeight="186.0" fitWidth="206.0" layoutX="237.0" layoutY="680.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/primarySceneBottom.jpg" />

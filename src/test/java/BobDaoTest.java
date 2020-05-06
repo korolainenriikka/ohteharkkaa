@@ -29,28 +29,11 @@ public class BobDaoTest {
         File file = new File("testData.db");
         file.delete();
     }
-
-    @Test
-    public void bobDaoObjectIsNotNull() {
-        assertThat(bobDao, is(notNullValue()));
-    }
-
-    @Test
-    public void addEventToDatabase() {
-        Event event = new Event(today, now, ":D");
-        assertThat(bobDao.addEventToDatabase(event), is(true));
-    }
     
     @Test
     public void addEventWithNullTimeToDatabase(){
         Event event = new Event(today, null, ":D");
         assertThat(bobDao.addEventToDatabase(event), is(true));
-    }
-
-    @Test
-    public void addReminderToDatabase() {
-        Reminder reminder = new Reminder(today, ":)");
-        assertThat(bobDao.addReminderToDatabase(reminder), is(true));
     }
 
     @Test
@@ -86,5 +69,12 @@ public class BobDaoTest {
         bobDao.getWorkTime(today);
         bobDao.updateWorkTime(LocalTime.parse("12:34:56"), today);
         assertThat(bobDao.getWorkTime(today), equalTo(LocalTime.parse("12:34:56")));
+    }
+    
+    @Test
+    public void deletedReminderIsDeleted(){
+        bobDao.addReminderToDatabase(testReminder);
+        bobDao.deleteReminder(testReminder.getDescription(), testReminder.getDate());
+        assertThat(bobDao.getTodaysReminders(today).size(), equalTo(0));
     }
 }

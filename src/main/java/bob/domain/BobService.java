@@ -126,11 +126,10 @@ public class BobService {
     /**
      * Metodi palauttaa tietokannasta haetun työajan kysytyltä päivältä.
      *
-     * @param date päivä, jolta työaika haetaan
-     *
-     * @return työaika
+     * @param text kuvaus, jonka mukainen muistutus poistetaan.
+     * @param day päivä, jolta muistutus poistetaan.
      */
-    public void deleteReminderByDescription(String text) {
-        bobDao.deleteReminderByDescription(text);
+    public void deleteReminder(String text, LocalDate day) {
+        bobDao.deleteReminder(text, day);
     }
 }

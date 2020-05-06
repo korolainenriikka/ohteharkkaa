@@ -11,6 +11,9 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
 
+/**
+ * Päänäkymän FXML-kontrolleri.
+ */
 public class PrimarySceneController implements SceneController {
 
     private BobUi app;
@@ -59,6 +62,12 @@ public class PrimarySceneController implements SceneController {
     public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
+    /**
+     * Metodi luo päänäkymään sisällön: lisää grafiikat, sekä päivän
+     * kalenteritiedot.
+     *
+     * @param today päivämäärä, jonka kalenteri lisätään näkymään
+     */
     public void setSceneContent(LocalDate today) {
         pandemic = app.isPandemic();
         setTopImage();
@@ -104,11 +113,23 @@ public class PrimarySceneController implements SceneController {
 
     private boolean addTodaysRemindersToScene(boolean nothingToDo) {
         List<String> todaysReminders = bobService.getDaysItemsAsString(Reminder.class, app.getToday());
+        todaysReminders.addAll(getUndonesMarkedFromYesterday());
         if (nothingToDo && todaysReminders.isEmpty()) {
             return true;
         }
         reminders.getChildren().addAll(getItemsAsLabels(todaysReminders, "MUISTA:"));
         return false;
+    }
+
+    private List<String> getUndonesMarkedFromYesterday() {
+        List<String> undones = bobService.getDaysItemsAsString(Reminder.class, app.getToday().minusDays(1));
+        List<String> undonesMarked = new ArrayList<>();
+        for (String descr : undones) {
+            String markedDescr = "! " + descr;
+            bobService.moveReminderToNextDay(descr, app.getToday().minusDays(1));
+            undonesMarked.add(markedDescr);
+        }
+        return undonesMarked;
     }
 
     private void createEmptyCalendarLabel() {
@@ -194,4 +215,5 @@ public class PrimarySceneController implements SceneController {
             return path + "darravabubobi.jpg";
         }
     }
+
 }

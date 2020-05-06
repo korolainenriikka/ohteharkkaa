@@ -24,11 +24,9 @@ public class Reminder implements CalendarItem {
     }
 
     /**
-     * Metodi
+     * Metodi palauttaa merkkijonoesityksenä muistutuksen kuvauksen.
      *
-     * @param
-     *
-     * @return
+     * @return merkkijonoesitys
      */
     @Override
     public String toString() {

@@ -12,6 +12,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.media.*;
 
+/**
+ * Työaikanäkymän FXML-kontrolleri.
+ */
 public class WorkSceneController implements SceneController {
 
     private BobUi app;

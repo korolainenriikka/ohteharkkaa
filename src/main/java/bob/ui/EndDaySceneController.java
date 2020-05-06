@@ -10,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 
+/**
+ * Päivänlopetusnäkymän FXML-kontrolleri.
+ */
 public class EndDaySceneController implements SceneController {
 
     private BobUi app;
@@ -37,8 +40,8 @@ public class EndDaySceneController implements SceneController {
     @FXML
     private void saveSelections() {
         for (CheckBox cb : reminders.keySet()) {
-            if (!cb.isSelected()) {
-                bobService.moveReminderToNextDay(reminders.get(cb).getText(), app.getToday());
+            if (cb.isSelected()) {
+                bobService.deleteReminder(reminders.get(cb).getText(), app.getToday());
             }
         }
         app.stop();
@@ -48,6 +51,12 @@ public class EndDaySceneController implements SceneController {
     public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
+    /**
+     * Metodi luo näkymään sisällön: listaa muistutukset sekä lisää työajan
+     * tiedot.
+     *
+     * @param today päivämäärä, jonka tiedot lisätään.
+     */
     public void setSceneContent(LocalDate today) {
         todaysReminders.getChildren().clear();
         reminders = new HashMap<>();

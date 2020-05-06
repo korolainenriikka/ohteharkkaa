@@ -12,6 +12,9 @@ public class SQLBobDao implements BobDao {
 
     private Connection connection;
 
+    /**
+     * Metodi luo tietokantayhteyden ja initialisoi tarvittaessa tietokannan.
+     */
     public SQLBobDao(String database) {
         try {
             connection = DriverManager.getConnection(database);
@@ -33,7 +36,7 @@ public class SQLBobDao implements BobDao {
     }
 
     /**
-     * Metori lisää parametrina annetun Event-olion tietokannan events-tauluun.
+     * Metodi lisää parametrina annetun Event-olion tietokannan events-tauluun.
      *
      * @param newEvent lisättävä tapahtuma
      *
@@ -198,6 +201,24 @@ public class SQLBobDao implements BobDao {
         try {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Worktime(date, time) VALUES ((?),'00:00:00')");
             stmt.setString(1, date + "");
+            stmt.execute();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
+    /**
+     * Metodi poistaa parametrina annettujen tietojen mukaiset muistutukset.
+     *
+     * @param text muistutuksen kuvaus
+     * @param day muistutuksen päivämäärä
+     */
+    @Override
+    public void deleteReminder(String text, LocalDate day) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Reminders WHERE description=(?) AND date=(?)");
+            stmt.setString(1, text + "");
+            stmt.setString(2, day + "");
             stmt.execute();
         } catch (SQLException e) {
             System.err.println(e);

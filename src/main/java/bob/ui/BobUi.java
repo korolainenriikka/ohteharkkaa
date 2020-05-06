@@ -41,7 +41,7 @@ public class BobUi extends Application {
 
     private void initializeBobService() {
         bobService = new BobService(new SQLBobDao("jdbc:sqlite:bobData.db"));
-        bobService.removeOld(today);
+        bobService.removeOld(today.minusDays(1));
     }
 
     private void initializeScenes() throws Exception {
@@ -89,6 +89,7 @@ public class BobUi extends Application {
     @Override
     public void stop() {
         bobService.saveWorkedTime(workTime, today);
+        stage.close();
     }
 
     /**

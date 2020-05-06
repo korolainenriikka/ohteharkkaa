@@ -20,4 +20,6 @@ public interface BobDao {
 
     public LocalTime getWorkTime(LocalDate date);
 
+    public void deleteReminder(String text, LocalDate day);
+
 }

@@ -23,11 +23,6 @@ public class BobServiceTest {
     }
 
     @Test
-    public void bobServiceExists() {
-        assertThat(bobService, is(notNullValue()));
-    }
-
-    @Test
     public void addRemiderToDatabaseWorks() {
         assertThat(bobService.createNewReminder(today, ":)"), equalTo("uusi muistutus lisätty:\n" + today + "\n:)"));
     }
@@ -80,5 +75,12 @@ public class BobServiceTest {
     public void workTimeUpdates() {
         bobService.saveWorkedTime(LocalTime.parse("00:00:01"), today);
         assertThat(bobService.getWorkTime(today), equalTo(LocalTime.parse("00:00:01")));
+    }
+    
+    @Test
+    public void reminderIsDeleted(){
+        bobService.createNewReminder(today, ":)");
+        bobService.deleteReminder(":)", today);
+        assertTrue(bobService.getDaysItemsAsString(Reminder.class, today).isEmpty());
     }
 }
