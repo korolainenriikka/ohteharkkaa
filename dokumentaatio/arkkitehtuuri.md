@@ -24,9 +24,9 @@ Sovelluksen tilan, siis päänäkymän, työskentelytilan tai lopetusnäkymän t
 
 ## Sovelluslogiikka
 
-Sovelluksen loogisen datamallin muodostavat luokat [Reminder](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/domain/Reminder.java) ja [Event](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/domain/Event.java).
+Sovelluksen datamallin muodostavat luokat [Reminder](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/domain/Reminder.java) sekä [Event](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/domain/Event.java). Lisäksi sovelluskäsittelee työaikadataa, mutta koska tähän sisältyy ainoastaan yksi muuttuja, työajan seuranta on toteutettu [BobUi](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/ui/BobUi.java)-luokan oliomuuttujana.
 
-Toiminnallisista kokonaisuuksista vastaa luokan [BobService](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/domain/BobService.java) ainoa olio. Luokka tarjoaa kaikille käyttäliittymän toiminnoille oman metodin.
+Varsinaisesta sovelluslogiikasta vastaa luokan [BobService](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/java/bob/domain/BobService.java) ainoa olio. Luokka tarjoaa metodit käyttöliittymän toiminnallisuuksille ja vastaa käyttöliittymän ja pysyväistallennuksesta vastaavien luokkien välisestä kommunikaatiosta.
 
 _BobService_ pääsee käsiksi tallennettuun tietoon tallennuksesta vastaavan pakkauksessa _bob.dao_ sijaitsevan rajapinnan _BobDao_ välityksellä. 
 
@@ -56,12 +56,21 @@ Kuvataan seuraavaksi sovelluksen toimintalogiikka muutaman päätoiminnallisuude
 
 #### uuden muistutuksen lisääminen
 
-Kun sovellukseen lisätään uusi muistutus käyttöliittymän lisää-painikkeesta, kutsutaan ui:n metodia createNewReminder(). Tämän jälkeen ui:n newReminderSceneController kutsuu sovelluslogiikasta vastaavaa BobService-luokkaa, ja sen metodia createNewReminder(). BobService puolestaan kutsuu bobDao-pakkauksessa olevaa SQLBobDao-luokkaa BobDao-rajapinnan välityksellä. Muistutus lisätään tietokantaan, ja dao-luokka palauttaa vahvistuksena arvon true. Tämän seurauksena BobService palauttaa merkkijonomuotoisen vahvistusviestin, joka lisätään UI:ssa sovelluksen senhetkiseen näkymään, ja edelleen käyttäjälle.
+Kun sovellukseen lisätään uusi muistutus käyttöliittymän lisää-painikkeesta, kutsutaan ui:n metodia _createNewReminder_. Tämän jälkeen ui:n _newReminderSceneController_ kutsuu sovelluslogiikasta vastaavaa BobService-luokkaa, ja sen metodia _createNewReminder_. _BobService_ puolestaan kutsuu _SQLBobDao_-luokkaa _BobDao_-rajapinnan välityksellä. Muistutus lisätään tietokantaan, ja dao-luokka palauttaa vahvistuksena arvon true. Tämän seurauksena _BobService_ palauttaa merkkijonomuotoisen vahvistusviestin, joka lisätään UI:ssa sovelluksen senhetkiseen näkymään, ja edelleen käyttäjälle.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/uusi_muistutus_sekvenssi.jpg" width="600" height="400"/>
 
 #### uuden kalenteritapahtuman lisääminen
 
-#### työskentelyn aloittaminen
+Käyttäjän painaessa kalenteritapahtuman lisäämisnäkymän lisää-painiketta, kutsutaan ui:n _newEventSceneController_:n metodia _handleNewEvent_. Metodi kutsuu _BobService_:n metodia _createNewEvent_, joka luo parametreista uuden _Event_-olion. Tämä olio annetaan parametrina _BobDao_:n metodille _addEventToDatabase_. Tapahtuma lisätään tietokantaan _BobDao_-rajapinnan implementoivassa _SQLBobDao_:ssa, ja onnistuneen lisäyksen vahvistuksena palautetaan _true_. Tätä vastaavasti _BobService_ palauttaa käyttöliittymäluokalle vahvistusviestin, joka lisätään näkymään.
 
-#### päivän lopettaminen
+<img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/uusi_tapahtuma_sekvenssi.jpg" width="600" height="400"/>
+
+#### tehtävien tehdyksi kirjaaminen, päivän lopettaminen
+
+Käyttäjän valittua päivän aikana suoritetut tehtävät ja painettua tallenna ja sulje -painiketta, ui:n luokan _EndDaySceneController_ metodi _saveSelections_ kutsuu jokaista tehtyä tehtävää (muistutusta) kohden _BobService_:n metodia _deleteReminder_. Tämä metodi kutsuu _dao_-luokan samannimistä metodia. Poistojen jälkeen _ui_-luokka kutsuu metodia _stop_, joka työajan tallennettuaan sulkee ohjelman.
+
+Sekvenssikaaviossa yksinkertaistuksena vain yhden muistutuksen poisto.
+
+
+<img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/lopeta_paiva_sekvenssi.jpg" width="600" height="400"/>
