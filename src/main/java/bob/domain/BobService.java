@@ -99,7 +99,8 @@ public class BobService {
      * @param date muistutuksen päivämäärä
      */
     public void moveReminderToNextDay(String text, LocalDate date) {
-        bobDao.addReminderToDatabase(new Reminder(date.plusDays(1), text));
+        bobDao.deleteReminder(text, date);
+        bobDao.addReminderToDatabase(new Reminder(date.plusDays(1), "! " + text));
     }
 
     /**

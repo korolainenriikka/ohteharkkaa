@@ -112,8 +112,8 @@ public class PrimarySceneController implements SceneController {
     }
 
     private boolean addTodaysRemindersToScene(boolean nothingToDo) {
+        moveOldRemindersToToday();
         List<String> todaysReminders = bobService.getDaysItemsAsString(Reminder.class, app.getToday());
-        todaysReminders.addAll(getUndonesMarkedFromYesterday());
         if (nothingToDo && todaysReminders.isEmpty()) {
             return true;
         }
@@ -121,15 +121,11 @@ public class PrimarySceneController implements SceneController {
         return false;
     }
 
-    private List<String> getUndonesMarkedFromYesterday() {
+    private void moveOldRemindersToToday() {
         List<String> undones = bobService.getDaysItemsAsString(Reminder.class, app.getToday().minusDays(1));
-        List<String> undonesMarked = new ArrayList<>();
         for (String descr : undones) {
-            String markedDescr = "! " + descr;
             bobService.moveReminderToNextDay(descr, app.getToday().minusDays(1));
-            undonesMarked.add(markedDescr);
         }
-        return undonesMarked;
     }
 
     private void createEmptyCalendarLabel() {
@@ -139,13 +135,13 @@ public class PrimarySceneController implements SceneController {
     }
 
     private void makeTextItalic(Label label) {
-        Font ITALIC_FONT
+        Font italicFont
                 = Font.font(
                         "Serif",
                         FontPosture.ITALIC,
                         Font.getDefault().getSize()
                 );
-        label.setFont(ITALIC_FONT);
+        label.setFont(italicFont);
     }
 
     private List<Label> getItemsAsLabels(List<String> todaysItems, String header) {
