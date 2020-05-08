@@ -15,7 +15,7 @@ Ohjelman DAO-luokille on toteutettu testit hyödyntäen erillistä testitietokan
 
 ### Testikattavuus
 
-Sovelluksen dao- ja domain-pakkausten keskimääräinen rivikattavuus on 91% ja haarautumakattavuus 88%.
+Sovelluksen dao- ja domain-pakkausten keskimääräinen rivikattavuus on 91% ja haarautumakattavuus 92%.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/jacoco_final.png" height=150/>
 
