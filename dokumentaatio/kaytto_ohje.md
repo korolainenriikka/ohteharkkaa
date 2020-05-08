@@ -2,10 +2,12 @@
 
 ## Sovelluksen käynnistäminen
 
-Sovellus käynnistyy hakemiston juuressa komennolla
+Sovellus käynnistyy komennolla
+
 ```
-java -jar java -jar target/Bob-0.000-SNAPSHOT.jar
+java -jar Bob-0.000-SNAPSHOT.jar
 ```
+
 
 ## Päänäkymä
 
