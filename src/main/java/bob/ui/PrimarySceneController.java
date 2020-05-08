@@ -79,11 +79,11 @@ public class PrimarySceneController implements SceneController {
     private void setTopImage() {
         LocalTime time = LocalTime.now();
         if (time.isAfter(LocalTime.parse("05:00")) && time.isBefore(LocalTime.NOON)) {
-            topImage.setImage(new Image("file:src/main/resources/images/primarySceneTop/aamuarde.jpg"));
+            topImage.setImage(new Image("images/aamuarde.jpg"));
         } else if (time.isBefore(LocalTime.parse("16:00"))) {
-            topImage.setImage(new Image("file:src/main/resources/images/primarySceneTop/paiva_arde.jpg"));
+            topImage.setImage(new Image("images/paiva_arde.jpg"));
         } else {
-            topImage.setImage(new Image("file:src/main/resources/images/primarySceneTop/ilta_arde.jpg"));
+            topImage.setImage(new Image("images/ilta_arde.jpg"));
         }
     }
 
@@ -182,14 +182,14 @@ public class PrimarySceneController implements SceneController {
     }
 
     private void insertPartyingCoronaVirus() {
-        ImageView coronaView = new ImageView(new Image("file:src/main/resources/images/vabu/vabukorona.jpg"));
+        ImageView coronaView = new ImageView(new Image("images/vabukorona.jpg"));
         coronaView.setFitHeight(70);
         coronaView.setFitWidth(70);
         images.getChildren().add(coronaView);
     }
 
     private String getImagePath(String thisYear) {
-        String path = "file:src/main/resources/images/vabu/";
+        String path = "images/";
         if (app.getToday().isBefore(LocalDate.parse(thisYear + "-03-01"))) {
             Random r = new Random();
             if (r.nextInt(2) == 0) {
