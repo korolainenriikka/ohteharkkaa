@@ -9,7 +9,8 @@ Bob the personal assistant on henkilökohtainen sihteeri, jonka ydin yllä: mit�
 Matkasuunnitelmien peruuntumisen, runsaahkon ajan ja yleisen botin näpyttelyn mukavuuden vuoksi työstä tulee todennäköisesti huomattavasti vaatimuksia laajempi. Mikäli ohjaaja tai katselmoija huomaa koodissa jotain korjattavaa tai hoksaa hauskoja kehitysidoita, jotka eivät välttämättä kurssin puitteisiin sisälly, ehdotuksia otetaan ilolla vastaan.
 
 *Huomio ohjaajille/tarkastajalle:*
-Koska ohjelman näkymät riippuvat päivämäärästä mm. vappufiilisten osalta, ns "aikamatkailu" on mahdollista muokkaamalla suoraan käyttöliittymäluokan _BobUI_ muuttujaa _today_. Päivän vaihtelu voi kuitenkin sekoittaa vanhentuneen kalenteridatan poistoa, mutta grafiikan näyttää oikein.
+
+Koska ohjelman näkymät riippuvat päivämäärästä mm. vappufiilisten osalta, ns "aikamatkailu" on mahdollista muokkaamalla suoraan käyttöliittymäluokan _BobUI_ muuttujaa _today_ (asettamalla muuttujaan LocalDate.parse("vvvv-kk-pp")). Aikamatkailu päivän sisällä onnistuu luokan _PrimarySceneController_ metodin _setTopImage_ ensimmäisellä rivillä. Aikamatkaajan on kuitenkin huomioitava, että tämä voi sekoittaa kalenteritoiminnallisuudet, sillä ohjelman kalenteri ei tue aikamatkailua.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/src/main/resources/images/primarySceneBottom.jpg" width="300" height="300"/>
 
