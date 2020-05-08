@@ -23,15 +23,15 @@ Testaamatta jäivät ainoastaan SQLBobDao-luokan catch-lohkot.
 
 ## Järjestelmätestaus
 
-Sovelluksen järjestelmätestaus suoritettiin manuaalisesti. TÄYTÄ TÄÄ KU KÄYT VIKAA KERTAA SETIT LÄPI!
+Sovelluksen järjestelmätestaus suoritettiin manuaalisesti. 
 
 ### Asennus
 
+Sovellus asennettiin asennusohjeiden mukaisesti sekä loppupalautus-releasen, että repositorion kloonauksen avulla.
+
 ### Toiminnallisuudet
 
-((tänne et sovelluksen koodissa vaihdeltiin päivää ja aikaa ja tarkasteltiin juttui))
-
-(lataa jar ja release ja testaa kaikki mahollinen sitte tänne mitä teit!)
+Sovelluksen toiminnallisuudet testattiin läpi molemmilla asennustavoilla niin kuin ne on määrittelydokumentissa listattu. Testattiin myös sovelluksen toimintaa erilaisissa virhesyötteiden ja ohjelman useilla komentoriveillä suoritetun samanaikaisen ajon tilanteissa. 
 
 ## Sovellukseen jääneet laatuongelmat
 
