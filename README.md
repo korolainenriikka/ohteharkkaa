@@ -15,9 +15,7 @@ Koska ohjelman näkymät riippuvat päivämäärästä mm. vappufiilisten osalta
 
 ## Releaset
 
-[viikko 6](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/releases)
-
-[viikko 5](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/releases)
+[loppupalautus](https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/releases)
 
 ## Komentorivitoiminnot
 
