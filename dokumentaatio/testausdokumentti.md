@@ -35,5 +35,5 @@ Sovelluksen järjestelmätestaus suoritettiin manuaalisesti. TÄYTÄ TÄÄ KU K�
 
 ## Sovellukseen jääneet laatuongelmat
 
-Lisäksi sovellus ei anna järkevää virheilmoitusta, mikäli ...(avaa dao system err)
+Sovellus ei anna järkevää virheilmoitusta, mikäli käyttäjä avaa ohjelman useaan kertaan samanaikaisesti ja suorittaa tietokantaa käyttäviä operaatioita, tai muokkaa manuaalisesti ohjelman tietokantaa ja käyttää ohjelmaa samanaikaisesti.
 
