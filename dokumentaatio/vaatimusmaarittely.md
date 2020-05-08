@@ -39,6 +39,8 @@ Työskentele-välilehden alla on työaikaa seuraava ajastin, sekä mahdollisuus 
 * pitkien muistutus- ja tapahtumatekstien tapauksessa Label pitäisi saada usealle riville
 
 ### Parannuksia olemassa oleviin toiminnallisuuksiin
+
+* työaika-ajastimesta ei nykyisellään voi poistaa taustaäänen valintaa muuten kuin uudelleenkäynnistämällä koko sovellus
  
  * työaika-ajastin tallentaa jonkinlaiseen havainnollistavaan muotoon dataa työajoista (esim. kirjoittaa työaikakirjanpito-markdowneja)
  
