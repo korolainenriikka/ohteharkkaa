@@ -23,5 +23,8 @@ Pvm | Tunnit | tehty
 21.4 | 5 | release 1 sekä vappufiilikset
 27.4 | 4 | työaika-ajastin, ui refaktorointi
 28.4 | 6 | 6. deadlinen vaatimuksia: javadoc, testejä, dokumentaatiota, koodin siistimistä
+3.5 | 1 | arkkitehtuurikuvauksen kaavioita
+6.5 | 4 | loppupalautusvaatimuksia: javadoc, checkstyle, testejä, testausdokumentti
+7.5 | 1 | arkkitehtuurikuvaus
 
-yht: 77 h
+yht: 83 h
