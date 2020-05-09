@@ -74,7 +74,7 @@ Sekvenssikaaviossa yksinkertaistuksena vain yhden muistutuksen poisto.
 
 ### Työskentely
 
-Aina siirryttäessä työskentelynäkymään näkymän fxml-kontrolleri hakee ui:luokasta työaikadatan. BobUi:n työaikamuuttujaa päivitetään jatkuvasti ajastimen muuttamisen yhteydessä. Tietokannassa oleva pysyväistallennettu työaika muuttuu vasta, kun sovellus suljetaan, ja vastaavasti haetaan sovellusta avattaessa. 
+Aina siirryttäessä työskentelynäkymään näkymän fxml-kontrolleri hakee ui:luokasta työaikadatan. _BobUi_:n työaikamuuttujaa päivitetään jatkuvasti ajastimen muuttamisen yhteydessä. Tietokannassa oleva pysyväistallennettu työaika muuttuu vasta, kun sovellus suljetaan, ja vastaavasti haetaan sovellusta avattaessa. 
 
 ## Ohjelmaan jääneet rakenteelliset heikkoudet
 
