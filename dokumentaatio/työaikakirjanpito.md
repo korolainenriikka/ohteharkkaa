@@ -27,5 +27,6 @@ Pvm | Tunnit | tehty
 6.5 | 4 | loppupalautusvaatimuksia: javadoc, checkstyle, testejä, testausdokumentti
 7.5 | 1 | arkkitehtuurikuvaus
 8.5 | 2 | viimeisiä korjauksia
+9.5 | 2 | viilausta
 
-yht: 85 h
+yht: 87 h
