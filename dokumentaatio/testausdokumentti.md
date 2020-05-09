@@ -17,7 +17,7 @@ Ohjelman DAO-luokille on toteutettu testit hyödyntäen erillistä testitietokan
 
 Sovelluksen dao- ja domain-pakkausten keskimääräinen rivi- sekä haaraumakattavuus on 91%.
 
-!(https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/jacoco_final.png)
+<img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/jacoco_final.png"/>
 
 Testaamatta jäivät ainoastaan SQLBobDao-luokan catch-lohkot.
 
