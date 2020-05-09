@@ -40,6 +40,6 @@ Työskentelytilassa voidaan valita työskentelyyn sopiva taustaääni, ja käynn
 
 ## Päivän lopettaminen
 
-Päivän lopettamisnäkymässä voidaan merkata päivän aikana tehdyt hommat, ja tarkastella päivän mittaan tehtyä työaikaa. Painike _tallenna ja sulje_ tallentaa sovellukseen tiedot muistutustehtävien suorittamisesta.
+Päivän lopettamisnäkymässä voidaan merkata päivän aikana tehdyt hommat, ja tarkastella päivän mittaan tehtyä työaikaa edelliseen minuuttiin alaspäin pyöristettynä. Painike _tallenna ja sulje_ tallentaa sovellukseen tiedot muistutustehtävien suorittamisesta.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/paivanlopetusnakyma.png" width="650" height="880"/>
