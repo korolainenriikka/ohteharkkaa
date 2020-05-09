@@ -35,5 +35,4 @@ Sovelluksen toiminnallisuudet testattiin läpi molemmilla asennustavoilla niin k
 
 ## Sovellukseen jääneet laatuongelmat
 
-Sovellus ei anna järkevää virheilmoitusta, mikäli käyttäjä avaa ohjelman useaan kertaan samanaikaisesti ja suorittaa tietokantaa käyttäviä operaatioita, tai muokkaa manuaalisesti ohjelman tietokantaa ja käyttää ohjelmaa samanaikaisesti.
-
+* Sovellus ei anna järkevää virheilmoitusta, mikäli käyttäjä avaa ohjelman useaan kertaan samanaikaisesti ja suorittaa tietokantaa käyttäviä operaatioita, tai muokkaa manuaalisesti ohjelman tietokantaa ja käyttää ohjelmaa samanaikaisesti.
