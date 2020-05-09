@@ -30,23 +30,6 @@ public class Event implements Comparable<Event>, CalendarItem {
     }
 
     /**
-     * Metodi vertaa tapahtumaa toiseen, vertailukohteena aika. Null-arvoinen
-     * arvioidaan aina aiemmaksi.
-     *
-     * @param
-     *
-     * @return
-     */
-    @Override
-    public int compareTo(Event otherEvent) {
-        if (time == null) {
-            return -1;
-        } else {
-            return this.time.compareTo(otherEvent.time);
-        }
-    }
-
-    /**
      * Metodi palauttaa kalenteritapahtuman merkkijonoesityksenä.
      *
      * @return merkkijonoesitys
