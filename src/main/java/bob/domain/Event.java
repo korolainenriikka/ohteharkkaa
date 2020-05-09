@@ -5,7 +5,7 @@ import java.time.*;
 /**
  * Kalenteritapahtumaa kuvaava luokka, aika-parametri ei pakollinen
  */
-public class Event implements Comparable<Event>, CalendarItem {
+public class Event implements CalendarItem {
 
     private LocalDate date;
     private LocalTime time;
