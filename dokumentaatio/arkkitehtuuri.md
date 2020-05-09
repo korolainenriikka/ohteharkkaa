@@ -50,25 +50,36 @@ tietokantakaavio:
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/dbdiagram.jpg" width="900" height="700"/>
 
-### Päätoiminnallisuudet
+## Päätoiminnallisuudet
 
-#### Uuden muistutuksen lisääminen
+### Uuden muistutuksen lisääminen
 
 Kun sovellukseen lisätään uusi muistutus käyttöliittymän lisää-painikkeesta, kutsutaan ui:n metodia _createNewReminder_. Tämän jälkeen ui:n _newReminderSceneController_ kutsuu sovelluslogiikasta vastaavaa BobService-luokkaa, ja sen metodia _createNewReminder_. _BobService_ puolestaan kutsuu _SQLBobDao_-luokkaa _BobDao_-rajapinnan välityksellä. Muistutus lisätään tietokantaan, ja dao-luokka palauttaa vahvistuksena arvon true. Tämän seurauksena _BobService_ palauttaa merkkijonomuotoisen vahvistusviestin, joka lisätään UI:ssa sovelluksen senhetkiseen näkymään, ja edelleen käyttäjälle.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/uusi_muistutus_sekvenssi.jpg" width="1000" height="400"/>
 
-#### Uuden kalenteritapahtuman lisääminen
+### Uuden kalenteritapahtuman lisääminen
 
 Käyttäjän painaessa kalenteritapahtuman lisäämisnäkymän lisää-painiketta, kutsutaan ui:n _newEventSceneController_:n metodia _handleNewEvent_. Metodi kutsuu _BobService_:n metodia _createNewEvent_, joka luo parametreista uuden _Event_-olion. Tämä olio annetaan parametrina _BobDao_:n metodille _addEventToDatabase_. Tapahtuma lisätään tietokantaan _BobDao_-rajapinnan implementoivassa _SQLBobDao_:ssa, ja onnistuneen lisäyksen vahvistuksena palautetaan _true_. Tätä vastaavasti _BobService_ palauttaa käyttöliittymäluokalle vahvistusviestin, joka lisätään näkymään.
 
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/uusi_tapahtuma_sekvenssi.jpg" width="1000" height="400"/>
 
-#### Tehtävien tehdyksi kirjaaminen ja päivän lopettaminen
+### Tehtävien tehdyksi kirjaaminen ja päivän lopettaminen
 
 Käyttäjän valittua päivän aikana suoritetut tehtävät ja painettua tallenna ja sulje -painiketta, ui:n luokan _EndDaySceneController_ metodi _saveSelections_ kutsuu jokaista tehtyä tehtävää (muistutusta) kohden _BobService_:n metodia _deleteReminder_. Tämä metodi kutsuu _dao_-luokan samannimistä metodia. Poistojen jälkeen _ui_-luokka kutsuu metodia _stop_, joka työajan tallennettuaan sulkee ohjelman.
 
 Sekvenssikaaviossa yksinkertaistuksena vain yhden muistutuksen poisto.
 
-
 <img src="https://github.com/korolainenriikka/BobThePersonalAssistant-ohte2020/blob/master/dokumentaatio/kuvat/lopeta_paiva_sekvenssi.jpg" width="1000" height="400"/>
+
+### Työskentely
+
+Aina siirryttäessä työskentelynäkymään näkymän fxml-kontrolleri hakee ui:luokasta tietokantadatan. Ajastimen pysähtyessa samaa muuttujaa päivitetään. Tietokannassa oleva pysyväistallennettu työaika muuttuu vasta, kun sovellus suljetaan, ja vastaavasti haetaan sovellusta avattaessa. 
+
+## Ohjelmaan jääneet rakenteelliset heikkoudet
+
+* _Reminder_ ja _Event_-luokkien samankaltaisuus aiheuttaa jokseenkin toisteiselta vaikuttaavaa koodia, mutta molempiin luokkiin liittyy myös erityispiirteitä, jotka tekevät yleistämisestä vaikeaa. Tämän vuoksi _CalendarItem_-rajapinnan ja sen implementoivien luokkien _Reminder_ ja _Event_ looginen suhteutuminen toisiinsa ei ole läpi sovelluksen täysin yhdenmukaista.
+
+* Sqliten ominaisuuksien sekä sovelluksen kohtalaisen suuren tietokantaoperaatioiden määrän vuoksi ohjelman ajaminen useaan kertaan samanaikaisesti on hyvin rajoittunutta ja häiriöherkkää erityisesti työajan oikean tallentumisen osalta; mikäli sqlite heittää "sqlite busy" -errorin tallentuessa, kyseisen ohjelman ajon aikainen työajan kertyminen menetetään kokonaan, sillä ohjelma ei sisällä virheeseen varautuvaa toiminnallisuutta.
+
+* Käyttöliittymän skaalautuminen ohjelman aktiivisen käytön tapauksessa on puutteellista: päänäkymän sisällölle varattu tila ei varaudu kalenteritekstien pituuteen eikä suureen määrään lainkaan, vaan elementit alkavat kasautua toistensa päälle, mikäli tietoa on suuri määrä. Ohjelman arkipäiväisessä käytössä on kuitenkin huomattu, että näitä tapauksia ei normaalissa käytössä juurikaan tule.
