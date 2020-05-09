@@ -5,7 +5,7 @@
 Sovellus käynnistyy komennolla
 
 ```
-java -jar Bob-0.000-SNAPSHOT.jar
+java -jar final_bob.jar
 ```
 
 
