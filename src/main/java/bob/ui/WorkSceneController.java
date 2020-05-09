@@ -34,7 +34,7 @@ public class WorkSceneController implements SceneController {
     private Label workTimer;
 
     @FXML
-    private RadioButton hogwartsLibrary;
+    private RadioButton hogwaFrtsLibrary;
 
     @FXML
     private RadioButton hufflepuffCommonRoom;
@@ -98,8 +98,8 @@ public class WorkSceneController implements SceneController {
                     return;
                 }
                 LocalTime worktime = LocalTime.parse(workTimer.getText(), DateTimeFormatter.ofPattern("HH[:mm[:ss]]")).plusSeconds(1);
-                app.updateWorkTime(worktime);
                 workTimer.setText(worktime + "");
+                app.updateWorkTime(worktime);
                 this.prev = now;
             }
         };
