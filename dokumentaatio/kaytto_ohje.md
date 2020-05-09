@@ -2,7 +2,7 @@
 
 ## Sovelluksen käynnistäminen
 
-Sovellus käynnistyy komennolla
+Loppupalautus-releasesta ladattu jar käynnistyy komennolla
 
 ```
 java -jar final_bob.jar
