@@ -45,7 +45,7 @@ public class NewEventSceneController implements SceneController {
 
     @FXML
     private void handleNewEvent(ActionEvent event) {
-        if (date.getValue() == null || description.getText() == null) {
+        if (date.getValue() == null || description.getText().trim().isEmpty()) {
             okmessage.setText("syötä pyydetyt tiedot");
         } else {
             LocalTime time = null;

@@ -38,7 +38,7 @@ public class NewReminderSceneController implements SceneController {
 
     @FXML
     private void handleNewReminder(ActionEvent event) {
-        if (date.getValue() == null || description.getText() == null) {
+        if (date.getValue() == null || description.getText().trim().isEmpty()) {
             okmessage.setText("syötä pyydetyt tiedot");
         } else {
             String message = bobService.createNewReminder(date.getValue(), description.getText());

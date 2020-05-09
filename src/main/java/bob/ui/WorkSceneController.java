@@ -34,7 +34,7 @@ public class WorkSceneController implements SceneController {
     private Label workTimer;
 
     @FXML
-    private RadioButton hogwaFrtsLibrary;
+    private RadioButton hogwartsLibrary;
 
     @FXML
     private RadioButton hufflepuffCommonRoom;
